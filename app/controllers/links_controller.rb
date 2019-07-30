@@ -1,20 +1,12 @@
-require_relative '../services/source.rb'
+require_relative '../services/data_from_heroku.rb'
 
 class LinksController < ApplicationController
-  before_action :find_link, only: %i[link_source]
+  include DataFromHeroku
 
   def index; end
 
-  def show; end
-
-  def link_source
-    @result = Source.run(@link)
-    render :index
-  end
-
-  private
-
-  def find_link
-    @link = params[:source_link]
+  def show
+    link = params[:source_link]
+    @result = run(link)
   end
 end

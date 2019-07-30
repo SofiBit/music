@@ -6,11 +6,11 @@ ruby '2.6.3'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.3'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+gem 'sqlite3', '~> 1.4.1'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
-gem 'bootstrap-sass'
+gem 'bootstrap-sass', '~> 3.4.1'
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
@@ -36,15 +36,14 @@ gem 'jbuilder', '~> 2.5'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
-gem 'faraday'
-gem 'platform-api'
-gem 'pry'
-gem 'pry-rails'
-gem 'pry-byebug'
+gem 'faraday', '~> 0.15.4'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'pry', '~> 0.12.2'
+  gem 'pry-rails', '~> 0.3.9'
+  gem 'pry-byebug', '~> 3.7.0'
 end
 
 group :development do
