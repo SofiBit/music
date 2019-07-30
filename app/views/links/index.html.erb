@@ -1,0 +1,7 @@
+<%= form_tag link_source_path do %>
+  <%= label_tag(:source_link, "Enter link:") %>
+  <%= text_field_tag(:source_link) %>
+  <%= submit_tag("Send") %>
+<% end %>
+
+<%= render 'answer' %>
