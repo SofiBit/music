@@ -17,11 +17,11 @@
 
 function copy(id) {
 
-  var copyText = document.getElementById(id);
+  var copyLink = document.getElementById(id);
 
-  copyText.select();
+  copyLink.select();
 
   document.execCommand("copy");
 
-  alert("Copied the link: " + copyText.value);
+  alert("Copied the link: " + copyLink.value);
 }

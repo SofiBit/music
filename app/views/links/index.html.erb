@@ -1,8 +1,10 @@
-<div class="form">
-  <%= form_tag('/links/:id', method: :get) do %>
-    <%= label_tag(:source_link, "Enter link:") %>
-    <%= text_field_tag(:source_link) %>
+<%= form_tag('/links/:id', method: :get) do %>
+  <div class="input-group mb-3">
+    <%= label_tag(:source_link, "") %>
+    <%= text_field_tag :source_link, "", class: "form-control", placeholder: 'Enter link' %>
 
-    <%= submit_tag("Send") %>
-  <% end %>
-</div>
+    <div class="input-group-append">
+      <%= submit_tag("Send", class: "btn btn-outline-secondary") %>
+    </div>
+  </div>
+<% end %>

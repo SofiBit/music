@@ -1,7 +1,9 @@
-require_relative '../services/data_from_heroku.rb'
+# frozen_string_literal: true
+
+require_relative '../services/providers_links_fetch.rb'
 
 class LinksController < ApplicationController
-  include DataFromHeroku
+  include ProvidersLinksFetch
 
   def index; end
 
