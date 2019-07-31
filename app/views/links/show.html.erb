@@ -1,7 +1,6 @@
 <div>
-  <ol>
-    <% @result.each do |source, link| %>
-      <li><%= link %></li>
-    <% end %>
-  </ol>
+  <% @result.each do |source, link| %>
+    <input type="text" value="<%= link %>" id="<%= source %>">
+    <button type="button" class="btn btn-secondary" onclick="copy('<%= source %>')">Copy text</button><br>
+  <% end %>
 </div>
