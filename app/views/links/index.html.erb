@@ -1,0 +1,10 @@
+<%= form_tag('/link', method: :get) do %>
+  <div class="input-group mb-3">
+    <%= label_tag(:source_link, "") %>
+    <%= text_field_tag :source_link, "", class: "form-control", placeholder: 'Enter link' %>
+
+    <div class="input-group-append">
+      <%= submit_tag("Send", class: "btn btn-outline-secondary") %>
+    </div>
+  </div>
+<% end %>
