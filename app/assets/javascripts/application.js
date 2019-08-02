@@ -14,3 +14,19 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+
+//= require jquery
+
+// jQuery(function($) {
+//
+//   $(".ajax_form").click( function() {
+//     $.ajax({
+//       url: '/link',
+//       type: 'GET',
+//       success: function() {
+//
+//       }
+//     });
+//   });
+//
+// });
