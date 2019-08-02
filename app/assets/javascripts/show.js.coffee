@@ -1,10 +1,6 @@
-$ ->
-  $('.ajax_form').on 'ajax:success', (e, data, status, xhr) ->
-    $('#show_div').append data
-    console.log data
-
-  # $('.ajax_form').on 'ajax:error', (e, data, status, error) ->
-  #   console.log e
-  #   console.log data
-  #   console.log status
-  #   console.log xhr
+$(document).ready ->
+  $(".ajax_form").on("ajax:success", (event) ->
+    [data, status, xhr] = event.detail
+    $("#show_div").append xhr.responseText
+   ).on "ajax:error", (event) ->
+    $("#show_div").append "<p>ERROR</p>"

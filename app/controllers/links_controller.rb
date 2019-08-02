@@ -10,5 +10,6 @@ class LinksController < ApplicationController
   def show
     link = params[:source_link]
     @result = run(link)
+    render layout: false
   end
 end
