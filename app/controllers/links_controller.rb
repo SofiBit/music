@@ -13,5 +13,6 @@ class LinksController < ApplicationController
     link = params[:source_link]
     @result = run(link)
     render layout: false
+    current_user.source_links.create(link: params[:source_link])
   end
 end
