@@ -2,5 +2,8 @@
   <h5 class="my-0 mr-md-auto font-weight-normal">Music application</h5>
   <nav class="my-2 my-md-0 mr-md-3">
     <a class="p-2 text-dark" href="/">Main page</a>
+    <% if user_signed_in? %>
+      <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: "p-2 text-dark" %>
+    <% end %>
   </nav>
 </div>

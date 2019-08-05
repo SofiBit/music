@@ -5,6 +5,8 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.3'
 
+# Auth
+gem 'devise', '~> 4.0'
 gem 'jquery-rails', '~> 4.3.5'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.3'
@@ -49,6 +51,7 @@ group :development, :test do
   gem 'pry-byebug', '~> 3.7.0'
   gem 'pry-rails', '~> 0.3.9'
   gem 'rubocop', '~> 0.73.0', require: false
+  gem 'letter_opener'
 end
 
 group :development do
