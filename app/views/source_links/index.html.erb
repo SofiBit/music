@@ -1,0 +1,8 @@
+<ul class="list-group">
+  <% @links.each do |link|%>
+    <li class="list-group-item">
+      <a href="<%= link.link %>" target="_blank"><%= link.link %></a>
+      <%= link_to 'Delete link', source_link_path(link), method: :delete %>
+    </li>
+  <% end %>
+</ul>
