@@ -11,7 +11,6 @@ Rails.application.configure do
     password: ENV["SENDGRID_PASSWORD"],
     authentication: 'plain',
     enable_starttls_auto: true
-    from: 'sofiabitno@gmail.com'
   }
   # Settings specified here will take precedence over those in config/application.rb.
 
