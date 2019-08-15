@@ -1,4 +1,6 @@
-<div>
+<% if @result == 'error' %>
+  <p class="alert alert-danger"> Not found<p>
+<% else %>
   <% @result.each do |source, link| %>
     <div class="input-group mb-3">
       <div class="input-group-prepend">
@@ -12,7 +14,7 @@
       </div>
     </div>
   <% end %>
-</div>
 
-<img src="https://img.icons8.com/color/48/000000/telegram-app.png" style="cursor: pointer" onclick="shareTelegram('<%= @result %>')"></img>
-<img src="https://img.icons8.com/color/48/000000/gmail.png" style="cursor: pointer" onclick="shareEmail('<%= @result %>')"></img>
+  <img src="https://img.icons8.com/color/48/000000/telegram-app.png" style="cursor: pointer" onclick="shareTelegram('https://fast-reaches-12261.herokuapp.com/','<%= transform(@result) %>')"></img>
+  <img src="https://img.icons8.com/color/48/000000/gmail.png" style="cursor: pointer" onclick="shareEmail('https://fast-reaches-12261.herokuapp.com/', '<%= transform(@result) %>')"></img>
+<% end %>
