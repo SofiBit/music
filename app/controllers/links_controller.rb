@@ -9,7 +9,6 @@ class LinksController < ApplicationController
   def show
     link = params[:source_link]
     @result = run(link)
-    binding.pry
     links_to_user(link) unless @result == 'error'
     respond_to do |format|
       format.js

@@ -53,6 +53,7 @@ group :development, :test do
   gem 'pry-rails', '~> 0.3.9'
   gem 'rubocop', '~> 0.73.0', require: false
   gem 'better_errors'
+  gem 'dotenv-rails'
 end
 
 group :development do
