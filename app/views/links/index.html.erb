@@ -1,7 +1,7 @@
 <%= form_tag('/link', method: :get, remote: true) do %>
   <div class="input-group mb-3">
     <%= label_tag(:source_link, "") %>
-    <%= text_field_tag :source_link, "", class: "form-control", placeholder: 'Enter link' %>
+    <%= text_field_tag :source_link, "", class: "form-control", placeholder: 'Enter link', required: true %>
 
     <div class="input-group-append">
       <%= submit_tag("Send", class: "btn btn-outline-secondary") %>
