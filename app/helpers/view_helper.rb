@@ -4,13 +4,13 @@ module ViewHelper
 
   def share_telegram(result)
     image_tag(URI_IMG_TELEGRAM,
-     onclick: "shareTelegram('#{ENV['URI']}', '#{transform(result)}')",
+     onclick: "shareTelegram('#{ENV['URI_APP']}', '#{transform(result)}')",
      style: "cursor: pointer")
   end
 
   def share_email(result)
     image_tag(URI_IMG_GMAIL,
-     onclick: "shareEmail('#{ENV['URI']}', '#{transform(result)}')",
+     onclick: "shareEmail('#{ENV['URI_APP']}', '#{transform(result)}')",
      style: "cursor: pointer")
   end
 

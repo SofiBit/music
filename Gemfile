@@ -4,10 +4,10 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.3'
-gem 'sendgrid-ruby'
+gem 'sendgrid-ruby', '~> 6.0.0'
 # Auth
 gem 'devise', '~> 4.0'
-gem 'figaro'
+gem 'figaro', '~> 1.1.1'
 gem 'jquery-rails', '~> 4.3.5'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.3'
@@ -52,8 +52,7 @@ group :development, :test do
   gem 'pry-byebug', '~> 3.7.0'
   gem 'pry-rails', '~> 0.3.9'
   gem 'rubocop', '~> 0.73.0', require: false
-  gem 'better_errors'
-  gem 'dotenv-rails'
+  gem 'better_errors', '~> 2.5.1'
 end
 
 group :development do
@@ -61,20 +60,20 @@ group :development do
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'web-console', '>= 3.3.0'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'spring'
+  gem 'spring', '~> 2.1.0'
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
 
 group :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '>= 2.15'
-  gem 'selenium-webdriver'
+  gem 'selenium-webdriver', '~> 3.142.3'
   # Easy installation and use of chromedriver to run system tests with Chrome
-  gem 'chromedriver-helper'
+  gem 'chromedriver-helper', '~> 2.1.1'
 end
 
 group :production do
- gem 'rails_12factor'
+ gem 'rails_12factor', '~> 0.0.3'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
