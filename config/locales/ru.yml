@@ -1,0 +1,25 @@
+ru:
+  header:
+    music_app: Музыкальное приложение
+    logout: Выйти
+    my_links: Мои ссылки
+    login: Войти
+  input:
+    send: Отправить
+    enter_link: Ввести ссылку
+    copy: Копировать ссылку
+  login:
+    h: Войдите, пожалуйста
+    email: Введите email
+    password: Введите пароль
+    remember: Запомнить меня
+  sign_up:
+    first_name: Имя
+    last_name: Фамилия
+    sign_up: Зарегистрироваться
+  links:
+    log: Войти
+    sign_up: Регистрация
+    forgot_password: Забыли пароль?
+    did_not_receive_conf_instructions: Не получили подтверждение?
+    did_not_receive_unlock_instructions: Не получили инструкции по разблокировке?

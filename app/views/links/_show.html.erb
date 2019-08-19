@@ -8,7 +8,7 @@
       <input type="text" class="form-control" value="<%= link %>" id="<%= source %>" readonly="">
 
       <div class="input-group-append">
-        <button type="button" class="btn btn-outline-secondary" onclick="copy('<%= source %>')">Copy link</button><br>
+        <button type="button" class="btn btn-outline-secondary" onclick="copy('<%= source %>')"><%= t('input.copy') %></button><br>
       </div>
     </div>
   <% end %>
