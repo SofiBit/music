@@ -8,4 +8,6 @@ class SourceLinksController < ApplicationController
     link.destroy
     redirect_to source_links_path
   end
+
+  # load_and_authorize_resource
 end

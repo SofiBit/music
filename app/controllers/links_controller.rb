@@ -15,4 +15,6 @@ class LinksController < ApplicationController
       format.json { render json: @result.to_json }
     end
   end
+
+  # load_and_authorize_resource
 end
