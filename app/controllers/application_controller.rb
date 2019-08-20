@@ -17,4 +17,12 @@ class ApplicationController < ActionController::Base
   def default_url_options
     { locale: I18n.locale }
   end
+
+  def after_sign_in_path_for(resource)
+    resource.admin? ? admin_root_path : root_path
+  end
+
+  def access_denied(exception)
+    redirect_to root_path , alert: exception.message
+  end
 end

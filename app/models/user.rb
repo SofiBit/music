@@ -8,6 +8,10 @@ class User < ApplicationRecord
           :recoverable,
           :rememberable,
           :validatable,
-          :trackable,
-          :confirmable
+          :trackable
+          # :confirmable
+
+  def admin?
+    self.role == "admin"
+  end
 end

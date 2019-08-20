@@ -5,10 +5,10 @@ class Ability
 
   def initialize(user)
     user ||= User.new
-    if user.role == "admin"
+    if user.admin?
       can :manage, :all
     else
-      #users abilities
+      # users abilities
     end
   end
 end
