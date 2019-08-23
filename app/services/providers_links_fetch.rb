@@ -7,7 +7,7 @@ module ProvidersLinksFetch
     resp = Faraday.get(URL, source_link: link)
     body = resp.body
     JSON.parse(body)
-  rescue
-    'error'
+  rescue JSON::ParserError
+    raise "Cant parse it"
   end
 end

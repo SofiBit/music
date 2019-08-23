@@ -1,20 +1,16 @@
-<% if @result == 'error' %>
-  <p class="alert alert-danger"> Not found<p>
-<% else %>
-  <% @result.each do |source, link| %>
-    <div class="input-group mb-3">
-      <div class="input-group-prepend">
-        <span class="input-group-text" id="inputGroupFileAddon01"><%= source %>:</span>
-      </div>
-
-      <input type="text" class="form-control" value="<%= link %>" id="<%= source %>" readonly="">
-
-      <div class="input-group-append">
-        <button type="button" class="btn btn-outline-secondary" onclick="copy('<%= source %>')">Copy link</button><br>
-      </div>
+<% @result.each do |source, link| %>
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="inputGroupFileAddon01"><%= source %>:</span>
     </div>
-  <% end %>
 
-  <%= share_telegram(@result) %>
-  <%= share_email(@result)%>
+    <input type="text" class="form-control" value="<%= link %>" id="<%= source %>" readonly="">
+
+    <div class="input-group-append">
+      <button type="button" class="btn btn-outline-secondary" onclick="copy('<%= source %>')">Copy link</button><br>
+    </div>
+  </div>
 <% end %>
+
+<%= share_telegram(@result) %>
+<%= share_email(@result)%>

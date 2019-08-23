@@ -7,5 +7,4 @@ class User < ApplicationRecord
           :rememberable,
           :validatable,
           :trackable
-          # :confirmable
 end
