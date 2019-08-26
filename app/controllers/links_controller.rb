@@ -21,7 +21,7 @@ class LinksController < ApplicationController
   def result_error(link)
     @result = run(link)
   rescue RuntimeError => e
-    flash[:notice] = 'Not found'
+    flash[:error] = 'Not found'
     respond_to do |format|
       format.js { render js: "window.location='#{root_path.to_s}'" }
     end
