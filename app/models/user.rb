@@ -9,7 +9,6 @@ class User < ApplicationRecord
           :rememberable,
           :validatable,
           :trackable
-          # :confirmable
 
   def admin?
     self.role == "admin"
