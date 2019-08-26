@@ -14,8 +14,8 @@ module ViewHelper
 
   def transform_links(result)
     array = []
-    result.each do |k, v|
-      array << "#{k.capitalize.gsub(/[_]/, ' ')}:%20#{v}"
+    result.each do |provider, song|
+      array << "#{provider.capitalize.gsub(/[_]/, ' ')}:%20#{song}"
     end
     array.join("%0A")
   end
