@@ -3,12 +3,13 @@
 class LinksController < ApplicationController
   include ProvidersLinksFetch
   include UsersLinks
+  include ServiceObjects
 
   def index; end
 
   def show
     link = params[:source_link]
-    @result = run(link)
+    generate_links(link)
     links_to_user(link)
     respond_to do |format|
       format.js
