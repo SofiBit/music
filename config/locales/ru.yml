@@ -23,3 +23,7 @@ ru:
     forgot_password: Забыли пароль?
     did_not_receive_conf_instructions: Не получили подтверждение?
     did_not_receive_unlock_instructions: Не получили инструкции по разблокировке?
+  my_notice:
+    not_found: Не найдено
+    parse: Нельзя распарсить
+  music: Музыка
