@@ -62,6 +62,7 @@ group :development, :test do
   gem 'selenium-webdriver', '~> 3.142.3'
   gem 'geckodriver-helper', '~> 0.24.0'
   gem 'factory_bot_rails', '~> 5.0.2'
+  gem 'rails-controller-testing'
 end
 
 group :development do

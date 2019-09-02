@@ -6,14 +6,14 @@ require_relative "../../app/services/providers_links_fetch"
 describe ProvidersLinksFetch do
   include ProvidersLinksFetch
   context "if can be parsed" do
-    URL = 'https://open.spotify.com/track/26ID4xrP0e9OmBYYmzMkjM?si=\
+    source_link = 'https://open.spotify.com/track/26ID4xrP0e9OmBYYmzMkjM?si=\
           FuY7U_IDRTmxmHdIT6NBMQ'
     links = {"spotify"=>"https://open.spotify.com/track/26ID4xrP0e9OmBYYmzMkjM",
           "apple_music"=>
           "https://music.apple.com/us/album/serene/594430387?i=594430443&uo=4"}
 
     it "should return two links" do
-      expect(run(URL)).to eq(links)
+      expect(run(source_link)).to eq(links)
     end
   end
 
