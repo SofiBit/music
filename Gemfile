@@ -4,6 +4,10 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.3'
+
+gem 'activeadmin', '~> 2.2.0'
+gem 'cancancan', '~> 3.0.1'
+gem 'rails-i18n', '~> 5.1'
 gem 'sendgrid-ruby', '~> 6.0.0'
 # Auth
 gem 'devise', '~> 4.0'
@@ -53,6 +57,12 @@ group :development, :test do
   gem 'pry-rails', '~> 0.3.9'
   gem 'rubocop', '~> 0.73.0', require: false
   gem 'better_errors', '~> 2.5.1'
+  gem 'rspec-rails', '~> 3.8.2'
+  gem 'capybara', '~> 3.28.0'
+  gem 'selenium-webdriver', '~> 3.142.3'
+  gem 'geckodriver-helper', '~> 0.24.0'
+  gem 'factory_bot_rails', '~> 5.0.2'
+  gem 'rails-controller-testing'
 end
 
 group :development do
@@ -66,10 +76,7 @@ end
 
 group :test do
   # Adds support for Capybara system testing and selenium driver
-  gem 'capybara', '>= 2.15'
-  gem 'selenium-webdriver', '~> 3.142.3'
   # Easy installation and use of chromedriver to run system tests with Chrome
-  gem 'chromedriver-helper', '~> 2.1.1'
 end
 
 group :production do

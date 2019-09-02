@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  ROLES = %i[user admin]
+
   has_many :source_links, dependent: :destroy
 
   devise  :database_authenticatable,
@@ -7,4 +9,8 @@ class User < ApplicationRecord
           :rememberable,
           :validatable,
           :trackable
+
+  def admin?
+    self.role == "admin"
+  end
 end

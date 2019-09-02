@@ -8,6 +8,6 @@ module ProvidersLinksFetch
     body = resp.body
     JSON.parse(body)
   rescue JSON::ParserError
-    raise "Cant parse it"
+    raise 'Cant be parsed'
   end
 end
