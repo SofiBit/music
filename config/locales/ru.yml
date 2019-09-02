@@ -26,4 +26,8 @@ ru:
   my_notice:
     not_found: Не найдено
     parse: Нельзя распарсить
-  music: Музыка
+  result:
+    artist: Исполнитель
+    album: Альбом
+    name: Композиция
+    release_date: Дата выхода

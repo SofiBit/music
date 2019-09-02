@@ -26,4 +26,8 @@ en:
   my_notice:
     not_found: Not found
     parse: Can not be parsed
-  music: Music
+  result:
+    artist: Artist
+    album: Album
+    name: Song
+    release_date: Release date

@@ -1,5 +1,5 @@
 module ServiceObjects
-  def generate_links(link)
+  def generate_links_info(link)
     @result = run(link)
   rescue RuntimeError => e
     flash[:error] = t('my_notice.not_found')
