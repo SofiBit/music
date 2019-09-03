@@ -2,7 +2,7 @@ en:
   header:
     music_app: Music application
     logout: Logout
-    my_links: My links
+    my_tracks: My tracks
     login: Login
   input:
     send: Send
@@ -31,3 +31,6 @@ en:
     album: Album
     name: Song
     release_date: Release date
+  app:
+    show: Watch
+    delete_track: Delete track

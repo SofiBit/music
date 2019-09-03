@@ -19,7 +19,7 @@ describe LinksController do
   context "GET #show" do
     it "should get show" do
       controller.stub(:generate_links_info).and_return(true)
-      controller.stub(:links_to_user).and_return(true)
+      controller.stub(:track_to_user).and_return(true)
       get :show, format: :json
       response.should be_success
     end

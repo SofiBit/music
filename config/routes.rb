@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   root 'links#index'
 
   resources :links, only: %i[index]
-  resources :source_links, only: %i[index destroy]
+  resources :tracks, only: %i[index destroy show]
 
   get '/link', to: 'links#show'
 end

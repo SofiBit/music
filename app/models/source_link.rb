@@ -1,3 +1,0 @@
-class SourceLink < ApplicationRecord
-  belongs_to :user
-end

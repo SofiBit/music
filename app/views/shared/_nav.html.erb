@@ -4,7 +4,7 @@
   <nav class="my-2 my-md-0 mr-md-3">
     <% if user_signed_in? %>
       <%= link_to t('header.logout'), destroy_user_session_path, method: :delete, class: "p-2 text-dark" %>
-      <%= link_to t('header.my_links'), source_links_path, class: "p-2 text-dark" %>
+      <%= link_to t('header.my_tracks'), tracks_path, class: "p-2 text-dark" %>
     <% else %>
       <%= link_to t('header.login'), new_user_session_path, class: "p-2 text-dark" %>
       <%= link_to t('links.sign_up'), new_user_registration_path, class: "p-2 text-dark" %>

@@ -2,7 +2,7 @@ ru:
   header:
     music_app: Музыкальное приложение
     logout: Выйти
-    my_links: Мои ссылки
+    my_tracks: Мои треки
     login: Войти
   input:
     send: Отправить
@@ -31,3 +31,6 @@ ru:
     album: Альбом
     name: Композиция
     release_date: Дата выхода
+  app:
+    show: Смотреть
+    delete_track: Удалить трек
