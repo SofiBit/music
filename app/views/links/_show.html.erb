@@ -1,3 +1,5 @@
+<%= render 'shared/flash'%>
+
 <% @result['links'].each do |source, link| %>
   <div class="input-group mb-3">
     <div class="input-group-prepend">
@@ -24,3 +26,6 @@
 
 <%= share_telegram(@result['links']) %>
 <%= share_email(@result['links'])%>
+
+<script type="text/javascript">
+</script>
