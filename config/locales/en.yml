@@ -35,3 +35,5 @@ en:
     show: Watch
     delete_track: Delete track
     registration_offer: Sign up for saving tracks and sharing it with friends
+    follow: Subscribe
+    unsubscribe: Unsubscribe

@@ -1,0 +1,9 @@
+<%= form_tag('/search', method: :get, remote: true) do %>
+  <div>
+    <%= label_tag(:user_name, "") %>
+    <%= text_field_tag :user_name, "", type: "search", required: true  %>
+    <%= submit_tag(t('input.send')) %>
+  </div>
+<% end %>
+
+<div id="datalist_index"></div>

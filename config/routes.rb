@@ -6,8 +6,11 @@ Rails.application.routes.draw do
 
   root 'links#index'
 
+  resources :search, only: %i[index]
   resources :links, only: %i[index]
   resources :tracks, only: %i[index destroy show]
+  resources :users, only: :show
+  resources :friendships, only: %i[create destroy]
 
   get '/link', to: 'links#show'
 end

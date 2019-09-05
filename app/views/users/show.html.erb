@@ -1,0 +1,25 @@
+<div class="ava">
+</div>
+<div>
+  <%= @user.first_name %>
+  <%= @user.last_name %>
+  <%= @user.email %>
+</div>
+
+<ul>Friends:
+  <% @user.friends.each do |friend| %>
+    <li><%= friend.first_name %> <%= friend.last_name %></li>
+  <% end %>
+</ul>
+
+<% unless current_user == @user %>
+  <% if current_user.friends.include?(@user)%>
+    <div id="button_create">
+      <%= render 'friendships/create' %>
+    </div>
+  <% else %>
+  <div id="button_create">
+    <%= render 'friendships/destroy' %>
+  </div>
+  <% end %>
+<% end %>

@@ -5,6 +5,9 @@
     <% if user_signed_in? %>
       <%= link_to t('header.logout'), destroy_user_session_path, method: :delete, class: "p-2 text-dark" %>
       <%= link_to t('header.my_tracks'), tracks_path, class: "p-2 text-dark" %>
+      <%= link_to 'My page', user_path(current_user), class: "p-2 text-dark" %>
+
+      <%= render 'shared/search' %>
     <% else %>
       <%= link_to t('header.login'), new_user_session_path, class: "p-2 text-dark" %>
       <%= link_to t('links.sign_up'), new_user_registration_path, class: "p-2 text-dark" %>
