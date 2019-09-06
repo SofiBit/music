@@ -8,6 +8,6 @@ class FriendshipsController < ApplicationController
 
   def destroy
     @user = User.find(params[:id])
-    current_user.friendships.find_by(friend_id: @user.id).delete
+    current_user.friendships.find_by(friend_id: @user.id).destroy
   end
 end

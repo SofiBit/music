@@ -1,4 +1,8 @@
 FactoryBot.define do
+  factory :event do
+    message { "MyString" }
+  end
+
   factory :user do
     first_name { "John" }
     last_name  { "Doe" }

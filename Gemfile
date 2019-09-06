@@ -5,6 +5,10 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.3'
 
+gem 'redis', '~> 4.1.2'
+gem 'redis-namespace', '~> 1.6.0'
+gem 'redis-rails', '~> 5.0.2'
+gem 'redis-rack-cache', '~> 2.1.0'
 gem 'activeadmin', '~> 2.2.0'
 gem 'cancancan', '~> 3.0.1'
 gem 'rails-i18n', '~> 5.1'

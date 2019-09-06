@@ -6,6 +6,11 @@
       <%= link_to t('header.logout'), destroy_user_session_path, method: :delete, class: "p-2 text-dark" %>
       <%= link_to t('header.my_tracks'), tracks_path, class: "p-2 text-dark" %>
       <%= link_to 'My page', user_path(current_user), class: "p-2 text-dark" %>
+      <% if current_user.has_new_notice? %>
+        <%= link_to 'My notice', events_path, style: "color: red" %>
+      <% else %>
+        <%= link_to 'My notice', events_path %>
+      <% end %>
 
       <%= render 'shared/search' %>
     <% else %>

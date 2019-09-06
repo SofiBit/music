@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   resources :tracks, only: %i[index destroy show]
   resources :users, only: :show
   resources :friendships, only: %i[create destroy]
+  resources :events, only: :index
 
   get '/link', to: 'links#show'
+  mount ActionCable.server => '/cable'
 end
