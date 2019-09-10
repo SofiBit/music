@@ -1,9 +1,11 @@
-<%= form_tag('/search', method: :get, remote: true) do %>
-  <div>
-    <%= label_tag(:user_name, "") %>
-    <%= text_field_tag :user_name, "", type: "search", required: true  %>
-    <%= submit_tag(t('input.send')) %>
+<div class="wrapper">
+  <div class="container-search">
+    <%= form_tag search_index_path, method: :get, remote: true, role: "search" do %>
+        <%= text_field_tag :query, params[:query], type: "text", class: "input-search", placeholder: t('app.search') %>
+    <% end %>
+    <i class="fa fa-search" aria-hidden="true"></i>
   </div>
-<% end %>
+  <!-- <div id="datalist_index"></div> -->
+</div>
 
 <div id="datalist_index"></div>

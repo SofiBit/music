@@ -1,9 +1,13 @@
 class User < ApplicationRecord
+  include PgSearch::Model
+
+  pg_search_scope :search_users, against: [:first_name, :last_name]
+
   ROLES = %i[user admin]
 
   has_many :tracks, dependent: :destroy
   has_many :friendships, dependent: :destroy
-  has_many :events, dependent: :destroy
+  has_many :notifications
 
   devise  :database_authenticatable,
           :registerable,
@@ -34,7 +38,7 @@ class User < ApplicationRecord
   end
 
   def has_new_notice?
-    unless events.empty? || events.last.status == 'checked'
+    unless notifications.empty? || notifications.last.status == 'checked'
       return true
     end
 

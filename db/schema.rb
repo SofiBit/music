@@ -29,15 +29,6 @@ ActiveRecord::Schema.define(version: 2019_09_06_092230) do
     t.index ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id"
   end
 
-  create_table "events", force: :cascade do |t|
-    t.string "message"
-    t.string "status", default: "unchecked"
-    t.bigint "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_events_on_user_id"
-  end
-
   create_table "friendships", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "friend_id"
@@ -46,6 +37,15 @@ ActiveRecord::Schema.define(version: 2019_09_06_092230) do
     t.datetime "updated_at", null: false
     t.index ["friend_id"], name: "index_friendships_on_friend_id"
     t.index ["user_id"], name: "index_friendships_on_user_id"
+  end
+
+  create_table "notifications", force: :cascade do |t|
+    t.string "message"
+    t.string "status", default: "unchecked"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_notifications_on_user_id"
   end
 
   create_table "tracks", force: :cascade do |t|
@@ -86,8 +86,8 @@ ActiveRecord::Schema.define(version: 2019_09_06_092230) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "events", "users"
   add_foreign_key "friendships", "users"
   add_foreign_key "friendships", "users", column: "friend_id"
+  add_foreign_key "notifications", "users"
   add_foreign_key "tracks", "users"
 end

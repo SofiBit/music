@@ -5,6 +5,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.3'
 
+gem 'pg_search', '~> 2.3.0'
 gem 'redis', '~> 4.1.2'
 gem 'redis-namespace', '~> 1.6.0'
 gem 'redis-rails', '~> 5.0.2'
