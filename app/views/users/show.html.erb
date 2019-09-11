@@ -12,6 +12,8 @@
   <% end %>
 </ul>
 
+<%= link_to 'Playlists', user_playlists_path(@user) %>
+
 <% unless current_user == @user %>
   <% if current_user.friends.include?(@user)%>
     <div id="button_create">

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_06_092230) do
+ActiveRecord::Schema.define(version: 2019_09_10_135401) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,9 +43,33 @@ ActiveRecord::Schema.define(version: 2019_09_06_092230) do
     t.string "message"
     t.string "status", default: "unchecked"
     t.bigint "user_id"
+    t.bigint "sender_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["sender_id"], name: "index_notifications_on_sender_id"
     t.index ["user_id"], name: "index_notifications_on_user_id"
+  end
+
+  create_table "playlist_subscriptions", force: :cascade do |t|
+    t.bigint "playlist_id"
+    t.bigint "user_id"
+    t.index ["playlist_id"], name: "index_playlist_subscriptions_on_playlist_id"
+    t.index ["user_id"], name: "index_playlist_subscriptions_on_user_id"
+  end
+
+  create_table "playlists", force: :cascade do |t|
+    t.string "title"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_playlists_on_user_id"
+  end
+
+  create_table "playlists_tracks", id: false, force: :cascade do |t|
+    t.bigint "playlist_id"
+    t.bigint "track_id"
+    t.index ["playlist_id"], name: "index_playlists_tracks_on_playlist_id"
+    t.index ["track_id"], name: "index_playlists_tracks_on_track_id"
   end
 
   create_table "tracks", force: :cascade do |t|
@@ -89,5 +113,9 @@ ActiveRecord::Schema.define(version: 2019_09_06_092230) do
   add_foreign_key "friendships", "users"
   add_foreign_key "friendships", "users", column: "friend_id"
   add_foreign_key "notifications", "users"
+  add_foreign_key "notifications", "users", column: "sender_id"
+  add_foreign_key "playlist_subscriptions", "playlists"
+  add_foreign_key "playlist_subscriptions", "users"
+  add_foreign_key "playlists", "users"
   add_foreign_key "tracks", "users"
 end

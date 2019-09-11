@@ -22,7 +22,7 @@ class LinksController < ApplicationController
       track_to_user(link, @result, current_user)
       current_user.friends.each do |friend|
         friend.notifications.create(message: "#{current_user.first_name} \
-          #{current_user.last_name} added a new track")
+          #{current_user.last_name} added a new track", sender: current_user)
       end
     end
   end

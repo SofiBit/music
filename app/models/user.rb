@@ -8,6 +8,9 @@ class User < ApplicationRecord
   has_many :tracks, dependent: :destroy
   has_many :friendships, dependent: :destroy
   has_many :notifications
+  has_many :playlists
+  has_many :playlist_subscriptions
+  has_many :playlists_by_friends, through: :playlist_subscriptions, source: :playlist
 
   devise  :database_authenticatable,
           :registerable,

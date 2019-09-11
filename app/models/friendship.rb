@@ -8,10 +8,10 @@ class Friendship < ApplicationRecord
   private
 
   def create_notice_about_subscription
-    friend.notifications.create(message: "#{user.first_name} #{user.last_name} subscribed on you")
+    friend.notifications.create(message: "#{user.first_name} #{user.last_name} subscribed on you", sender: user)
   end
 
   def create_notice_about_unsubscription
-    friend.notifications.create(message: "#{user.first_name} #{user.last_name} unsubscribed on you")
+    friend.notifications.create(message: "#{user.first_name} #{user.last_name} unsubscribed on you", sender: user)
   end
 end

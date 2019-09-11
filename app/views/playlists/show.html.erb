@@ -1,0 +1,15 @@
+<% @playlist.tracks.each do |track| %>
+  <p><a href="<%= track.link %>"><%= track.link %></a> <%= track.name %></p>
+<% end %>
+
+<% unless current_user == @playlist.user %>
+  <% if current_user.playlists_by_friends.include?(@playlist)%>
+    <div id="button_playlist">
+      <%= render 'playlist_subscriptions/create' %>
+    </div>
+  <% else %>
+    <div id="button_playlist">
+      <%= render 'playlist_subscriptions/destroy' %>
+    </div>
+  <% end %>
+<% end %>

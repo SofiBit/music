@@ -8,11 +8,17 @@ Rails.application.routes.draw do
 
   resources :search, only: %i[index]
   resources :links, only: %i[index]
-  resources :tracks, only: %i[index destroy show]
-  resources :users, only: :show
+  resources :tracks, only: %i[index destroy show update]
+  resources :users, only: :show do
+    resources :playlists, only: %i[index show]
+  end
+  resources :playlists, only: %i[new create destroy] do
+    # resources :playlist_subscriptions, only: %i[create destroy]
+  end
+  resources :playlist_subscriptions, only: %i[create destroy]
   resources :friendships, only: %i[create destroy]
   resources :notifications, only: :index
 
   get '/link', to: 'links#show'
-  # mount ActionCable.server => '/cable'
+  mount ActionCable.server => '/cable'
 end
