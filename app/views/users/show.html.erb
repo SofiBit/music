@@ -6,22 +6,16 @@
   <%= @user.email %>
 </div>
 
-<ul>Friends:
-  <% @user.friends.each do |friend| %>
-    <li><%= friend.first_name %> <%= friend.last_name %></li>
-  <% end %>
-</ul>
-
-<%= link_to 'Playlists', user_playlists_path(@user) %>
+<%= link_to t('app.playlists'), user_playlists_path(@user) %>
 
 <% unless current_user == @user %>
-  <% if current_user.friends.include?(@user)%>
-    <div id="button_create">
-      <%= render 'friendships/create' %>
+  <% if current_user.has_subscription_on_all_playlists?(@user) %>
+    <div id="subscribe_on_all">
+      <%= render 'playlist_subscriptions/create_all' %>
     </div>
   <% else %>
-  <div id="button_create">
-    <%= render 'friendships/destroy' %>
-  </div>
+    <div id="subscribe_on_all">
+      <%= render 'playlist_subscriptions/destroy_all' %>
+    </div>
   <% end %>
 <% end %>

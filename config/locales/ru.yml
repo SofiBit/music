@@ -4,6 +4,9 @@ ru:
     logout: Выйти
     my_tracks: Мои треки
     login: Войти
+    my_notice: Мои уведомления
+    my_page: Моя страница
+    my_playlists: Мои плейлисты
   input:
     send: Отправить
     enter_link: Ввести ссылку
@@ -38,3 +41,13 @@ ru:
     follow: Подписаться
     unsubscribe: Отписаться
     search: Искать
+    notifications: Уведомления
+    playlists: Плейлисты
+    delete: Удалить
+    create_playlist: Создать новый плейлист
+  activerecord:
+    models:
+      playlist: "Плейлист"
+    attributes:
+      playlist:
+        title: "Название"

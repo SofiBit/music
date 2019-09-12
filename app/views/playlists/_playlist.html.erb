@@ -1,3 +1,3 @@
 <%= playlist.title %>
-<%= link_to 'show', user_playlist_path(playlist.user, playlist) %>
-<%= link_to 'delete', playlist_path(playlist), method: :delete%><br>
+<%= link_to t('app.show'), user_playlist_path(playlist.user, playlist) %>
+<%= link_to t('app.delete'), playlist_path(playlist), method: :delete%><br>

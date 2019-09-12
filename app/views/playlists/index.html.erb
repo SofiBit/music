@@ -3,5 +3,5 @@
 <%= render @playlists %>
 
 <% if current_user.playlists == @playlists %>
-  <%= link_to 'Create new playlist', new_playlist_path %>
+  <%= link_to t('app.create_playlist'), new_playlist_path %>
 <% end %>

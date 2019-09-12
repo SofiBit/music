@@ -12,6 +12,8 @@ class User < ApplicationRecord
   has_many :playlist_subscriptions
   has_many :playlists_by_friends, through: :playlist_subscriptions, source: :playlist
 
+  validates :first_name, :last_name, presence: true
+
   devise  :database_authenticatable,
           :registerable,
           :recoverable,
@@ -23,21 +25,13 @@ class User < ApplicationRecord
     self.role == "admin"
   end
 
-  def friends
-    friends_id = []
-    friendships.each { |friendship| friends_id << friendship.friend_id }
-    friends = []
-    friends_id.each do |id|
-      friends << User.find(id)
+  def has_subscription_on_all_playlists?(user)
+    answer = false
+    user.playlists.each do |playlist|
+      answer = playlists_by_friends.include?(playlist)
+      break if answer == false
     end
-    friends
-  end
-
-  def status_with_friend(user)
-    friendship = friendships.find_by(friend_id: user.id)
-    friendship_user = user.friendships.find_by(friend_id: id)
-    friendship.update(status: 1) if user.friends.include?(self)
-    friendship_user.update(status: 1) if self.friends.include?(user) && friendship_user != nil
+    answer
   end
 
   def has_new_notice?

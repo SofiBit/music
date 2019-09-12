@@ -12,13 +12,13 @@ Rails.application.routes.draw do
   resources :users, only: :show do
     resources :playlists, only: %i[index show]
   end
-  resources :playlists, only: %i[new create destroy] do
-    # resources :playlist_subscriptions, only: %i[create destroy]
-  end
+  resources :playlists, only: %i[new create destroy]
   resources :playlist_subscriptions, only: %i[create destroy]
   resources :friendships, only: %i[create destroy]
   resources :notifications, only: :index
 
+  post '/playlist_subscriptions_all', to: 'playlist_subscriptions#create_all'
+  delete '/playlist_subscriptions_all', to: 'playlist_subscriptions#destroy_all'
   get '/link', to: 'links#show'
   mount ActionCable.server => '/cable'
 end

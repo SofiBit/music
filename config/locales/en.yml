@@ -4,6 +4,9 @@ en:
     logout: Logout
     my_tracks: My tracks
     login: Login
+    my_notice: My notice
+    my_page: My page
+    my_playlists: My playlists
   input:
     send: Send
     enter_link: Enter link
@@ -37,4 +40,8 @@ en:
     registration_offer: Sign up for saving tracks and sharing it with friends
     follow: Subscribe
     unsubscribe: Unsubscribe
-    search: Search 
+    search: Search
+    notifications: Notifications
+    playlists: Playlists
+    delete: Delete
+    create_playlist: Create new playlist
