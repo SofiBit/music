@@ -1,4 +1,4 @@
-class PlaylistsTrack < ApplicationRecord
+class AddingTrack < ApplicationRecord
   belongs_to :playlist
   belongs_to :track
 

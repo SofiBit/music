@@ -29,6 +29,13 @@ ActiveRecord::Schema.define(version: 2019_09_10_135401) do
     t.index ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id"
   end
 
+  create_table "adding_tracks", force: :cascade do |t|
+    t.bigint "playlist_id"
+    t.bigint "track_id"
+    t.index ["playlist_id"], name: "index_adding_tracks_on_playlist_id"
+    t.index ["track_id"], name: "index_adding_tracks_on_track_id"
+  end
+
   create_table "friendships", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "friend_id"
@@ -63,13 +70,6 @@ ActiveRecord::Schema.define(version: 2019_09_10_135401) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_playlists_on_user_id"
-  end
-
-  create_table "playlists_tracks", id: false, force: :cascade do |t|
-    t.bigint "playlist_id"
-    t.bigint "track_id"
-    t.index ["playlist_id"], name: "index_playlists_tracks_on_playlist_id"
-    t.index ["track_id"], name: "index_playlists_tracks_on_track_id"
   end
 
   create_table "tracks", force: :cascade do |t|
@@ -110,6 +110,8 @@ ActiveRecord::Schema.define(version: 2019_09_10_135401) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "adding_tracks", "playlists"
+  add_foreign_key "adding_tracks", "tracks"
   add_foreign_key "friendships", "users"
   add_foreign_key "friendships", "users", column: "friend_id"
   add_foreign_key "notifications", "users"

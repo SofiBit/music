@@ -12,10 +12,11 @@ Rails.application.routes.draw do
   resources :users, only: :show do
     resources :playlists, only: %i[index show]
   end
-  resources :playlists, only: %i[new create destroy]
+  resources :playlists, only: %i[new create destroy edit update]
   resources :playlist_subscriptions, only: %i[create destroy]
   resources :friendships, only: %i[create destroy]
   resources :notifications, only: :index
+  resources :playlists_tracks, only: %i[create destroy]
 
   post '/playlist_subscriptions_all', to: 'playlist_subscriptions#create_all'
   delete '/playlist_subscriptions_all', to: 'playlist_subscriptions#destroy_all'

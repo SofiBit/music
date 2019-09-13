@@ -1,5 +1,5 @@
 class PlaylistsController < ApplicationController
-  before_action :find_playlist, only: %i[show destroy]
+  before_action :find_playlist, only: %i[show destroy edit update]
 
   def index
     user = User.find(params[:user_id])
@@ -25,6 +25,16 @@ class PlaylistsController < ApplicationController
   def destroy
     @playlist.destroy
     redirect_to user_playlists_path(current_user)
+  end
+
+  def edit; end
+
+  def update
+    if @playlist.update(playlist_params)
+      redirect_to user_playlists_path(@playlist.user)
+    else
+      render :edit
+    end
   end
 
   private
