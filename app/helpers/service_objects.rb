@@ -1,6 +1,9 @@
+require "open-uri"
+
 module ServiceObjects
   def generate_links_info(link)
     @result = run(link)
+    file_open
     flash.now[:notice] = "#{t('app.registration_offer')} - #{view_context.link_to(t('links.sign_up'), new_user_registration_path)}" unless current_user
   rescue RuntimeError
     flash[:error] = t('my_notice.not_found')
@@ -13,5 +16,11 @@ module ServiceObjects
     return true if run(link)
   rescue RuntimeError
     false
+  end
+
+  def file_open
+    File.open("app/images/image.png", 'wb') do |fo|
+      fo.write open(@result[:info][:image]['url']).read
+    end
   end
 end

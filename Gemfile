@@ -5,6 +5,8 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.3'
 
+gem 'carrierwave'
+gem 'euterpe', path: '/home/sofia/Desktop/internship/ror_project/euterpe'
 gem 'pg_search', '~> 2.3.0'
 gem 'redis', '~> 4.1.2'
 gem 'redis-namespace', '~> 1.6.0'
@@ -16,6 +18,10 @@ gem 'rails-i18n', '~> 5.1'
 gem 'sendgrid-ruby', '~> 6.0.0'
 # Auth
 gem 'devise', '~> 4.0'
+gem 'omniauth', '~> 1.9.0'
+gem 'omniauth-facebook', '~> 5.0.0'
+gem 'omniauth-google', '~> 1.0.2'
+gem 'omniauth-twitter', '~> 1.4.0'
 gem 'figaro', '~> 1.1.1'
 gem 'jquery-rails', '~> 4.3.5'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -52,7 +58,7 @@ gem 'jbuilder', '~> 2.5'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
-gem 'faraday', '~> 0.15.4'
+gem 'faraday', '~> 0.9.2'
 
 group :development, :test do
   # Call 'byebug' anywhere in the codeto stop execution and get a debugger console

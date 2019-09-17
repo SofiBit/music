@@ -1,6 +1,6 @@
 <%= render 'shared/flash'%>
 
-<% @result['links'].each do |source, link| %>
+<% @result[:links].each do |source, link| %>
   <div class="input-group mb-3">
     <div class="input-group-prepend">
       <span class="input-group-text" id="inputGroupFileAddon01"><%= source %>:</span>
@@ -16,16 +16,13 @@
 
   <div class="info">
     <div class="info-info">
-      <p><%= t('result.artist') %>: <%= @result['info']['artist']%></p>
-      <p><%= t('result.album') %>: <%= @result['info']['album']%></p>
-      <p><%= t('result.name') %>: <%= @result['info']['name'] %></p>
-      <p><%= t('result.release_date') %>: <%= @result['info']['release_date'] %></p>
+      <p><%= t('result.artist') %>: <%= @result[:info][:artist]%></p>
+      <p><%= t('result.album') %>: <%= @result[:info][:album]%></p>
+      <p><%= t('result.name') %>: <%= @result[:info][:name] %></p>
+      <p><%= t('result.release_date') %>: <%= @result[:info][:release_date] %></p>
     </div>
-    <img src="<%= @result['info']['image']['url'] %>"><br>
+    <img src="<%= @result[:info][:image]['url'] %>"><br>
   </div>
 
-<%= share_telegram(@result['links']) %>
-<%= share_email(@result['links'])%>
-
-<script type="text/javascript">
-</script>
+<%= share_telegram(@result[:links]) %>
+<%= share_email(@result[:links])%>
