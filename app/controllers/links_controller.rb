@@ -2,7 +2,7 @@
 
 class LinksController < ApplicationController
   include ProvidersLinksFetch
-  include UsersTrack
+  include SaveTrack
   include ServiceObjects
 
   def index; end
@@ -10,7 +10,7 @@ class LinksController < ApplicationController
   def show
     link = params[:source_link]
     generate_links_info(link)
-    track_to_user(link, @result, current_user) if generate_success?(link)
+    save_track(@result) if generate_success?(link)
     respond_to do |format|
       format.js
       format.json { render json: @result.to_json }

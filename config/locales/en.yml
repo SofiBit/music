@@ -11,6 +11,7 @@ en:
     send: Send
     enter_link: Enter link
     copy: Copy link
+    instruction: Enter link and receive the information about track
   login:
     h: Please sign in
     email: Email
@@ -45,3 +46,4 @@ en:
     playlists: Playlists
     delete: Delete
     create_playlist: Create new playlist
+    added_track: "%{count} users added the track"

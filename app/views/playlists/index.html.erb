@@ -3,5 +3,7 @@
 <%= render @playlists %>
 
 <% if current_user.playlists == @playlists %>
-  <%= link_to t('app.create_playlist'), new_playlist_path %>
+  <div id="new-playlist">
+    <%= button_to t('app.create_playlist'), new_playlist_path, method: :get, remote: true %>
+  </div>
 <% end %>

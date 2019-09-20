@@ -1,5 +1,5 @@
 <ul class="list-group">
-  <% @tracks.each do |track|%>
+  <% @tracks.reverse.each do |track|%>
     <img src="<%= track.track_image %>" class="track-image">
     <li class="list-group-item">
       <a href="<%= track.link %>" target="_blank"><%= track.link %></a>

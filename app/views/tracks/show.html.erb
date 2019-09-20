@@ -12,11 +12,11 @@
     </div>
   </div>
 
-  <%= link_to t('app.delete_track'), track_path(@track), method: :delete %>
+  <%= link_to t('app.delete_track'), adding_track_to_user_path(current_user.adding_track_to_users.find_by(track: @track)), method: :delete %>
 
   <p>Add track to your playlist</p>
 
-  <%= form_with model: @track, local: true do |form| %>
+  <%= form_with model: @track do |form| %>
      <p>
        <%= form.label :playlist %>:
        <%= form.collection_select :playlist, current_user.playlists.all, :id, :title, prompt: true %>

@@ -25,4 +25,13 @@
   </div>
 
 <%= share_telegram(@result[:links]) %>
-<%= share_email(@result[:links])%>
+<%= share_email(@result[:links]) %>
+
+<% if current_user %>
+  <div>
+    <button onclick="getPlaylists(<%= current_user.id %>, <%= Track.find_track(@result).id%>)">Add track</button>
+    <div id="add-track">
+    </div>
+    <div><%= t('app.added_track', count: count_adding_track(@result)) %></div>
+  </div>
+<% end %>

@@ -15,7 +15,6 @@ class TracksController < ApplicationController
 
   def update
     @track = Track.find(params[:id])
-
     if track_params[:playlist].empty?
       redirect_to track_path(@track)
     else

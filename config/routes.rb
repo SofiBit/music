@@ -9,15 +9,15 @@ Rails.application.routes.draw do
 
   resources :search, only: %i[index]
   resources :links, only: %i[index]
-  resources :tracks, only: %i[index destroy show update]
+  resources :tracks, only: %i[index show update]
   resources :users, only: :show do
     resources :playlists, only: %i[index show]
   end
   resources :playlists, only: %i[new create destroy edit update]
   resources :playlist_subscriptions, only: %i[create destroy]
-  resources :friendships, only: %i[create destroy]
   resources :notifications, only: :index
-  resources :playlists_tracks, only: %i[create destroy]
+  resources :adding_tracks, only: %i[new create destroy]
+  resources :adding_track_to_users, only: %i[new create destroy]
 
   post '/playlist_subscriptions_all', to: 'playlist_subscriptions#create_all'
   delete '/playlist_subscriptions_all', to: 'playlist_subscriptions#destroy_all'

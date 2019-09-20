@@ -11,6 +11,7 @@ ru:
     send: Отправить
     enter_link: Ввести ссылку
     copy: Копировать ссылку
+    instruction: Введите ссылку и получите информацию о треке
   login:
     h: Войдите, пожалуйста
     email: Введите email
@@ -45,6 +46,7 @@ ru:
     playlists: Плейлисты
     delete: Удалить
     create_playlist: Создать новый плейлист
+    added_track: "%{count} пользователей добавили трек"
   activerecord:
     models:
       playlist: "Плейлист"

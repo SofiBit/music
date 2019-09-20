@@ -1,0 +1,8 @@
+<%= form_with model: @track, local: true do |form| %>
+   <p>
+     <%= form.label :playlist %>:
+     <%= form.collection_select :playlist, current_user.playlists.all, :id, :title, prompt: true %>
+  </p>
+
+  <%= form.submit 'select' %>
+<% end %>

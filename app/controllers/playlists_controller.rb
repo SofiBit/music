@@ -4,19 +4,24 @@ class PlaylistsController < ApplicationController
   def index
     user = User.find(params[:user_id])
     @playlists = user.playlists.all
+    # respond_to do |format|
+    #   format.html
+    #   format.json { render json: @playlists }
+    # end
   end
 
   def show; end
 
   def new
     @playlist = Playlist.new
+    respond_to { |format| format.js }
   end
 
   def create
     @playlist = current_user.playlists.new(playlist_params)
 
     if @playlist.save
-      redirect_to user_playlists_path(current_user)
+      respond_to { |format| format.js }
     else
       render :new
     end
