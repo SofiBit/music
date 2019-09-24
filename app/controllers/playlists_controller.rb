@@ -4,10 +4,6 @@ class PlaylistsController < ApplicationController
   def index
     user = User.find(params[:user_id])
     @playlists = user.playlists.all
-    # respond_to do |format|
-    #   format.html
-    #   format.json { render json: @playlists }
-    # end
   end
 
   def show; end
@@ -21,9 +17,16 @@ class PlaylistsController < ApplicationController
     @playlist = current_user.playlists.new(playlist_params)
 
     if @playlist.save
-      respond_to { |format| format.js }
+      respond_to do |format|
+        format.js
+        # message = { status: "ok", message: "Playlist created" }
+        format.json  { render 'create' }
+      end
     else
-      render :new
+      respond_to do |format|
+        format.js { render :new }
+        format.json { render json: { message: @playlist.errors.messages } }
+      end
     end
   end
 

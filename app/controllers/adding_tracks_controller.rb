@@ -1,8 +1,19 @@
 class AddingTracksController < ApplicationController
   def create
     @track = Track.find(params[:track])
-    @track.playlists << Playlist.find(params[:playlist].to_i)
-    redirect_to tracks_path(current_user)
+    playlist = Playlist.find(params[:playlist])
+    if @track.playlists.include?(playlist)
+      respond_to do |format|
+        message = { status: "not ok", message: "Track already added to playlist" }
+        format.json  { render json: message }
+      end
+    else
+      @track.playlists << playlist
+      respond_to do |format|
+        message = { status: "ok", message: "Track successfully added to playlist" }
+        format.json  { render json: message }
+      end
+    end
   end
 
   def destroy
