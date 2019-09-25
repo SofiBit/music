@@ -1,0 +1,9 @@
+<h1>Playlists:</h1>
+
+<%= render @playlists %>
+
+<% if current_user.playlists == @playlists %>
+  <div id="new-playlist">
+    <%= button_to t('app.create_playlist'), new_playlist_path, method: :get, remote: true %>
+  </div>
+<% end %>

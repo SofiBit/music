@@ -2,12 +2,16 @@ en:
   header:
     music_app: Music application
     logout: Logout
-    my_links: My links
+    my_tracks: My tracks
     login: Login
+    my_notice: My notice
+    my_page: My page
+    my_playlists: My playlists
   input:
     send: Send
     enter_link: Enter link
     copy: Copy link
+    instruction: Enter link and receive the information about track
   login:
     h: Please sign in
     email: Email
@@ -26,4 +30,20 @@ en:
   my_notice:
     not_found: Not found
     parse: Can not be parsed
-  music: Music
+  result:
+    artist: Artist
+    album: Album
+    name: Song
+    release_date: Release date
+  app:
+    show: Watch
+    delete_track: Delete track
+    registration_offer: Sign up for saving tracks and sharing it with friends
+    follow: Subscribe
+    unsubscribe: Unsubscribe
+    search: Search
+    notifications: Notifications
+    playlists: Playlists
+    delete: Delete
+    create_playlist: Create new playlist
+    added_track: "%{count} users added the track"

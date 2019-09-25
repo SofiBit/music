@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_20_094845) do
+ActiveRecord::Schema.define(version: 2019_09_17_130833) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,12 +29,68 @@ ActiveRecord::Schema.define(version: 2019_08_20_094845) do
     t.index ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id"
   end
 
-  create_table "source_links", force: :cascade do |t|
-    t.text "link"
+  create_table "adding_track_to_users", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "track_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["track_id"], name: "index_adding_track_to_users_on_track_id"
+    t.index ["user_id"], name: "index_adding_track_to_users_on_user_id"
+  end
+
+  create_table "adding_tracks", force: :cascade do |t|
+    t.bigint "playlist_id"
+    t.bigint "track_id"
+    t.index ["playlist_id"], name: "index_adding_tracks_on_playlist_id"
+    t.index ["track_id"], name: "index_adding_tracks_on_track_id"
+  end
+
+  create_table "friendships", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "friend_id"
+    t.integer "status", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["friend_id"], name: "index_friendships_on_friend_id"
+    t.index ["user_id"], name: "index_friendships_on_user_id"
+  end
+
+  create_table "notifications", force: :cascade do |t|
+    t.string "message"
+    t.string "status", default: "unchecked"
+    t.bigint "user_id"
+    t.bigint "sender_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["sender_id"], name: "index_notifications_on_sender_id"
+    t.index ["user_id"], name: "index_notifications_on_user_id"
+  end
+
+  create_table "playlist_subscriptions", force: :cascade do |t|
+    t.bigint "playlist_id"
+    t.bigint "user_id"
+    t.index ["playlist_id"], name: "index_playlist_subscriptions_on_playlist_id"
+    t.index ["user_id"], name: "index_playlist_subscriptions_on_user_id"
+  end
+
+  create_table "playlists", force: :cascade do |t|
+    t.string "title"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_source_links_on_user_id"
+    t.index ["user_id"], name: "index_playlists_on_user_id"
+  end
+
+  create_table "tracks", force: :cascade do |t|
+    t.text "link"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "artist"
+    t.string "name"
+    t.string "album"
+    t.string "release_date"
+    t.json "provider_links"
+    t.string "track_image"
   end
 
   create_table "users", force: :cascade do |t|
@@ -57,10 +113,22 @@ ActiveRecord::Schema.define(version: 2019_08_20_094845) do
     t.datetime "confirmation_sent_at"
     t.string "unconfirmed_email"
     t.string "role", default: "user"
+    t.string "provider"
+    t.string "uid"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "source_links", "users"
+  add_foreign_key "adding_track_to_users", "tracks"
+  add_foreign_key "adding_track_to_users", "users"
+  add_foreign_key "adding_tracks", "playlists"
+  add_foreign_key "adding_tracks", "tracks"
+  add_foreign_key "friendships", "users"
+  add_foreign_key "friendships", "users", column: "friend_id"
+  add_foreign_key "notifications", "users"
+  add_foreign_key "notifications", "users", column: "sender_id"
+  add_foreign_key "playlist_subscriptions", "playlists"
+  add_foreign_key "playlist_subscriptions", "users"
+  add_foreign_key "playlists", "users"
 end

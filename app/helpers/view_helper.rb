@@ -27,4 +27,8 @@ module ViewHelper
       alert: 'alert-warning',
       notice: 'alert-info' }[name.to_sym] || name
   end
+
+  def count_adding_track(result)
+    AddingTrackToUser.count_adding(Track.find_track(result))
+  end
 end

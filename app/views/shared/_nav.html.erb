@@ -1,14 +1,38 @@
-<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
-  <h5 class="my-0 mr-md-auto font-weight-normal"><a href="/" class="text-dark"><%= t('header.music_app') %></a></h5>
-  <nav class="my-2 my-md-0 mr-md-3">
+<header>
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <a class="navbar-brand" href="/"><%= t('header.music_app') %></a>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
     <% if user_signed_in? %>
-      <%= link_to t('header.logout'), destroy_user_session_path, method: :delete, class: "p-2 text-dark" %>
-      <%= link_to t('header.my_links'), source_links_path, class: "p-2 text-dark" %>
-    <% else %>
-      <%= link_to t('header.login'), new_user_session_path, class: "p-2 text-dark" %>
-      <%= link_to t('links.sign_up'), new_user_registration_path, class: "p-2 text-dark" %>
+      <div class="dropdown open">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <%= current_user.first_name%> <%= current_user.last_name %>
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+          <%= link_to t('header.my_page'), user_path(current_user), class: "dropdown-item" %>
+          <%= link_to t('header.my_tracks'), tracks_path, class: "dropdown-item" %>
+          <%= link_to t('header.my_playlists'), user_playlists_path(current_user), class: "dropdown-item" %>
+        </div>
+      </div>
     <% end %>
-    <%= %>
+      <ul class="navbar-nav mr-auto">
+        <% if user_signed_in? %>
+          <li class="nav-item"><%= link_to t('header.logout'), destroy_user_session_path, method: :delete, class: "nav-link" %></li>
+
+          <% if current_user.has_new_notice? %>
+            <%= link_to t('header.my_notice'), notifications_path, class: "nav-link-notice" %>
+          <% else %>
+            <li class="nav-item"><%= link_to t('header.my_notice'), notifications_path, class: "nav-link" %><li>
+          <% end %>
+        <% else %>
+          <li class="nav-item"><%= link_to t('header.login'), new_user_session_path, class: "nav-link" %></li>
+          <li class="nav-item"><%= link_to t('links.sign_up'), new_user_registration_path, class: "nav-link" %></li>
+        <% end %>
+      </ul>
+      <% if user_signed_in? %>
+        <%= render 'shared/search' %>
+      <% end %>
+    </div>
   </nav>
-</div>
+</header>

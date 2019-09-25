@@ -1,0 +1,21 @@
+<div class="ava">
+</div>
+<div>
+  <%= @user.first_name %>
+  <%= @user.last_name %>
+  <%= @user.email %>
+</div>
+
+<%= link_to t('app.playlists'), user_playlists_path(@user) %>
+
+<% unless current_user == @user %>
+  <% if current_user.has_subscription_on_all_playlists?(@user) %>
+    <div id="subscribe_on_all">
+      <%= render 'playlist_subscriptions/create_all' %>
+    </div>
+  <% else %>
+    <div id="subscribe_on_all">
+      <%= render 'playlist_subscriptions/destroy_all' %>
+    </div>
+  <% end %>
+<% end %>

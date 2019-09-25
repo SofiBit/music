@@ -1,4 +1,6 @@
-<% @result.each do |source, link| %>
+<%= render 'shared/flash'%>
+
+<% @result[:links].each do |source, link| %>
   <div class="input-group mb-3">
     <div class="input-group-prepend">
       <span class="input-group-text" id="inputGroupFileAddon01"><%= source %>:</span>
@@ -12,5 +14,22 @@
   </div>
 <% end %>
 
-<%= share_telegram(@result) %>
-<%= share_email(@result)%>
+  <div class="info">
+    <div class="info-info">
+      <p><%= t('result.artist') %>: <%= @result[:info][:artist]%></p>
+      <p><%= t('result.album') %>: <%= @result[:info][:album]%></p>
+      <p><%= t('result.name') %>: <%= @result[:info][:name] %></p>
+      <p><%= t('result.release_date') %>: <%= @result[:info][:release_date] %></p>
+    </div>
+    <img src="<%= @result[:info][:image]['url'] %>"><br>
+  </div>
+
+<%= share_telegram(@result[:links]) %>
+<%= share_email(@result[:links]) %>
+
+<% if current_user %>
+  <div>
+    <button type="button" class="btn btn-primary btn-lg" onclick="addTrack(<%= current_user.id %>, <%= Track.find_track(@result).id%>)">Add track</button>
+    <div><%= t('app.added_track', count: count_adding_track(@result)) %></div>
+  </div>
+<% end %>

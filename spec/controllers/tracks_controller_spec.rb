@@ -1,7 +1,7 @@
 require 'spec_helper'
 require 'rails_helper'
 
-describe SourceLinksController do
+describe TracksController do
   login_user
 
   context "GET #index" do
@@ -18,18 +18,18 @@ describe SourceLinksController do
 
   context "DELETE #destroy" do
     it "should delete a link" do
-      link = SourceLink.last
+      track = Track.last
 
       expect{
-        delete 'destroy', params: { id: link.id }
-     }.to change(SourceLink, :count).by(-1)
+        delete 'destroy', params: { id: track.id }
+     }.to change(Track, :count).by(-1)
     end
 
     it "should redirect to source links" do
-      link = SourceLink.last
-      delete 'destroy', params: { id: link.id }
+      track = Track.last
+      delete 'destroy', params: { id: track.id }
 
-      response.should redirect_to source_links_path
+      response.should redirect_to tracks_path
     end
   end
 end

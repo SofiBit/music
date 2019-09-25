@@ -1,0 +1,9 @@
+<ul class="list-group">
+  <% @tracks.reverse.each do |track|%>
+    <img src="<%= track.track_image %>" class="track-image">
+    <li class="list-group-item">
+      <a href="<%= track.link %>" target="_blank"><%= track.link %></a>
+      <button type="button", class="btn btn-outline-secondary"><%= link_to t('app.show'), track_path(track) %></button>
+    </li>
+  <% end %>
+</ul>

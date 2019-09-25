@@ -1,0 +1,12 @@
+<p>
+  <%= @playlist.title %>
+  <%= link_to t('app.show'), user_playlist_path(@playlist.user, @playlist) %>
+  <% if current_user == @playlist.user %>
+    <%= link_to t('app.delete'), playlist_path(@playlist), method: :delete%>
+    <%= link_to t('app.edit_playlist'), edit_playlist_path(@playlist) %><br>
+  <% end %>
+</p>
+<p>
+  <%= button_to 'Create playlist', new_playlist_path, method: :get, remote: true  %>
+  Playlist succesfuly created
+</p>
