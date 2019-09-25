@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_17_130833) do
+ActiveRecord::Schema.define(version: 2019_09_24_130852) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,6 +43,16 @@ ActiveRecord::Schema.define(version: 2019_09_17_130833) do
     t.bigint "track_id"
     t.index ["playlist_id"], name: "index_adding_tracks_on_playlist_id"
     t.index ["track_id"], name: "index_adding_tracks_on_track_id"
+  end
+
+  create_table "assessments", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "track_id"
+    t.integer "stars", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["track_id"], name: "index_assessments_on_track_id"
+    t.index ["user_id"], name: "index_assessments_on_user_id"
   end
 
   create_table "friendships", force: :cascade do |t|
@@ -124,6 +134,8 @@ ActiveRecord::Schema.define(version: 2019_09_17_130833) do
   add_foreign_key "adding_track_to_users", "users"
   add_foreign_key "adding_tracks", "playlists"
   add_foreign_key "adding_tracks", "tracks"
+  add_foreign_key "assessments", "tracks"
+  add_foreign_key "assessments", "users"
   add_foreign_key "friendships", "users"
   add_foreign_key "friendships", "users", column: "friend_id"
   add_foreign_key "notifications", "users"

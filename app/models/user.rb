@@ -5,6 +5,7 @@ class User < ApplicationRecord
 
   ROLES = %i[user admin]
 
+  has_many :assessments, dependent: :destroy
   has_many :adding_track_to_users
   has_many :tracks, through: :adding_track_to_users
   # TODO: has_many :friendships, dependent: :destroy

@@ -29,7 +29,8 @@
 
 <% if current_user %>
   <div>
-    <button type="button" class="btn btn-primary btn-lg" onclick="addTrack(<%= current_user.id %>, <%= Track.find_track(@result).id%>)">Add track</button>
+    <%= render 'stars' %>
+    <button type="button" class="btn btn-primary btn-lg" onclick="addTrack(<%= current_user.id %>, <%= Track.find_track(@result).id %>)">Add track</button>
     <div><%= t('app.added_track', count: count_adding_track(@result)) %></div>
   </div>
 <% end %>

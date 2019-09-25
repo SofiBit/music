@@ -21,7 +21,7 @@ function getPlaylists(user_id, track){
 
 function createList(data, track) {
   let modalContent = document.getElementById("modal-body");
-  modalContent.innerHTML = "";;
+  modalContent.innerHTML = "";
 
   for (let i = 0; i < data.length; i++) {
     let playlist = document.createElement('div');
