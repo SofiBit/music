@@ -3,7 +3,7 @@ class AssessmentsController < ApplicationController
     track = Track.find(params[:track_id])
     average = track.average_assessment
     respond_to do |format|
-      format.json render json: {average_assessment: average}
+      format.json { render json: {average_assessment: average} }
     end
   end
 
@@ -21,8 +21,14 @@ class AssessmentsController < ApplicationController
   end
 
   def show
-    stars = track.assessments.find_by(user: user).stars
-    respond_to { |format| format.json { render json: {stars: stars}}}
+    user = User.find(params[:user_id])
+    track = Track.find(params[:track_id])
+
+    if assessment = track.assessments.find_by(user: user)
+      respond_to { |format| format.json { render json: {status: 'success', stars: assessment.stars} } }
+    else
+      respond_to { |format| format.json { render json: {status: 'not found'} } }
+    end
   end
 
   def destroy

@@ -1,2 +1,19 @@
 $('#show_div').empty();
 $("<%= escape_javascript(render 'show') %>").appendTo("#show_div");
+
+getStars();
+
+function getStars() {
+  $.ajax({
+    url: 'http://localhost:3000/assessment.json',
+    type: 'get',
+    data: `track_id=${<%= Track.find_track(@result).id %>}&user_id=${<%= current_user.id %>}`,
+    success: function(response) {
+      if(response.status == 'success') {
+        starsBehavior(response.stars);
+      } else {
+        starsBehavior(stars = 0);
+      }
+    }
+  });
+}

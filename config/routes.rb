@@ -18,8 +18,9 @@ Rails.application.routes.draw do
   resources :notifications, only: :index
   resources :adding_tracks, only: %i[new create destroy]
   resources :adding_track_to_users, only: %i[new create destroy]
-  resources :assessments, only: %i[index create show destroy]
+  resources :assessments, only: %i[index create destroy]
 
+  get '/assessment', to: 'assessments#show'
   post '/playlist_subscriptions_all', to: 'playlist_subscriptions#create_all'
   delete '/playlist_subscriptions_all', to: 'playlist_subscriptions#destroy_all'
   get '/link', to: 'links#show'
