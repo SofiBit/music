@@ -1,13 +1,15 @@
 $('#show_div').empty();
 $("<%= escape_javascript(render 'show') %>").appendTo("#show_div");
 
-getStars();
+<% if current_user %>
+  getStars(<%= Track.find_track(@result).id %>, <%= current_user.id %>);
+<% end %>
 
-function getStars() {
+function getStars(track_id, user_id) {
   $.ajax({
     url: 'http://localhost:3000/assessment.json',
     type: 'get',
-    data: `track_id=${<%= Track.find_track(@result).id %>}&user_id=${<%= current_user.id %>}`,
+    data: `track_id=${track_id}&user_id=${user_id}`,
     success: function(response) {
       if(response.status == 'success') {
         starsBehavior(response.stars);

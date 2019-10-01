@@ -7,7 +7,4 @@ class Playlist < ApplicationRecord
   has_many :subscribers, through: :playlist_subscriptions, source: :user
 
   validates :title, presence: true
-
-  def users
-  end
 end

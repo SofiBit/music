@@ -17,21 +17,21 @@
 
   <div class="info">
     <div class="info-info">
-      <p><%= t('result.artist') %>: <%= @result[:info][:artist]%></p>
-      <p><%= t('result.album') %>: <%= @result[:info][:album]%></p>
-      <p><%= t('result.name') %>: <%= @result[:info][:name] %></p>
-      <p><%= t('result.release_date') %>: <%= @result[:info][:release_date] %></p>
+      <p><%= t('result.artist') %>: <%= @track.artist %></p>
+      <p><%= t('result.album') %>: <%= @track.album %></p>
+      <p><%= t('result.name') %>: <%= @track.name %></p>
+      <p><%= t('result.release_date') %>: <%= @track.release_date %></p>
     </div>
-    <img src="<%= @result[:info][:image]['url'] %>"><br>
+    <img src="<%= @track.track_image %>"><br>
   </div>
 
-<%= share_telegram(@result[:links]) %>
-<%= share_email(@result[:links]) %>
+<%= share_telegram(@track.provider_links) %>
+<%= share_email(@track.provider_links) %>
 
 <% if current_user %>
   <div>
     <%= render 'stars' %>
-    <button type="button" class="btn btn-primary btn-lg" onclick="addTrack(<%= current_user.id %>, <%= Track.find_track(@result).id %>)">Add track</button>
-    <div><%= t('app.added_track', count: count_adding_track(@result)) %></div>
+    <button type="button" class="btn btn-primary btn-lg" onclick="addTrack(<%= current_user.id %>, <%= @track.id %>)">Add track</button>
+    <div><%= t('app.added_track', count: count_adding_track(@track)) %></div>
   </div>
 <% end %>

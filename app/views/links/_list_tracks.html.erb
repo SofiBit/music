@@ -1,0 +1,9 @@
+<div class="top-10">
+  <ul>Топ треков
+    <% top_tracks.each do |track| %>
+      <% if track.present? %>
+        <li><%= track.name %></li>
+      <% end %>
+    <% end %>
+  </ul>
+</div>
