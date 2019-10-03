@@ -13,6 +13,7 @@ class User < ApplicationRecord
   has_many :playlists
   has_many :playlist_subscriptions
   has_many :playlists_by_friends, through: :playlist_subscriptions, source: :playlist
+  has_many :comments
 
   # TODO: validates :first_name, :last_name, presence: true
 

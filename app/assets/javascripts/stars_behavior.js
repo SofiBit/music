@@ -1,6 +1,6 @@
-function starsBehavior(stars) {
-  let rating = document.querySelector('.rating');
-  let ratingItem = document.querySelectorAll('.rating-item');
+function starsBehavior(stars, track_id) {
+  let rating = document.getElementById('rating-' + track_id);
+  let ratingItem = document.querySelectorAll(`#rating-${track_id} .rating-item`);
 
   if(stars > 0) {
     for(let i = 0; i < ratingItem.length; i ++) {

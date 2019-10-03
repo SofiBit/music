@@ -44,4 +44,14 @@ module ViewHelper
     end
     top_tracks
   end
+
+  def playlists(current_user, playlists)
+    return playlists if current_user.playlists == playlists
+
+    playlists.public_playlists
+  end
+
+  def user_name(user)
+    "#{user.first_name} #{user.last_name}"
+  end
 end

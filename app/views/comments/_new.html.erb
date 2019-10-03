@@ -1,0 +1,11 @@
+<%= form_with model: resource, id: 'comment-form' do |form| %>
+  <%= form.text_area :body, id: 'txtarea', spellchek: false %>
+
+  <%= form.hidden_field :user_id, value: current_user.id %>
+
+  <%= form.hidden_field :object_id, value: @playlist.id %>
+
+  <%= form.hidden_field :object_type, value: @playlist.class %>
+
+  <%= submit_tag(t('input.send'), class: "btn btn-outline-secondary") %>
+<% end %>

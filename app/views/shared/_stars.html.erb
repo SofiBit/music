@@ -1,0 +1,7 @@
+<div class="rating" id="rating-<%= resource.id %>" onmouseover="starsBehavior(0, <%= resource.id %>)">
+  <div class="rating-item" data-rate="1" onclick="createAssessment(<%= current_user.id %>, <%= resource.id %>, 1)"></div>
+  <div class="rating-item" data-rate="2" onclick="createAssessment(<%= current_user.id %>, <%= resource.id %>, 2)"></div>
+  <div class="rating-item" data-rate="3" onclick="createAssessment(<%= current_user.id %>, <%= resource.id %>, 3)"></div>
+  <div class="rating-item" data-rate="4" onclick="createAssessment(<%= current_user.id %>, <%= resource.id %>, 4)"></div>
+  <div class="rating-item" data-rate="5" onclick="createAssessment(<%= current_user.id %>, <%= resource.id %>, 5)"></div>
+</div>

@@ -19,7 +19,6 @@ class PlaylistsController < ApplicationController
     if @playlist.save
       respond_to do |format|
         format.js
-        # message = { status: "ok", message: "Playlist created" }
         format.json  { render 'create' }
       end
     else
@@ -38,10 +37,16 @@ class PlaylistsController < ApplicationController
   def edit; end
 
   def update
-    if @playlist.update(playlist_params)
-      redirect_to user_playlists_path(@playlist.user)
+    @playlist.update(playlist_params)
+
+    if @playlist.save
+      respond_to do |format|
+        format.json { render json: {status: 'success'} }
+      end
     else
-      render :edit
+      respond_to do |format|
+        format.json { render json: {status: 'not success'} }
+      end
     end
   end
 
@@ -52,6 +57,6 @@ class PlaylistsController < ApplicationController
   end
 
   def playlist_params
-    params.require(:playlist).permit(:title)
+    params.require(:playlist).permit(:title, :private)
   end
 end

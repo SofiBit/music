@@ -1,4 +1,5 @@
 class TracksController < ApplicationController
+  before_action :find_track, only: %i[show update]
   def index
     @tracks = current_user.tracks
   end
@@ -9,24 +10,15 @@ class TracksController < ApplicationController
     redirect_to tracks_path
   end
 
-  def show
-    @track = Track.find(params[:id])
-  end
-
-  def update
-    @track = Track.find(params[:id])
-    if track_params[:playlist].empty?
-      redirect_to track_path(@track)
-    else
-      @playlist = Playlist.find(track_params[:playlist])
-      @track.playlists << @playlist
-      redirect_to track_path(@track)
-    end
-  end
+  def show; end
 
   private
 
   def track_params
-    params.require(:track).permit(:playlist)
+    params.require(:track).permit(:private)
+  end
+
+  def find_track
+    @track = Track.find(params[:id])
   end
 end

@@ -1,6 +1,6 @@
 <h1>Playlists:</h1>
 
-<%= render @playlists %>
+<%= render playlists(current_user, @playlists) %>
 
 <% if current_user.playlists == @playlists %>
   <div id="new-playlist">

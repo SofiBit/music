@@ -30,7 +30,7 @@
 
 <% if current_user %>
   <div>
-    <%= render 'stars' %>
+    <%= render 'shared/stars', resource: @track %>
     <button type="button" class="btn btn-primary btn-lg" onclick="addTrack(<%= current_user.id %>, <%= @track.id %>)">Add track</button>
     <div><%= t('app.added_track', count: count_adding_track(@track)) %></div>
   </div>

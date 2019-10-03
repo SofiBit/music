@@ -1,0 +1,15 @@
+<div class="list-group">
+  <% @playlist.tracks.reverse.each do |track| %>
+      <div class="list-group-item">
+        <img class="tracks-playlist" src="<%= track.track_image %>">
+        <div class="info-track">
+          <%= track.artist %> - <%= track.name %><br>
+          <% if current_user == @playlist.user %>
+            <%= button_to 'delete track', adding_track_path(track.adding_tracks.find_by(playlist: @playlist)), method: :delete, class: 'btn btn-secondary btn-sm' %><br>
+            <button class="btn btn-secondary btn-sm" onclick="getPlaylists(<%= current_user.id %>, <%= track.id %>)">Move to another playlist</button>
+            <%= render 'shared/stars', resource: track %>
+          <% end %>
+        </div>
+      </div>
+  <% end %>
+</div>
