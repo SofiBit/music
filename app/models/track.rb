@@ -7,6 +7,7 @@ class Track < ApplicationRecord
   has_many :adding_tracks, dependent: :nullify
   has_many :playlists, through: :adding_tracks
   has_many :comments, as: :object, dependent: :destroy
+  has_many :tags, as: :object, dependent: :destroy
 
   # TODO: scope :find_track, ->(result) { find_by(artist: result[:info][:artist],
   #                                         name: result[:info][:name]) }

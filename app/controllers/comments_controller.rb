@@ -1,11 +1,27 @@
 class CommentsController < ApplicationController
+  include Comments
+
   def index
-    @comments = Comment.where(object: params[:object])
+    @id = params[:object_id]
+    type = params[:object_type]
+    object = model(type).find(@id)
+    @comments = Comment.where(object: object).reverse
+    respond_to do |format|
+      format.js
+      format.json { render 'index' }
+    end
+  end
+
+  def new
+    id = params[:object_id]
+    type = params[:object_type]
+    @object = model(type).find(id)
+    @comment = @object.comments.new(user: current_user)
   end
 
   def create
     @comment = Comment.new(comment_params)
-
+    @tag_id = params[:tag_id]
     if @comment.save
       respond_to do |format|
         format.js
@@ -16,14 +32,6 @@ class CommentsController < ApplicationController
         format.json { render json: { message: @comment.errors.messages } }
       end
     end
-  end
-
-  def edit
-
-  end
-
-  def update
-
   end
 
   private

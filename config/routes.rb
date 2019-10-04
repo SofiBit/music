@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   resources :adding_track_to_users, only: %i[new create destroy]
   resources :assessments, only: %i[index create destroy]
   resources :comments
+  resources :tags, only: %i[index create destroy]
 
   get '/assessment', to: 'assessments#show'
   post '/playlist_subscriptions_all', to: 'playlist_subscriptions#create_all'
