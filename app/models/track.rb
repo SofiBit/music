@@ -12,8 +12,6 @@ class Track < ApplicationRecord
   # TODO: scope :find_track, ->(result) { find_by(artist: result[:info][:artist],
   #                                         name: result[:info][:name]) }
 
-  scope :public_tracks, -> { where(private: false) }
-
   def self.find_track(result)
     find_by(artist: result[:info][:artist], name: result[:info][:name])
   end

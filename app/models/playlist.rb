@@ -11,4 +11,9 @@ class Playlist < ApplicationRecord
   validates :title, presence: true
 
   scope :public_playlists, -> { where(private: false) }
+
+  def public_tracks
+    adding_tracks = self.adding_tracks.where(private: false)
+    adding_tracks.map(&:track)
+  end
 end

@@ -1,9 +1,9 @@
-<ul class="list-group">
+<div class="list-group">
   <% @tracks.reverse.each do |track|%>
-    <img src="<%= track.track_image %>" class="track-image">
-    <li class="list-group-item">
-      <a href="<%= track.link %>" target="_blank"><%= track.link %></a>
-      <button type="button", class="btn btn-outline-secondary"><%= link_to t('app.show'), track_path(track) %></button>
-    </li>
+    <div class="list-group-item">
+      <img class="tracks-playlist" src="<%= track.track_image %>" class="track-image">
+      <%= track.artist %> - <%= track.name %><br>
+      <button class="btn btn-secondary btn-sm" onclick="getPlaylists(<%= current_user.id %>, <%= track.id %>)">Select playlist</button><br>
+    </div>
   <% end %>
-</ul>
+</div>

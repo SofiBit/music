@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   resources :playlists, only: %i[new create destroy edit update]
   resources :playlist_subscriptions, only: %i[create destroy]
   resources :notifications, only: :index
-  resources :adding_tracks, only: %i[new create destroy]
+  resources :adding_tracks, only: %i[new create destroy update]
   resources :adding_track_to_users, only: %i[new create destroy]
   resources :assessments, only: %i[index create destroy]
   resources :comments

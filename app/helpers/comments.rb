@@ -8,4 +8,8 @@ module Comments
     end
     object
   end
+
+  # def sort_comments(comments)
+  #   comments.order('created_at asc').to_a
+  # end
 end

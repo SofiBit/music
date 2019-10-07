@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_03_143609) do
+ActiveRecord::Schema.define(version: 2019_10_07_140207) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 2019_10_03_143609) do
   create_table "adding_tracks", force: :cascade do |t|
     t.bigint "playlist_id"
     t.bigint "track_id"
+    t.boolean "private", default: false
     t.index ["playlist_id"], name: "index_adding_tracks_on_playlist_id"
     t.index ["track_id"], name: "index_adding_tracks_on_track_id"
   end

@@ -10,7 +10,9 @@ class TracksController < ApplicationController
     redirect_to tracks_path
   end
 
-  def show; end
+  def show
+    @playlist = Playlist.find(params[:playlist_id])
+  end
 
   private
 

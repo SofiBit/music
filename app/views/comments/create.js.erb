@@ -1,1 +1,16 @@
-$("<%= escape_javascript(render 'create') %>").appendTo("#comments");
+<% case @object.class.to_s %>
+<% when 'Playlist' %>
+  $('#comment-form-<%= @object.id %>')[0].reset();
+  $("<%= escape_javascript(render 'create') %>").appendTo("#comments");
+<% when 'Track' %>
+  $('#track-comment-form-<%= @object.id %>')[0].reset();
+  $("<%= escape_javascript(render 'create_tracks_comment') %>").appendTo("#track-comments");
+<% when 'Comment' %>
+  <% if @object.object.is_a?(Playlist) %>
+    $('#comment-form-<%= @object.id %>')[0].reset();
+    $("<%= escape_javascript(render 'create_nested_comment_playlist') %>").appendTo("#comments-on-comment-<%= @object.id %>");
+  <% elsif @object.object.is_a?(Track) %>
+    $('#track-comment-form-<%= @object.id %>')[0].reset();
+    $("<%= escape_javascript(render 'create_nested_comment_playlist') %>").appendTo("#track-comments-on-comment-<%= @object.id %>");
+  <% end %>
+<% end %>

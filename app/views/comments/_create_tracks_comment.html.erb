@@ -3,8 +3,8 @@
 <%= link_to 'delete', comment_path(@comment), method: :delete, remote: true %>
 
 <div class="nested-comments">
-  <div id="comments-on-comment-<%= @comment.id %>">
+  <div id="track-comments-on-comment-<%= @comment.id %>">
   </div>
-  <div id="new-comment-<%= @comment.id %>"></div>
+  <div id="track-new-comment-<%= @comment.id %>"></div>
 </div>
 <hr>

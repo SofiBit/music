@@ -12,7 +12,7 @@ function makePrivate(playlist_id) {
 }
 
 function createButton(playlist_id, make) {
-  let divButton = document.getElementById('button-public-private-track');
+  let divButton = document.getElementById('button-public-private-playlist');
   divButton.innerHTML = '';
   let buttonPublic = document.createElement('button');
   let text = document.createTextNode(make);
@@ -33,8 +33,6 @@ function makePublic(playlist_id) {
     success: function(response) {
        if(response.status == 'success') {
          createButton(playlist_id, 'Make private');
-       } else {
-         alert()
        }
     }
   });
