@@ -7,8 +7,9 @@ class Ability
     user ||= User.new
     if user.admin?
       can :manage, :all
-    else
-      # users abilities
+    end
+    if user
+      can :crud, Room, user_id: user.id
     end
   end
 end

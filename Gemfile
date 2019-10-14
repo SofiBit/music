@@ -9,9 +9,6 @@ gem 'carrierwave'
 gem 'euterpe', path: '/home/sofia/Desktop/internship/ror_project/euterpe'
 gem 'pg_search', '~> 2.3.0'
 gem 'redis', '~> 4.1.2'
-gem 'redis-namespace', '~> 1.6.0'
-gem 'redis-rails', '~> 5.0.2'
-gem 'redis-rack-cache', '~> 2.1.0'
 gem 'activeadmin', '~> 2.2.0'
 gem 'cancancan', '~> 3.0.1'
 gem 'rails-i18n', '~> 5.1'
@@ -32,7 +29,7 @@ gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
 # Bootstrap
-gem 'bootstrap', '~> 4.0.0'
+gem 'bootstrap', '~> 4.3.1'
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'

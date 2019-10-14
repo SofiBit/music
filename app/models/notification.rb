@@ -1,5 +1,5 @@
 class Notification < ApplicationRecord
-  after_commit { NotificationRelayJob.perform_later self }
+  after_create_commit { NotificationRelayJob.perform_later(self, user) }
 
   belongs_to :user
   belongs_to :sender, class_name: 'User', foreign_key: 'sender_id'

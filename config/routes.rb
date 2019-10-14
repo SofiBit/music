@@ -21,6 +21,8 @@ Rails.application.routes.draw do
   resources :assessments, only: %i[index create destroy]
   resources :comments
   resources :tags, only: %i[index create destroy]
+  resources :rooms
+  resources :room_messages
 
   get '/assessment', to: 'assessments#show'
   post '/playlist_subscriptions_all', to: 'playlist_subscriptions#create_all'

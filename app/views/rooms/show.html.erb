@@ -1,0 +1,51 @@
+<h1>
+  <%= @room.name %>
+</h1>
+
+<div class="row">
+  <div class="col-12 col-md-3">
+    <%= render 'rooms' %>
+  </div>
+
+  <div class="col">
+    <div class="chat" data-channel-subscribe="room" data-room-id="<%= @room.id %>">
+      <%= render @room_messages %>
+    </div>
+
+    <%= form_with model: @room_message do |form| %>
+      <div class="input-group mb-3">
+        <%= form.text_field :message, as: :string,
+                                 wrapper: false,
+                                 label: false,
+                                 class: 'form-control chat-input',
+                                 id: 'input-message'
+                                 %>
+        <div class="input-group-append">
+          <%= form.submit "Send", class: 'btn btn-primary chat-input' %>
+        </div>
+      </div>
+
+      <%= form.hidden_field :room_id, value: @room.id %>
+    <% end %>
+  </div>
+</div>
+
+<div class="d-none" data-role="message-template">
+  <div class="chat-message-container">
+    <div class="row no-gutters">
+      <div class="col-auto text-center">
+        <div class="name" alt="" data-role="user-avatar"></div>
+      </div>
+
+      <div class="col">
+        <div class="message-content">
+          <p class="mb-1" data-role="message-text"></p>
+
+          <div class="text-right">
+            <small data-role="message-date"></small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

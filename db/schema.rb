@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_07_140207) do
+ActiveRecord::Schema.define(version: 2019_10_14_072227) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -104,6 +104,30 @@ ActiveRecord::Schema.define(version: 2019_10_07_140207) do
     t.index ["user_id"], name: "index_playlists_on_user_id"
   end
 
+  create_table "room_messages", force: :cascade do |t|
+    t.bigint "room_id"
+    t.bigint "user_id"
+    t.text "message"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["room_id"], name: "index_room_messages_on_room_id"
+    t.index ["user_id"], name: "index_room_messages_on_user_id"
+  end
+
+  create_table "rooms", force: :cascade do |t|
+    t.string "name"
+    t.boolean "private_messages", default: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "rooms_users", id: false, force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "room_id", null: false
+    t.index ["room_id", "user_id"], name: "index_rooms_users_on_room_id_and_user_id"
+    t.index ["user_id", "room_id"], name: "index_rooms_users_on_user_id_and_room_id"
+  end
+
   create_table "tags", force: :cascade do |t|
     t.string "name"
     t.string "object_type"
@@ -166,4 +190,6 @@ ActiveRecord::Schema.define(version: 2019_10_07_140207) do
   add_foreign_key "playlist_subscriptions", "playlists"
   add_foreign_key "playlist_subscriptions", "users"
   add_foreign_key "playlists", "users"
+  add_foreign_key "room_messages", "rooms"
+  add_foreign_key "room_messages", "users"
 end
