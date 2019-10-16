@@ -18,12 +18,11 @@
       <ul class="navbar-nav mr-auto">
         <% if user_signed_in? %>
           <li class="nav-item"><%= link_to t('header.logout'), destroy_user_session_path, method: :delete, class: "nav-link" %></li>
-
-          <% if current_user.has_new_notice? %>
-            <%= link_to t('header.my_notice'), notifications_path, class: "nav-link-notice" %>
-          <% else %>
-            <li class="nav-item"><%= link_to t('header.my_notice'), notifications_path, class: "nav-link" %><li>
-          <% end %>
+            <div id="bell" class="bell">
+              <%= link_to(image_tag("https://img.icons8.com/carbon-copy/100/000000/appointment-reminders--v1.png", class: 'img-bell', id: "img_bell"), notifications_path, remote: true) %>
+              <div id="quantity-notice" class="quantity-notice"></div>
+              <div id="dropdown-notifications" class="notifications"></div>
+            </div>
         <% else %>
           <li class="nav-item"><%= link_to t('header.login'), new_user_session_path, class: "nav-link" %></li>
           <li class="nav-item"><%= link_to t('links.sign_up'), new_user_registration_path, class: "nav-link" %></li>

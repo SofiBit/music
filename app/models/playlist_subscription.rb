@@ -10,12 +10,12 @@ class PlaylistSubscription < ApplicationRecord
   def create_notice_about_subscription
     playlist.user.notifications.create(message: "#{user.first_name} \
       #{user.last_name} subscribed on the playlist #{playlist.title}",
-      sender: user)
+      sender: user, link: "users/#{user.id}")
   end
 
   def create_notice_about_unsubscription
     playlist.user.notifications.create(message: "#{user.first_name} \
       #{user.last_name} unsubscribed from the playlist #{playlist.title}",
-      sender: user)
+      sender: user, link: "users/#{user.id}")
   end
 end

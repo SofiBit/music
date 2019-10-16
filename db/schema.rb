@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_14_072227) do
+ActiveRecord::Schema.define(version: 2019_10_15_134627) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -67,23 +67,13 @@ ActiveRecord::Schema.define(version: 2019_10_14_072227) do
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
-  create_table "friendships", force: :cascade do |t|
-    t.bigint "user_id"
-    t.bigint "friend_id"
-    t.integer "status", default: 0
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["friend_id"], name: "index_friendships_on_friend_id"
-    t.index ["user_id"], name: "index_friendships_on_user_id"
-  end
-
   create_table "notifications", force: :cascade do |t|
     t.string "message"
-    t.string "status", default: "unchecked"
     t.bigint "user_id"
     t.bigint "sender_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "link"
     t.index ["sender_id"], name: "index_notifications_on_sender_id"
     t.index ["user_id"], name: "index_notifications_on_user_id"
   end
@@ -149,6 +139,16 @@ ActiveRecord::Schema.define(version: 2019_10_14_072227) do
     t.string "track_image"
   end
 
+  create_table "user_subscriptions", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "subscription_id"
+    t.integer "status", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["subscription_id"], name: "index_user_subscriptions_on_subscription_id"
+    t.index ["user_id"], name: "index_user_subscriptions_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
@@ -183,8 +183,6 @@ ActiveRecord::Schema.define(version: 2019_10_14_072227) do
   add_foreign_key "assessments", "tracks"
   add_foreign_key "assessments", "users"
   add_foreign_key "comments", "users"
-  add_foreign_key "friendships", "users"
-  add_foreign_key "friendships", "users", column: "friend_id"
   add_foreign_key "notifications", "users"
   add_foreign_key "notifications", "users", column: "sender_id"
   add_foreign_key "playlist_subscriptions", "playlists"
@@ -192,4 +190,6 @@ ActiveRecord::Schema.define(version: 2019_10_14_072227) do
   add_foreign_key "playlists", "users"
   add_foreign_key "room_messages", "rooms"
   add_foreign_key "room_messages", "users"
+  add_foreign_key "user_subscriptions", "users"
+  add_foreign_key "user_subscriptions", "users", column: "subscription_id"
 end

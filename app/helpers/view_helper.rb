@@ -1,5 +1,4 @@
 module ViewHelper
-
   def share_telegram(result)
     image_tag(ENV['URI_IMG_TELEGRAM'],
      onclick: "shareTelegram('#{ENV['URI_APP']}', '#{transform_links(result)}')",
@@ -53,5 +52,9 @@ module ViewHelper
 
   def user_name(user)
     "#{user.first_name} #{user.last_name}"
+  end
+
+  def find_subscription(user)
+    UserSubscription.find_by(subscription: user)
   end
 end

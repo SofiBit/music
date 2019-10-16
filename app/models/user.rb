@@ -8,7 +8,10 @@ class User < ApplicationRecord
   has_many :assessments, dependent: :destroy
   has_many :adding_track_to_users
   has_many :tracks, through: :adding_track_to_users
-  # TODO: has_many :friendships, dependent: :destroy
+  has_many :user_subscriptions, dependent: :destroy
+  has_many :following, through: :user_subscriptions, source: :subscription
+  has_many :inverse_user_subscriptions, class_name: "UserSubscription", foreign_key: "subscription_id"
+  has_many :followers, through: :inverse_user_subscriptions, source: :user
   has_many :notifications
   has_many :playlists
   has_many :playlist_subscriptions
@@ -16,7 +19,7 @@ class User < ApplicationRecord
   has_many :comments
   has_many :room_messages
   has_and_belongs_to_many :rooms
-  
+
   # TODO: validates :first_name, :last_name, presence: true
 
   devise  :database_authenticatable,
@@ -38,22 +41,5 @@ class User < ApplicationRecord
 
   def admin?
     self.role == "admin"
-  end
-
-  def has_subscription_on_all_playlists?(user)
-    answer = false
-    user.playlists.each do |playlist|
-      answer = playlists_by_friends.include?(playlist)
-      break if answer == false
-    end
-    answer
-  end
-
-  def has_new_notice?
-    unless notifications.empty? || notifications.last.status == 'checked'
-      return true
-    end
-
-    false
   end
 end

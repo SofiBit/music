@@ -10,13 +10,13 @@
 <%= button_to 'open chat', rooms_path(room: { name: "#{user_name(current_user)} - #{user_name(@user)}" }, user: @user) %>
 
 <% unless current_user == @user %>
-  <% if current_user.has_subscription_on_all_playlists?(@user) %>
-    <div id="subscribe_on_all">
-      <%= render 'playlist_subscriptions/create_all' %>
+  <% if current_user.following.include?(@user) %>
+    <div id="subscribe_on_user">
+      <%= render 'user_subscriptions/create' %>
     </div>
   <% else %>
-    <div id="subscribe_on_all">
-      <%= render 'playlist_subscriptions/destroy_all' %>
+    <div id="subscribe_on_user">
+      <%= render 'user_subscriptions/destroy' %>
     </div>
   <% end %>
 <% end %>

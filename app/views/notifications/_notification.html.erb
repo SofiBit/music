@@ -1,6 +1,5 @@
-<div class="notification">
-  <p>
+<div class="notice">
+  <a href="<%= notification.link %>" class="list-group-item list-group-item-action">
     <%= notification.created_at.to_formatted_s(:short) %>: <%= notification.message %>.
-    <%= link_to "Show user", user_path(notification.sender) %>
-  </p>
+  </a>
 </div>

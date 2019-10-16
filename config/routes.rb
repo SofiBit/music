@@ -23,10 +23,9 @@ Rails.application.routes.draw do
   resources :tags, only: %i[index create destroy]
   resources :rooms
   resources :room_messages
+  resources :user_subscriptions, only: %i[create destroy]
 
   get '/assessment', to: 'assessments#show'
-  post '/playlist_subscriptions_all', to: 'playlist_subscriptions#create_all'
-  delete '/playlist_subscriptions_all', to: 'playlist_subscriptions#destroy_all'
   get '/link', to: 'links#show'
   mount ActionCable.server => '/cable'
 end
