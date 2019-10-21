@@ -11,7 +11,7 @@ class TracksController < ApplicationController
   end
 
   def show
-    @playlist = Playlist.find(params[:playlist_id])
+    @playlist = Playlist.find(params[:playlist_id]) if params[:playlist_id]
   end
 
   private

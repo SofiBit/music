@@ -7,10 +7,21 @@ class Track < ApplicationRecord
   has_many :adding_tracks, dependent: :nullify
   has_many :playlists, through: :adding_tracks
   has_many :comments, as: :object, dependent: :destroy
-  has_many :tags, as: :object, dependent: :destroy
+  has_many :tags, as: :obj, dependent: :destroy
 
-  # TODO: scope :find_track, ->(result) { find_by(artist: result[:info][:artist],
-  #                                         name: result[:info][:name]) }
+  include Elasticsearch::Model
+  include Elasticsearch::Model::Callbacks
+
+  settings do
+    mappings dynamic: false do
+      indexes :name, type: :text, analyzer: :english
+      indexes :artist, type: :text, analyzer: :english
+      indexes :album, type: :text, analyzer: :english
+      indexes :tags do
+        indexes :name
+      end
+    end
+  end
 
   def self.find_track(result)
     find_by(artist: result[:info][:artist], name: result[:info][:name])

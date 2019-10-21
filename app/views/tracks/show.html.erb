@@ -1,10 +1,6 @@
-<div id="button-public-private-track">
-  <% if private_for_playlist?(@track, @playlist) %>
-    <button onclick="revealTrack(<%= track_playlist(@track, @playlist).id %>)">Reveal Track</button>
-  <% else %>
-    <button onclick="stashTrack(<%= track_playlist(@track, @playlist).id %>)">Stash Track</button>
-  <% end %>
-</div>
+<% if @playlist && @playlist.user == current_user %>
+  <%= render 'button_make_private' %>
+<% end %>
 
 <img src="<%= @track.track_image %>" class="track-image">
 
@@ -21,12 +17,9 @@
       <p><%= t('result.release_date') %>: <%= @track.release_date %></p><br>
     </div>
   </div>
-  
+
   <%= share_telegram(@track.provider_links) %>
   <%= share_email(@track.provider_links) %>
 
   <%= render 'shared/stars', resource: @track %>
-
-  <%= link_to t('app.delete_track'), adding_track_to_user_path(current_user.adding_track_to_users.find_by(track: @track)), method: :delete %>
-
 <%= render 'comments' %>

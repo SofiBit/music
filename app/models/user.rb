@@ -1,7 +1,13 @@
 class User < ApplicationRecord
-  include PgSearch::Model
+  include Elasticsearch::Model
+  include Elasticsearch::Model::Callbacks
 
-  pg_search_scope :search_users, against: [:first_name, :last_name]
+  settings do
+    mapping dynamic: false do
+      indexes :first_name, type: :text, analyzer: :english
+      indexes :last_name, type: :text, analyzer: :english
+    end
+  end
 
   ROLES = %i[user admin]
 
