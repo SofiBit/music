@@ -1,13 +1,13 @@
 .img-bell {
   width: 50px;
   height: 50px;
-  padding: 8px;
+  padding: 10px;
 }
 
 .bell {
   position: relative;
   display: block;
-  height: 50px;
+  height: 40px;
   cursor: pointer;
   outline: none;
 }
@@ -20,10 +20,21 @@
   color: red;
 }
 
-.bell .notifications {
-  width: 60%;
+.show-notifications {
+  overflow: scroll;
+  width: 300px;
+  height: 500px;
   z-index: 2;
   background-color: white;
-  border: 1px solid #dae0e5;
   margin: 20px;
+}
+
+.notice-info {
+  padding-left: 10px;
+  width: 100px;
+}
+
+.notice-img {
+  float: left;
+  padding: 10px;
 }

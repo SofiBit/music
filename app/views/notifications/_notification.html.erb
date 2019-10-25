@@ -1,5 +1,15 @@
 <div class="notice">
   <a href="<%= notification.link %>" class="list-group-item list-group-item-action">
-    <%= notification.created_at.to_formatted_s(:short) %>: <%= notification.message %>.
+    <div class="row">
+      <div class="notice-img">
+        <!-- <img src="" width="50px" height="50px"> -->
+        <img src="https://img.icons8.com/ultraviolet/40/000000/bird.png">
+      </div>
+
+      <div class="notice-info">
+        <div><%= notification.message %></div>
+        <div><%= notification.created_at.to_formatted_s(:short) %></div>
+      </div>
+    </div>
   </a>
 </div>

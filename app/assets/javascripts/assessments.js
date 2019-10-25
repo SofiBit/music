@@ -1,8 +1,8 @@
-function createAssessment(user_id, track_id, stars) {
+function createAssessment(user_id, type, id,  stars) {
   $.ajax({
     url: 'http://localhost:3000/assessments.json',
     type: 'post',
-    data: `user_id=${user_id}&track_id=${track_id}&stars=${stars}`
+    data: `user_id=${user_id}&object_id=${id}&object_type=${type}&stars=${stars}`
   });
 }
 

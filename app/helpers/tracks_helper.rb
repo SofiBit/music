@@ -10,7 +10,7 @@ module TracksHelper
   end
 
   def tracks(current_user, playlist)
-    return playlist.tracks.reverse if current_user.playlists.include?(playlist)
+    return playlist.tracks.reverse if current_user && current_user.playlists.include?(playlist)
 
     playlist.public_tracks.reverse
   end

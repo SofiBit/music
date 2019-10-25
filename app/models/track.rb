@@ -1,16 +1,16 @@
 class Track < ApplicationRecord
+  include Elasticsearch::Model
+  include Elasticsearch::Model::Callbacks
+  
   mount_uploader :track_image, TrackImageUploader
 
-  has_many :assessments, dependent: :destroy
   has_many :adding_track_to_users
   has_many :users, through: :adding_track_to_users
   has_many :adding_tracks, dependent: :nullify
   has_many :playlists, through: :adding_tracks
   has_many :comments, as: :object, dependent: :destroy
   has_many :tags, as: :obj, dependent: :destroy
-
-  include Elasticsearch::Model
-  include Elasticsearch::Model::Callbacks
+  has_many :assessments, as: :track_playlist, dependent: :destroy
 
   settings do
     mappings dynamic: false do
@@ -30,13 +30,5 @@ class Track < ApplicationRecord
   def self.already_exist?(result)
     track = find_track(result)
     track.present?
-  end
-
-  def average_assessment
-    amount = 0
-    assessments.each do |assessment|
-      amount += assessment.stars
-    end
-    amount.to_f / assessments.count
   end
 end

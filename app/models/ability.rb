@@ -9,7 +9,8 @@ class Ability
       can :manage, :all
     end
     if user
-      can :crud, Room, user_id: user.id
+      can :manage, Playlist, user_id: user.id
+       
     end
   end
 end

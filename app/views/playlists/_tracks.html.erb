@@ -8,11 +8,11 @@
             <%= button_to 'delete track', adding_track_path(track.adding_tracks.find_by(playlist: @playlist)), method: :delete, class: 'btn btn-secondary btn-sm' %><br>
             <button class="btn btn-secondary btn-sm" onclick="getPlaylists(<%= current_user.id %>, <%= track.id %>)">Move to another playlist</button><br>
             <%= button_to t('app.show'), track_path(track), method: :get, params: { playlist_id: @playlist.id }, class: "btn btn-secondary btn-sm" %>
-          <% else %>
+          <% elsif current_user %>
             <button type="button" class="btn btn-primary btn-lg" onclick="addTrack(<%= current_user.id %>, <%= track.id %>)">Add track</button>
             <div><%= t('app.added_track', count: count_adding_track(track)) %></div>
           <% end %>
-          <p>Rating track: <%= track.average_assessment %></p>
+          <p>Rating track: <%= average_assessment(track.assessments) %></p>
         </div>
       </div>
   <% end %>

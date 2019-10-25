@@ -1,4 +1,6 @@
 class AssessmentsController < ApplicationController
+  include AssessmentModel
+
   def index
     track = Track.find(params[:track_id])
     average = track.average_assessment
@@ -9,12 +11,12 @@ class AssessmentsController < ApplicationController
 
   def create
     user = User.find(params[:user_id])
-    track = Track.find(params[:track_id])
+    track_or_playlist = model(params[:object_type]).find(params[:object_id])
     stars = params[:stars]
-    if assessment = Assessment.find_by(user: user, track: track)
+    if assessment = Assessment.find_by(user: user, track_playlist: track_or_playlist)
       assessment.destroy
     end
-    Assessment.create(user: user, track: track, stars: stars)
+    Assessment.create(user: user, track_playlist: track_or_playlist, stars: stars)
     respond_to do |format|
       format.json { render json: {status: 'success', message: "My assessment is #{stars}"} }
     end
@@ -29,8 +31,5 @@ class AssessmentsController < ApplicationController
     else
       respond_to { |format| format.json { render json: {status: 'not found'} } }
     end
-  end
-
-  def destroy
   end
 end

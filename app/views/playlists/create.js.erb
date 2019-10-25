@@ -1,2 +1,3 @@
-$('#new-playlist').empty();
 $("<%= escape_javascript(render 'create') %>").appendTo("#new-playlist");
+$("#button-create").empty();
+$("<%= escape_javascript(render 'button_create') %>").appendTo("#button-create");

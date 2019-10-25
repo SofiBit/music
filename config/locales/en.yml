@@ -47,3 +47,6 @@ en:
     delete: Delete
     create_playlist: Create new playlist
     added_track: "%{count} users added the track"
+  popular:
+    top_tracks: "Top tracks"
+    top_playlists: "Top playlists"

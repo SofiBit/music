@@ -1,4 +1,6 @@
 class PlaylistsController < ApplicationController
+  include PlaylistImage
+
   before_action :find_playlist, only: %i[show destroy edit update]
 
   def index
@@ -15,7 +17,7 @@ class PlaylistsController < ApplicationController
 
   def create
     @playlist = current_user.playlists.new(playlist_params)
-
+    check_playlist_image(@playlist)
     if @playlist.save
       respond_to do |format|
         format.js
@@ -57,6 +59,6 @@ class PlaylistsController < ApplicationController
   end
 
   def playlist_params
-    params.require(:playlist).permit(:title, :private)
+    params.require(:playlist).permit(:title, :private, :image)
   end
 end

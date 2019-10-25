@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   resources :rooms
   resources :room_messages
   resources :user_subscriptions, only: %i[create destroy]
+  resources :tags
 
   get '/assessment', to: 'assessments#show'
   get '/link', to: 'links#show'

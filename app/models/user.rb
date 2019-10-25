@@ -18,7 +18,7 @@ class User < ApplicationRecord
   has_many :following, through: :user_subscriptions, source: :subscription
   has_many :inverse_user_subscriptions, class_name: "UserSubscription", foreign_key: "subscription_id"
   has_many :followers, through: :inverse_user_subscriptions, source: :user
-  has_many :notifications
+  has_many :notifications, dependent: :destroy
   has_many :playlists
   has_many :playlist_subscriptions
   has_many :playlists_by_friends, through: :playlist_subscriptions, source: :playlist

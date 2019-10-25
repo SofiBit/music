@@ -1,8 +1,10 @@
+<h3>Comments: </h3>
+
 <div class ="all-comments">
   <div id="comments">
     <% @playlist.comments.order('created_at asc').to_a.each do |comment| %>
       <div id="comment-<%= comment.id %>">
-        <div class="comment-body"><%= user_name(comment.user) %> : <%= comment.body %></div>
+        <span><div class="comment-body"><%= user_name(comment.user) %> : <%= comment.body %></div></span>
         <% if current_user == comment.user %>
           <%= link_to 'reply', new_comment_path(object_id: comment.id, object_type: comment.class), remote: true %> |
           <%= link_to 'delete', comment_path(comment), method: :delete, remote: true %>
@@ -22,7 +24,7 @@
   </div>
   <div id="new-comment">
     <%= form_with model: @playlist.comments.new, id: "comment-form-#{@playlist.id}" do |form| %>
-      <%= form.text_area :body, id: 'txtarea', spellchek: false %>
+      <%= form.text_area :body, id: 'txtarea', spellchek: false, class: 'form-control' %>
 
       <%= form.hidden_field :user_id, value: current_user.id %>
 

@@ -1,4 +1,10 @@
 <% if current_user == @playlist.user %>
+  <%= render 'tags/new' %>
+  <div class="playlists-tags">
+    <% @playlist.tags.each do |tag| %>
+      <%= tag.name %>
+    <% end %>
+  </div>
   <div id="button-public-private-playlist">
     <% if @playlist.private? %>
       <button onclick="makePublic(<%= @playlist.id %>)">Make public</button>
@@ -22,4 +28,7 @@
   <% end %>
 <% end %>
 
+<div class: "playlist-stars">
+  <%= render 'shared/stars', resource: @playlist %>
+</div>
 <%= render 'comments' %>

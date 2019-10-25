@@ -6,7 +6,7 @@
 
 <div class="track">
   <% JSON.parse(@track.provider_links).each do |provider, link| %>
-    <span><a href="<%= link %>"><%= link %></a></span><br>
+    <span><%= provider %>: <a href="<%= link %>"><%= link %></a></span><br>
   <% end %>
 
   <div>
@@ -22,4 +22,7 @@
   <%= share_email(@track.provider_links) %>
 
   <%= render 'shared/stars', resource: @track %>
-<%= render 'comments' %>
+  
+<div class="comments">
+  <%= render 'comments' %>
+</div>

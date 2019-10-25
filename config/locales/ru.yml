@@ -53,3 +53,6 @@ ru:
     attributes:
       playlist:
         title: "Название"
+  popular:
+    top_tracks: "Топ треков"
+    top_playlists: "Топ плейлистов"

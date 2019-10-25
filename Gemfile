@@ -5,9 +5,9 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.3'
 
-gem 'elasticsearch-model'
-gem 'elasticsearch-rails'
-gem 'carrierwave'
+gem 'elasticsearch-model', '~> 7.0.0'
+gem 'elasticsearch-rails', '~> 7.0.0'
+gem 'carrierwave', '~> 1.3.1'
 gem 'euterpe', path: '/home/sofia/Desktop/internship/ror_project/euterpe'
 gem 'pg_search', '~> 2.3.0'
 gem 'redis', '~> 4.1.2'

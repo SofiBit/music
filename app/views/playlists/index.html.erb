@@ -1,9 +1,14 @@
-<h1>Playlists:</h1>
+<div class="album py-5 bg-light">
+  <div class="container">
 
-<%= render playlists(current_user, @playlists) %>
+    <div class="row" id="new-playlist">
+      <%= render playlists(current_user, @playlists) %>
+    </div>
+  </div>
+</div>
 
 <% if current_user.playlists == @playlists %>
-  <div id="new-playlist">
-    <%= button_to t('app.create_playlist'), new_playlist_path, method: :get, remote: true %>
+  <div id="button-create" class="create-new-playlist">
+    <%= button_to t('app.create_playlist'), new_playlist_path, method: :get, remote: true, class: "btn btn-primary" %>
   </div>
 <% end %>

@@ -1,8 +1,12 @@
 <div class="top-10">
-  <ul>Топ треков
+  <h3><%= t("popular.top_tracks") %></h3>
+  <ul class="list-group list-group-flush">
     <% top_tracks.each do |track| %>
       <% if track.present? %>
-        <li><%= track.name %></li>
+        <li class="list-group-item">
+          <img class="tracks-playlist" src="<%= track.track_image %>">
+          <%= link_to "#{track.artist} #{track.name}", track_path(track) %>
+        </li>
       <% end %>
     <% end %>
   </ul>

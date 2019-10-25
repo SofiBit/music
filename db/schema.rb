@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_18_153637) do
+ActiveRecord::Schema.define(version: 2019_10_24_160348) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,11 +48,12 @@ ActiveRecord::Schema.define(version: 2019_10_18_153637) do
 
   create_table "assessments", force: :cascade do |t|
     t.bigint "user_id"
-    t.bigint "track_id"
     t.integer "stars", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["track_id"], name: "index_assessments_on_track_id"
+    t.string "track_playlist_type"
+    t.bigint "track_playlist_id"
+    t.index ["track_playlist_type", "track_playlist_id"], name: "index_assessments_on_track_playlist_type_and_track_playlist_id"
     t.index ["user_id"], name: "index_assessments_on_user_id"
   end
 
@@ -74,6 +75,7 @@ ActiveRecord::Schema.define(version: 2019_10_18_153637) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "link"
+    t.boolean "checked", default: false
     t.index ["sender_id"], name: "index_notifications_on_sender_id"
     t.index ["user_id"], name: "index_notifications_on_user_id"
   end
@@ -91,7 +93,15 @@ ActiveRecord::Schema.define(version: 2019_10_18_153637) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "private", default: false
+    t.string "image"
     t.index ["user_id"], name: "index_playlists_on_user_id"
+  end
+
+  create_table "playlists_tags", id: false, force: :cascade do |t|
+    t.bigint "tag_id", null: false
+    t.bigint "playlist_id", null: false
+    t.index ["playlist_id", "tag_id"], name: "index_playlists_tags_on_playlist_id_and_tag_id"
+    t.index ["tag_id", "playlist_id"], name: "index_playlists_tags_on_tag_id_and_playlist_id"
   end
 
   create_table "room_messages", force: :cascade do |t|
@@ -120,11 +130,8 @@ ActiveRecord::Schema.define(version: 2019_10_18_153637) do
 
   create_table "tags", force: :cascade do |t|
     t.string "name"
-    t.string "obj_type"
-    t.bigint "obj_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["obj_type", "obj_id"], name: "index_tags_on_obj_type_and_obj_id"
   end
 
   create_table "tracks", force: :cascade do |t|
@@ -180,7 +187,6 @@ ActiveRecord::Schema.define(version: 2019_10_18_153637) do
   add_foreign_key "adding_track_to_users", "users"
   add_foreign_key "adding_tracks", "playlists"
   add_foreign_key "adding_tracks", "tracks"
-  add_foreign_key "assessments", "tracks"
   add_foreign_key "assessments", "users"
   add_foreign_key "comments", "users"
   add_foreign_key "notifications", "users"

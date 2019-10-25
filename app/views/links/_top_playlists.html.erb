@@ -1,0 +1,11 @@
+<div class="top-10">
+  <h3><%= t('popular.top_playlists')%></h3>
+  <ul class="list-group list-group-flush">
+    <% top_playlists.each do |playlist| %>
+        <li class="list-group-item">
+          <img class="tracks-playlist" src="<%= playlist.image %>">
+          <%= link_to "#{playlist.title} by #{playlist.user.first_name} #{playlist.user.last_name}", user_playlist_path(playlist.user, playlist) %>
+        </li>
+    <% end %>
+  </ul>
+</div>
