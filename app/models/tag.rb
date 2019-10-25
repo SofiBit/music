@@ -9,4 +9,6 @@ class Tag < ApplicationRecord
   validates :name, format: { with: /\A#\w+/, message: "format: #tag" }
   validates :name, length: { in: 2..20 }
   validates :name, presence: true
+
+  # test
 end
