@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   resources :search, only: %i[index]
   resources :links, only: %i[index]
   resources :tracks, only: %i[index show update]
-  resources :users, only: :show do
+  resources :users, only: %i[show edit update] do
     resources :playlists, only: %i[index show]
   end
   resources :playlists, only: %i[new create destroy edit update]

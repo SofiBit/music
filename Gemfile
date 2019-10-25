@@ -5,6 +5,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.3'
 
+gem 'faker', '~> 2.6.0'
 gem 'elasticsearch-model', '~> 7.0.0'
 gem 'elasticsearch-rails', '~> 7.0.0'
 gem 'carrierwave', '~> 1.3.1'

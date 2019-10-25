@@ -1,11 +1,15 @@
 <div class="ava">
+  <img src="<%= @user.avatar %>">
 </div>
-<div>
+<div class="info-user">
   <%= @user.first_name %>
   <%= @user.last_name %>
   <%= @user.email %>
+  <%= @user.nickname %>
+  <%= @user.date_birthday %>
 </div>
 
+<%= link_to 'edit', edit_user_path(@user) %>
 <%= link_to t('app.playlists'), user_playlists_path(@user) %>
 <%= button_to 'open chat', rooms_path(room: { name: "#{user_name(current_user)} - #{user_name(@user)}" }, user: @user) %>
 
@@ -20,3 +24,21 @@
     </div>
   <% end %>
 <% end %>
+
+<div class="users">
+  <div class="followers">
+    <span>Followers:</span>
+    <% @user.followers.each do |follower| %>
+      <%= follower.first_name %>
+      <img src="<%= follower.avatar %>" class="avatar-users">
+    <% end %>
+  </div>
+
+  <div class="following">
+    <span>Following:</span>
+    <% @user.following.each do |user| %>
+      <%= user.first_name %>
+      <img src="<%= user.avatar %>" class="avatar-users">
+    <% end %>
+  </div>
+</div>

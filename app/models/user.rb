@@ -4,6 +4,8 @@ class User < ApplicationRecord
   include Elasticsearch::Model
   include Elasticsearch::Model::Callbacks
 
+  mount_uploader :avatar, AvatarUploader
+
   settings do
     mapping dynamic: false do
       indexes :first_name, type: :text, analyzer: :english

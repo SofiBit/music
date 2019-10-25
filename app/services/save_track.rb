@@ -1,8 +1,8 @@
 # frozen_string_literal: true
+
 require "open-uri"
 
 module SaveTrack
-
   def save_track(result)
     return Track.find_track(result) if Track.already_exist?(result)
     track = Track.create( artist: result[:info][:artist],
