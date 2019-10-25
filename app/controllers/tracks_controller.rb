@@ -1,5 +1,7 @@
 class TracksController < ApplicationController
   before_action :find_track, only: %i[show update]
+  before_action :authenticate_user!
+
   def index
     @tracks = current_user.tracks
   end

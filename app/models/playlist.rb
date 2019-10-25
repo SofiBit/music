@@ -55,4 +55,8 @@ class Playlist < ApplicationRecord
     adding_tracks = self.adding_tracks.where(private: false)
     adding_tracks.map(&:track)
   end
+
+  def public?
+    self.private == false
+  end
 end

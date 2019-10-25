@@ -1,4 +1,4 @@
-<% if @playlist && @playlist.user == current_user %>
+<% if @playlist && owner?(current_user, @playlist) %>
   <%= render 'button_make_private' %>
 <% end %>
 
@@ -22,7 +22,7 @@
   <%= share_email(@track.provider_links) %>
 
   <%= render 'shared/stars', resource: @track %>
-  
+
 <div class="comments">
   <%= render 'comments' %>
 </div>

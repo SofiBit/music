@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  ROLES = %i[user admin]
+
   include Elasticsearch::Model
   include Elasticsearch::Model::Callbacks
 
@@ -8,8 +10,6 @@ class User < ApplicationRecord
       indexes :last_name, type: :text, analyzer: :english
     end
   end
-
-  ROLES = %i[user admin]
 
   has_many :assessments, dependent: :destroy
   has_many :adding_track_to_users

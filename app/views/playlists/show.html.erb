@@ -1,5 +1,6 @@
-<% if current_user == @playlist.user %>
+<% if owner?(current_user, @playlist) %>
   <%= render 'tags/new' %>
+
   <div class="playlists-tags">
     <% @playlist.tags.each do |tag| %>
       <%= tag.name %>
@@ -16,7 +17,7 @@
 
 <%= render 'tracks' %>
 
-<% unless current_user == @playlist.user %>
+<% unless owner?(current_user, @playlist) %>
   <% if current_user.playlists_by_friends.include?(@playlist)%>
     <div id="button_playlist">
       <%= render 'playlist_subscriptions/create' %>

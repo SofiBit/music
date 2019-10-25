@@ -8,9 +8,14 @@ class Ability
     if user.admin?
       can :manage, :all
     end
-    if user
+    if user.present?
       can :manage, Playlist, user_id: user.id
-       
+      can :read, Playlist do |playlist|
+        playlist.public?
+      end
+      can :read, Room do |room|
+        room.users.include?(user)
+      end
     end
   end
 end

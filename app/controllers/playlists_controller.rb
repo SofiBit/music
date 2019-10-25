@@ -1,7 +1,10 @@
 class PlaylistsController < ApplicationController
   include PlaylistImage
 
+  load_and_authorize_resource only: %i[show new create destroy update]
+
   before_action :find_playlist, only: %i[show destroy edit update]
+  before_action :authenticate_user!
 
   def index
     user = User.find(params[:user_id])
