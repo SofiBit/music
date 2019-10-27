@@ -7,19 +7,19 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   </head>
 
   <body>
-
-    <%= render 'shared/nav' %>
-      <div class="container">
+  <div class="d-flex main-background" id="wrapper" >
+    <%= render 'shared/sidebar' %>
+    <div id="page-content-wrapper">
+      <%= render 'shared/navbar' %>
+      <div class='container'>
         <%= render 'shared/flash' %>
-
         <%= yield %>
-
         <%= render 'shared/modal' %>
       </div>
-    <%= render 'shared/footer' %>
+    </div>
+  </div>
   </body>
 </html>

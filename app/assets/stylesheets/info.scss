@@ -1,10 +1,31 @@
+.info {
+  position: relative;
+
+}
 .info-info {
-  margin: 10px;
+  display: inline-block;
+  margin-left: 20px;
+}
+.info-info:last-child {
+  margin: 0;
 }
 
-.info img {
+.previewImage {
   float: left;
-  padding: 10px;
-  width: 170px;
-  height: 170px;
+  width: 370px;
+  height: 370px;
+  border-radius: 20px;
 }
+
+.closeImage {
+  width: 50px;
+  height: 50px;
+}
+.starsAndButton {
+  display: inline-block;
+  margin-left: 20px;
+}
+.starsAndButton button {
+  margin-bottom: 10px;
+}
+

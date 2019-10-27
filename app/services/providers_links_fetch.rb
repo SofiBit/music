@@ -3,7 +3,7 @@
 module ProvidersLinksFetch
   def run(link)
     Euterpe::Aggregator.run(source_link: link)
-  rescue NoMethodError
+  rescue NoMethodError => e
     raise 'Not found'
   end
 end

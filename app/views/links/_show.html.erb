@@ -1,5 +1,25 @@
 <%= render 'shared/flash'%>
-<div class="clear" onclick="clearContent()"><img src="https://img.icons8.com/material-two-tone/24/000000/delete-sign.png"></div>
+
+<div class="info">
+<img src="<%= @track.track_image %>" class="previewImage"><br>
+<div class="info-info">
+  <p><%= t('result.artist') %>: <%= @track.artist %></p><hr>
+  <p><%= t('result.album') %>: <%= @track.album %></p><hr>
+  <p><%= t('result.name') %>: <%= @track.name %></p><hr>
+  <p><%= t('result.release_date') %>: <%= @track.release_date %></p><hr>
+</div>
+    <div class="clear" onclick="clearContent()"><img src="https://img.icons8.com/color/100/000000/close-window.png" class="closeImage"></div>
+</div>
+
+<% if current_user %>
+
+<div class="starsAndButton">
+  <%= render 'shared/stars', resource: @track %>
+  <button type="button" class="btn btn-primary btn-lg" onclick="addTrack(<%= current_user.id %>, <%= @track.id %>)">Add track</button>
+  <div><%= t('app.added_track', count: count_adding_track(@track)) %></div>
+</div>
+
+<% end %>
 
 <% @result[:links].each do |source, link| %>
   <div class="input-group mb-3">
@@ -14,23 +34,7 @@
       </div>
   </div>
 <% end %>
-
-  <div class="info">
-      <img src="<%= @track.track_image %>"><br>
-      <div class="info-info">
-        <p><%= t('result.artist') %>: <%= @track.artist %></p><hr>
-        <p><%= t('result.album') %>: <%= @track.album %></p><hr>
-        <p><%= t('result.name') %>: <%= @track.name %></p><hr>
-        <p><%= t('result.release_date') %>: <%= @track.release_date %></p><hr>
-      </div>
-  </div>
-  <% if current_user %>
-    <div>
-      <%= render 'shared/stars', resource: @track %>
-      <button type="button" class="btn btn-primary btn-lg" onclick="addTrack(<%= current_user.id %>, <%= @track.id %>)">Add track</button>
-      <div><%= t('app.added_track', count: count_adding_track(@track)) %></div>
-    </div>
-  <% end %>
+ 
 
 <div class="share-buttons">
   <%= share_telegram(@track.provider_links) %>

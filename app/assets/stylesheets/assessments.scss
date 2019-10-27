@@ -2,17 +2,18 @@
   box-sizing: border-box;
 }
 .rating {
-  margin: 15px;
+  padding: 10;
   display: flex;
+  margin-bottom: 10px;
 }
 .rating-item {
-  width: 28px;
-  height: 28px;
-  background-image: url('https://img.icons8.com/ios/24/000000/star.png');
-  border: 2px solid #fff;
+  width: 48px;
+  height: 48px;
+  background-image: url("https://img.icons8.com/color/48/000000/star.png");
+  border: 2px solid transparent;
   cursor: pointer;
 }
 
 .rating-item.active{
-  background-image: url('https://img.icons8.com/ios-filled/24/000000/star.png');
+  background-image: url('https://img.icons8.com/color/48/000000/filled-star.png');
 }

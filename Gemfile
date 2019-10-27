@@ -9,7 +9,7 @@ gem 'faker', '~> 2.6.0'
 gem 'elasticsearch-model', '~> 7.0.0'
 gem 'elasticsearch-rails', '~> 7.0.0'
 gem 'carrierwave', '~> 1.3.1'
-gem 'euterpe', path: '/home/sofia/Desktop/internship/ror_project/euterpe'
+gem 'euterpe', path: '/Users/myosis/Documents/euterpe'
 gem 'pg_search', '~> 2.3.0'
 gem 'redis', '~> 4.1.2'
 gem 'activeadmin', '~> 2.2.0'
@@ -33,6 +33,8 @@ gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
 # Bootstrap
 gem 'bootstrap', '~> 4.3.1'
+# gem 'bootstrap-sass', '~> 3.4.1'
+
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
@@ -58,7 +60,6 @@ gem 'jbuilder', '~> 2.5'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
-gem 'faraday', '~> 0.9.2'
 
 group :development, :test do
   # Call 'byebug' anywhere in the codeto stop execution and get a debugger console
