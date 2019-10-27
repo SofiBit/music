@@ -1,0 +1,28 @@
+<% if @playlist && owner?(current_user, @playlist) %>
+  <%= render 'button_make_private' %>
+<% end %>
+
+<img src="<%= @track.track_image %>" class="track-image">
+
+<div class="track">
+  <% JSON.parse(@track.provider_links).each do |provider, link| %>
+    <span><%= provider %>: <a href="<%= link %>"><%= link %></a></span><br>
+  <% end %>
+
+  <div>
+    <div>
+      <p><%= t('result.artist') %>: <%= @track.artist %></p>
+      <p><%= t('result.album') %>: <%= @track.album %></p>
+      <p><%= t('result.name') %>: <%= @track.name %></p>
+      <p><%= t('result.release_date') %>: <%= @track.release_date %></p><br>
+    </div>
+  </div>
+
+  <%= share_telegram(@track.provider_links) %>
+  <%= share_email(@track.provider_links) %>
+
+  <%= render 'shared/stars', resource: @track %>
+
+<div class="comments">
+  <%= render 'comments' %>
+</div>

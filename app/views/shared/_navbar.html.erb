@@ -1,0 +1,42 @@
+<nav class="navbar navbar-expand-lg navbar-dark main-background border-bottom search-navbar ">
+        <div class="search-wr">
+            <div class="input-group md-form form-sm form-2 pl-0">
+                <input class="form-control my-0 py-1" type="text" placeholder="Search" aria-label="Search">
+              </div>  
+        </div>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+            <% if current_user %>
+              <li class="nav-item">
+              <div id="bell" class="bell">
+                <% if has_new_notice?(current_user) %>
+                  <%= link_to(image_tag("https://img.icons8.com/plasticine/100/000000/appointment-reminders.png", class: 'img-bell', id: "img_bell"), notifications_path, remote: true, id: 'link-notice') %>
+                  <div id="quantity-notice" class="quantity-notice"><%= new_notifications_count(current_user) %></div>
+                <% else %>
+                  <%= link_to(image_tag("https://img.icons8.com/carbon-copy/100/000000/appointment-reminders--v1.png", class: 'img-bell', id: "img_bell"), notifications_path, remote: true, id: 'link-notice') %>
+                  <div id="quantity-notice" class="quantity-notice"></div>
+                <% end %>
+                <div id="dropdown-notifications" class="show-notifications" style="display: none"></div>
+               </div>
+              </li>
+              <li class="nav-item">
+                <%= link_to t('header.logout'), destroy_user_session_path, method: :delete, class: "nav-link" %>
+               </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <img src="<%= current_user.avatar %> class="avatar">
+                </a>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="#">Action</a>
+                  <a class="dropdown-item" href="#">Another action</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="#">Something else here</a>
+                </div>
+              </li>
+            <% else %>
+              <li class="nav-item"><%= link_to t('header.login'), new_user_session_path, class: "nav-link" %></li>
+              <li class="nav-item"><%= link_to t('links.sign_up'), new_user_registration_path, class: "nav-link" %></li>
+            <% end %>
+          </ul>
+        </div>
+    </nav>

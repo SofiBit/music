@@ -2,12 +2,16 @@ ru:
   header:
     music_app: Музыкальное приложение
     logout: Выйти
-    my_links: Мои ссылки
+    my_tracks: Мои треки
     login: Войти
+    my_notice: Мои уведомления
+    my_page: Моя страница
+    my_playlists: Мои плейлисты
   input:
     send: Отправить
     enter_link: Ввести ссылку
     copy: Копировать ссылку
+    instruction: Введите ссылку и получите информацию о треке
   login:
     h: Войдите, пожалуйста
     email: Введите email
@@ -26,4 +30,29 @@ ru:
   my_notice:
     not_found: Не найдено
     parse: Нельзя распарсить
-  music: Музыка
+  result:
+    artist: Исполнитель
+    album: Альбом
+    name: Композиция
+    release_date: Дата выхода
+  app:
+    show: Смотреть
+    delete_track: Удалить трек
+    registration_offer: Зарегистируйтесь,чтобы сохранять треки и делиться ими с друзьями
+    follow: Подписаться
+    unsubscribe: Отписаться
+    search: Искать
+    notifications: Уведомления
+    playlists: Плейлисты
+    delete: Удалить
+    create_playlist: Создать новый плейлист
+    added_track: "%{count} пользователей добавили трек"
+  activerecord:
+    models:
+      playlist: "Плейлист"
+    attributes:
+      playlist:
+        title: "Название"
+  popular:
+    top_tracks: "Топ треков"
+    top_playlists: "Топ плейлистов"

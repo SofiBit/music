@@ -1,0 +1,42 @@
+<h3>Comments:</h3>
+
+<div class ="all-comments">
+  <div id="track-comments">
+    <% @track.comments.order('created_at asc').to_a.each do |comment| %>
+      <div id="comment-<%= comment.id %>">
+        <div class="comment-body"><%= user_name(comment.user) %> : <%= comment.body %></div>
+        <% if current_user == comment.user %>
+          <%= link_to 'reply', new_comment_path(object_id: comment.id, object_type: comment.class), remote: true %> |
+          <%= link_to 'delete', comment_path(comment), method: :delete, remote: true %>
+        <% end %>
+      <div class="nested-comments">
+        <div id="track-comments-on-comment-<%= comment.id %>">
+          <% comment.comments.each do |comment| %>
+            <div class="comment-<%= comment.id %>"><%= user_name(comment.user) %> : <%= comment.body %></div>
+            <hr>
+          <% end %>
+        </div>
+        <div id="track-new-comment-<%= comment.id %>"></div>
+      </div>
+      <hr>
+    </div>
+    <% end %>
+  </div>
+  <div id="new-comment">
+    <%= form_with model: @track.comments.new, id: "track-comment-form-#{@track.id}" do |form| %>
+      <%= form.text_area :body, id: 'txtarea', spellchek: false %>
+
+      <%= form.hidden_field :user_id, value: current_user.id %>
+
+      <%= form.hidden_field :object_id, value: @track.id %>
+
+      <%= form.hidden_field :object_type, value: @track.class %>
+
+      <%= submit_tag(t('input.send'), class: "btn btn-outline-secondary") %>
+    <% end %>
+  </div>
+</div>
+
+<script>
+  textarea();
+</script>

@@ -1,0 +1,15 @@
+<div class="col-md-4">
+  <div class="card mb-4 shadow-sm">
+    <img class="bd-placeholder-img card-img-top" width="100%" height="225" src="<%= @playlist.image %>">
+    <div class="card-body">
+      <p class="card-text"><%= @playlist.title %></p>
+      <div class="btn-group">
+        <%= link_to t('app.show'), user_playlist_path(@playlist.user, @playlist), method: :get, class: "btn btn-sm btn-outline-secondary" %>
+        <% if can? :edit, @playlist %>
+          <%= link_to t('app.delete'), playlist_path(@playlist), method: :delete, class: "btn btn-sm btn-outline-secondary" %>
+          <%= link_to 'Edit', edit_playlist_path(@playlist), method: :get, class: "btn btn-sm btn-outline-secondary" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -5,12 +5,23 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.3'
 
+gem 'faker', '~> 2.6.0'
+gem 'elasticsearch-model', '~> 7.0.0'
+gem 'elasticsearch-rails', '~> 7.0.0'
+gem 'carrierwave', '~> 1.3.1'
+gem 'euterpe', path: '/Users/myosis/Documents/euterpe'
+gem 'pg_search', '~> 2.3.0'
+gem 'redis', '~> 4.1.2'
 gem 'activeadmin', '~> 2.2.0'
 gem 'cancancan', '~> 3.0.1'
 gem 'rails-i18n', '~> 5.1'
 gem 'sendgrid-ruby', '~> 6.0.0'
 # Auth
 gem 'devise', '~> 4.0'
+gem 'omniauth', '~> 1.9.0'
+gem 'omniauth-facebook', '~> 5.0.0'
+gem 'omniauth-google', '~> 1.0.2'
+gem 'omniauth-twitter', '~> 1.4.0'
 gem 'figaro', '~> 1.1.1'
 gem 'jquery-rails', '~> 4.3.5'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -21,7 +32,9 @@ gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
 # Bootstrap
-gem 'bootstrap', '~> 4.0.0'
+gem 'bootstrap', '~> 4.3.1'
+# gem 'bootstrap-sass', '~> 3.4.1'
+
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
@@ -47,7 +60,6 @@ gem 'jbuilder', '~> 2.5'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
-gem 'faraday', '~> 0.15.4'
 
 group :development, :test do
   # Call 'byebug' anywhere in the codeto stop execution and get a debugger console

@@ -1,0 +1,19 @@
+<div class="list-group">
+  <% tracks(current_user, @playlist).each do |track| %>
+      <div class="list-group-item">
+        <img class="tracks-playlist" src="<%= track.track_image %>">
+        <div class="info-track">
+          <%= track.artist %> - <%= track.name %><br>
+          <% if current_user == @playlist.user %>
+            <%= button_to 'delete track', adding_track_path(track.adding_tracks.find_by(playlist: @playlist)), method: :delete, class: 'btn btn-secondary btn-sm' %><br>
+            <button class="btn btn-secondary btn-sm" onclick="getPlaylists(<%= current_user.id %>, <%= track.id %>)">Move to another playlist</button><br>
+            <%= button_to t('app.show'), track_path(track), method: :get, params: { playlist_id: @playlist.id }, class: "btn btn-secondary btn-sm" %>
+          <% elsif current_user %>
+            <button type="button" class="btn btn-primary btn-lg" onclick="addTrack(<%= current_user.id %>, <%= track.id %>)">Add track</button>
+            <div><%= t('app.added_track', count: count_adding_track(track)) %></div>
+          <% end %>
+          <p>Rating track: <%= average_assessment(track.assessments) %></p>
+        </div>
+      </div>
+  <% end %>
+</div>

@@ -1,0 +1,8 @@
+<% case @object.object.class.to_s %>
+<% when 'Playlist' %>
+  $('#new-comment-<%= @object.id %>').empty();
+  $("<%= escape_javascript(render 'new') %>").appendTo("#new-comment-<%= @object.id %>");
+<% when 'Track' %>
+  $('#track-new-comment-<%= @object.id %>').empty();
+  $("<%= escape_javascript(render 'new_tracks_comment') %>").appendTo("#track-new-comment-<%= @object.id %>");
+<% end %>

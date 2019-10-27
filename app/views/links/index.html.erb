@@ -1,7 +1,7 @@
 <%= form_tag('/link', method: :get, remote: true) do %>
   <div class="input-group mb-3">
     <%= label_tag(:source_link, "") %>
-    <%= text_field_tag :source_link, "", class: "form-control", placeholder: t('input.enter_link'), required: true  %>
+    <%= text_field_tag :source_link, "", class: "form-control", placeholder: t('input.enter_link'), required: true, id: 'search-track'  %>
 
     <div class="input-group-append">
       <%= submit_tag(t('input.send'), class: "btn btn-outline-secondary") %>
@@ -10,4 +10,11 @@
 <% end %>
 
 <div id="show_div">
+  <%= render 'instruction' %>
+</div>
+
+<div class="popular">
+  <%= render 'list_tracks' %>
+
+  <%= render 'top_playlists' %>
 </div>

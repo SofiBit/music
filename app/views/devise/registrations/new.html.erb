@@ -7,7 +7,7 @@
 
     <div class="form-group input-group">
        <%= label_tag(:first_name, "") %><br/>
-       <%= f.text_field :first_name, class: "form-control", placeholder: t('sign_up.first_name') %>
+       <%= f.text_field :first_name, autofocus: true, class: "form-control", placeholder: t('sign_up.first_name') %>
     </div>
 
     <div class="form-group input-group">
@@ -17,7 +17,7 @@
 
     <div class="form-group input-group">
       <%= label_tag(:email, "") %><br />
-      <%= f.text_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder: t('login.email') %>
+      <%= f.text_field :email, autocomplete: "email", class: "form-control", placeholder: t('login.email') %>
     </div>
 
     <div class="form-group input-group">

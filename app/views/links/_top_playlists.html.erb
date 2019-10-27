@@ -1,0 +1,12 @@
+<div class="top-10">
+  <h3><%= t('popular.top_playlists')%></h3>
+  <div class="row">
+    <% top_playlists.each do |playlist| %>
+        <div class="col-3 track">
+          <img class="tracks-img" src="<%= playlist.image %>">
+          <%= link_to "#{playlist.title}", user_playlist_path(playlist.user, playlist) %>
+        </div>
+    <% end %>
+  </div>
+</div>
+

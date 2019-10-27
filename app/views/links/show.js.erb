@@ -1,1 +1,6 @@
+$('#show_div').empty();
 $("<%= escape_javascript(render 'show') %>").appendTo("#show_div");
+
+<% if current_user %>
+  getStars(<%= Track.find_track(@result).id %>, <%= current_user.id %>);
+<% end %>

@@ -1,0 +1,35 @@
+<div class="card bg-light">
+<article class="card-body mx-auto" style="max-width: 400px;">
+	<h4 class="card-title mt-3 text-center">Edit profile</h4>
+
+  <%= form_with model: @user, local: true do |form| %>
+    <div class="form-group input-group">
+       <%= form.text_field :first_name, autofocus: true, class: "form-control" %>
+    </div>
+
+    <div class="form-group input-group">
+       <%= form.text_field :last_name, class: "form-control" %>
+    </div>
+
+    <div class="form-group input-group">
+       <%= form.text_field :nickname, class: "form-control", placeholder: 'Nickname' %>
+    </div>
+
+    <div class="form-group input-group">
+       <%= form.text_field :date_birthday, type: 'date', class: "form-control", placeholder: 'Date Burthday' %>
+    </div>
+
+    <div class="form-group input-group">
+       <%= form.text_field :address, class: "form-control", placeholder: 'Address' %>
+    </div>
+
+    <div class="form-group input-group">
+      <%= form.file_field :avatar, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.submit 'Save', class: "btn btn-primary btn-block" %>
+    </div>
+  <% end %>
+</article>
+</div>

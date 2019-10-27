@@ -1,0 +1,7 @@
+<div id="button-public-private-track">
+  <% if private_for_playlist?(@track, @playlist) %>
+    <button onclick="revealTrack(<%= track_playlist(@track, @playlist).id %>)">Reveal Track</button>
+  <% else %>
+    <button onclick="stashTrack(<%= track_playlist(@track, @playlist).id %>)">Stash Track</button>
+  <% end %>
+</div>

@@ -1,0 +1,35 @@
+<% if owner?(current_user, @playlist) %>
+  <%= render 'tags/new' %>
+
+  <div class="playlists-tags">
+    <% @playlist.tags.each do |tag| %>
+      <%= tag.name %>
+    <% end %>
+  </div>
+  <div id="button-public-private-playlist">
+    <% if @playlist.private? %>
+      <button onclick="makePublic(<%= @playlist.id %>)">Make public</button>
+    <% else %>
+      <button onclick="makePrivate(<%= @playlist.id %>)">Make private</button>
+    <% end %>
+  </div>
+<% end %>
+
+<%= render 'tracks' %>
+
+<% unless owner?(current_user, @playlist) %>
+  <% if current_user.playlists_by_friends.include?(@playlist)%>
+    <div id="button_playlist">
+      <%= render 'playlist_subscriptions/create' %>
+    </div>
+  <% else %>
+    <div id="button_playlist">
+      <%= render 'playlist_subscriptions/destroy' %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class: "playlist-stars">
+  <%= render 'shared/stars', resource: @playlist %>
+</div>
+<%= render 'comments' %>

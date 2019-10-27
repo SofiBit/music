@@ -1,0 +1,19 @@
+*{
+  box-sizing: border-box;
+}
+.rating {
+  padding: 10;
+  display: flex;
+  margin-bottom: 10px;
+}
+.rating-item {
+  width: 48px;
+  height: 48px;
+  background-image: url("https://img.icons8.com/color/48/000000/star.png");
+  border: 2px solid transparent;
+  cursor: pointer;
+}
+
+.rating-item.active{
+  background-image: url('https://img.icons8.com/color/48/000000/filled-star.png');
+}
