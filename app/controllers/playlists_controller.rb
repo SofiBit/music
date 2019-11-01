@@ -23,6 +23,7 @@ class PlaylistsController < ApplicationController
     check_playlist_image(@playlist)
     if @playlist.save
       respond_to do |format|
+        format.html { redirect_to user_playlist_path(current_user, @playlist)}
         format.js
         format.json  { render 'create' }
       end
@@ -39,13 +40,16 @@ class PlaylistsController < ApplicationController
     redirect_to user_playlists_path(current_user)
   end
 
-  def edit; end
+  def edit
+    respond_to { |format| format.js }
+  end
 
   def update
     @playlist.update(playlist_params)
 
     if @playlist.save
       respond_to do |format|
+        format.html { redirect_to user_playlist_path(current_user, @playlist)}
         format.json { render json: {status: 'success'} }
       end
     else

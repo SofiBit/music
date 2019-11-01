@@ -3,13 +3,14 @@
 require "open-uri"
 
 module SaveTrack
-  def save_track(result)
-    return Track.find_track(result) if Track.already_exist?(result)
-    track = Track.create( artist: result[:info][:artist],
+  def save_track(result, link)
+    track = Track.create( link: link,
+                          artist: result[:info][:artist],
                           name: result[:info][:name],
                           album: result[:info][:album],
                           release_date: result[:info][:release_date],
-                          provider_links: result[:links].to_json )
+                          provider_links: result[:links].to_json
+                        )
     add_img(track)
   end
 

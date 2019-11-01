@@ -32,18 +32,6 @@ module ViewHelper
     track.adding_track_to_users.count
   end
 
-  def top_tracks
-    top_tracks = []
-    Track.all.each_with_object(track_count = {}) do |track, count_adding|
-      count_adding[track] = track.adding_track_to_users.count
-    end
-    10.times do
-      top_tracks << track_count.key(track_count.values.max)
-      track_count.delete(track_count.key(track_count.values.max))
-    end
-    top_tracks
-  end
-
   def playlists(current_user, playlists)
     return playlists if current_user.playlists == playlists
 
@@ -51,10 +39,21 @@ module ViewHelper
   end
 
   def user_name(user)
+    return user.nickname if user.nickname.present?
+
     "#{user.first_name} #{user.last_name}"
   end
 
   def find_subscription(user)
     UserSubscription.find_by(subscription: user)
+  end
+
+  def open_chat(current_user, user)
+    return if current_user == user
+
+    room = Room.find_room(current_user, user)
+    return button_to 'open chat', room_path(room), method: :get if room.present?
+
+    button_to 'open chat', rooms_path(room: { name: "#{user_name(current_user)} - #{user_name(@user)}" }, user: @user)
   end
 end

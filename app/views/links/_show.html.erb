@@ -12,16 +12,14 @@
 </div>
 
 <% if current_user %>
-
-<div class="starsAndButton">
-  <%= render 'shared/stars', resource: @track %>
-  <button type="button" class="btn btn-primary btn-lg" onclick="addTrack(<%= current_user.id %>, <%= @track.id %>)">Add track</button>
-  <div><%= t('app.added_track', count: count_adding_track(@track)) %></div>
-</div>
-
+  <div class="starsAndButton">
+    <%= render 'shared/stars', resource: @track %>
+    <button type="button" class="btn btn-primary btn-lg" onclick="addTrack(<%= current_user.id %>, <%= @track.id %>)">Add track</button>
+    <div><%= t('app.added_track', count: count_adding_track(@track)) %></div>
+  </div>
 <% end %>
 
-<% @result[:links].each do |source, link| %>
+<% JSON.parse(@track.provider_links).each do |source, link| %>
   <div class="input-group mb-3">
     <div class="input-group-prepend">
       <span class="input-group-text" id="inputGroupFileAddon01"><%= source %>:</span>
@@ -34,7 +32,7 @@
       </div>
   </div>
 <% end %>
- 
+
 
 <div class="share-buttons">
   <%= share_telegram(@track.provider_links) %>

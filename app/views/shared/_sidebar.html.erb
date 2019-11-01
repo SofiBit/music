@@ -1,14 +1,14 @@
     <div class="border-right sidebar-bg" id="sidebar-wrapper">
-      <div class="sidebar-heading bg-same-dark sidebar-bg">Music Connects</div>
+      <div class="sidebar-heading bg-same-dark sidebar-bg">
+        <%= link_to 'Music Connects', root_path %>
+      </div>
       <div class="list-group list-group-flush text-red">
-        <%= link_to 'Home', root_path, class: "sidebar-bg a-sidebar ", id: "a-sidebar-main-style", onclick: 'clicked(event)' %>
+        <%= link_to 'Home', root_path, class: "sidebar-bg a-sidebar home", id: "a-sidebar-main-style" %>
         <% if current_user %>
-        <%= link_to t('header.my_page'), user_path(current_user), class: "sidebar-bg a-sidebar ", id: "a-sidebar-main-style", onclick: 'clicked(event)' %>
-        <%= link_to t('header.my_tracks'), tracks_path, class: "sidebar-bg a-sidebar ", id: "a-sidebar-main-style", onclick: 'clicked(event)' %>
-        <%= link_to t('header.my_playlists'), user_playlists_path(current_user), class: "sidebar-bg a-sidebar ", id: "a-sidebar-main-style", onclick: 'clicked(event)' %>
-        <%= link_to 'my chats', rooms_path, class: "sidebar-bg a-sidebar ", id: "a-sidebar-main-style", onclick: 'clicked(event)' %>
-        </tr>
-      </table>
+          <%= link_to t('header.my_page'), user_path(current_user), class: "sidebar-bg a-sidebar ", id: "a-sidebar-main-style" %>
+          <%= link_to t('header.my_tracks'), tracks_path, class: "sidebar-bg a-sidebar ", id: "a-sidebar-main-style" %>
+          <%= link_to t('header.my_playlists'), user_playlists_path(current_user), class: "sidebar-bg a-sidebar ", id: "a-sidebar-main-style" %>
+          <%= link_to 'my chats', rooms_path, class: "sidebar-bg a-sidebar", id: "a-sidebar-main-style" %>
         <% end %>
       </div>
     </div>

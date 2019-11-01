@@ -1,0 +1,3 @@
+$("#modalContent").empty();
+$("<%= escape_javascript(render 'edit') %>").appendTo("#modalContent");
+$('#newPlaylistModal').modal({show: true});

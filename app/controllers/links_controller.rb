@@ -9,8 +9,12 @@ class LinksController < ApplicationController
 
   def show
     link = params[:source_link]
-    generate_links_info(link)
-    @track = save_track(@result) if generate_success?(link)
+    if Track.new?(link)
+      generate_links_info(link)
+      @track = save_track(@result, link) if generate_success?(link)
+    else
+      @track = Track.find_track(link)
+    end
     # TODO: @lyrics = GetLyrics.run(artist: @track.artist, track: @track.name)
     respond_to do |format|
       format.js

@@ -1,0 +1,10 @@
+<h3>Playlists</h3>
+<div class="row">
+  <% object.each do |playlist|%>
+    <div class="col-3">
+      <%= link_to controller: "playlists", action: "show", user_id: playlist.user_id, id: playlist.id  do %>
+        <img class="tracks-img" src="<%= playlist.image.url %>">
+      <% end %>
+    </div>
+  <% end %>
+</div>

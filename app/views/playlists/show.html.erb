@@ -1,19 +1,39 @@
-<% if owner?(current_user, @playlist) %>
-  <%= render 'tags/new' %>
+<div class="playlist-page">
+<div class="header-playlist">
+  <div class="header-playlist-image">
+    <img src="<%= @playlist.image %>">
+  </div>
+  <div class="playlist-info">
+    <div class="playlist-title">
+      <%= @playlist.title %>
+    </div>
+    <div class="owner-playlist">
+      <img src="<%= @playlist.user.avatar %>">
+      <%= user_name(@playlist.user) %>
+    </div>
+  </div>
+  <div class="pl-options">
+    <div id="button-public-private-playlist">
+      <% if @playlist.private? %>
+        <button class="btn btn-danger" onclick="makePublic(<%= @playlist.id %>)">Make public</button>
+      <% else %>
+        <button class="btn btn-danger" onclick="makePrivate(<%= @playlist.id %>)">Make private</button>
+      <% end %>
+    </div>
+    <div id="new-tag-button">
+      <%= button_to 'Create tag', new_tag_path, class: 'btn btn-danger', method: :get, params: { playlist_id: @playlist.id },remote: true %>
+    </div>
+    <button class="btn btn-danger" onclick="getPlaylistLink()" >share</button>
+  </div>
+  <div id="new-tags"></div>
+</div>
 
-  <div class="playlists-tags">
-    <% @playlist.tags.each do |tag| %>
-      <%= tag.name %>
-    <% end %>
-  </div>
-  <div id="button-public-private-playlist">
-    <% if @playlist.private? %>
-      <button onclick="makePublic(<%= @playlist.id %>)">Make public</button>
-    <% else %>
-      <button onclick="makePrivate(<%= @playlist.id %>)">Make private</button>
-    <% end %>
-  </div>
-<% end %>
+<div class="playlists-tags">
+  <% @playlist.tags.each do |tag| %>
+    <div class="tag" onclick="clickOnTag('<%= tag.name %>')"><%= tag.name %></div>
+  <% end %>
+</div>
+
 
 <%= render 'tracks' %>
 
@@ -29,7 +49,11 @@
   <% end %>
 <% end %>
 
-<div class: "playlist-stars">
+<div class="playlist-stars">
   <%= render 'shared/stars', resource: @playlist %>
 </div>
-<%= render 'comments' %>
+
+ <div class="comments-wr">
+   <%= render 'comments' %>
+ </div>
+</div>

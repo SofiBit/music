@@ -2,10 +2,9 @@
 
 module AssessmentsHelper
   def average_assessment(assessments)
-    amount = 0
-    assessments.each do |assessment|
-      amount += assessment.stars
-    end
-    amount.to_f / assessments.count
+    return "no rating" if assessments.empty?
+
+    amount = assessments.map(&:stars).inject(&:+)
+    (amount.to_f / assessments.count).round(1)
   end
 end

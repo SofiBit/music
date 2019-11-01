@@ -24,9 +24,9 @@ class AssessmentsController < ApplicationController
 
   def show
     user = User.find(params[:user_id])
-    track = Track.find(params[:track_id])
+    object = model(params[:object_type]).find(params[:object_id])
 
-    if assessment = track.assessments.find_by(user: user)
+    if assessment = Assessment.find_by(track_playlist: object, user: user)
       respond_to { |format| format.json { render json: {status: 'success', stars: assessment.stars} } }
     else
       respond_to { |format| format.json { render json: {status: 'not found'} } }

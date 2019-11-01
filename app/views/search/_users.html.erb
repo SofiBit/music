@@ -1,0 +1,10 @@
+<h3>Profiles</h3>
+<div class="row">
+  <% object.each do |user|%>
+    <div class="col-3">
+      <%= link_to controller: "users", action: "show", id: user.id do %>
+        <img class="result-user" src="<%= user.avatar.url %>">
+      <% end %>
+    </div>
+  <% end %>
+</div>

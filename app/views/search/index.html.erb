@@ -1,0 +1,18 @@
+<div>
+  <% @results.each do |result| %>
+    <% case result.first._index %>
+    <% when "tracks" %>
+      <div class="search-result">
+        <%= render 'tracks', object: result %>
+      </div>
+    <% when "playlists" %>
+      <div class="search-result">
+        <%= render 'playlists', object: result %>
+      </div>
+    <% when "users" %>
+      <div class="search-result">
+        <%= render 'users', object: result %>
+      </div>
+    <% end %>
+  <% end %>
+</div>

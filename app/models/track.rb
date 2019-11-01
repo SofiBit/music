@@ -1,7 +1,7 @@
 class Track < ApplicationRecord
   include Elasticsearch::Model
   include Elasticsearch::Model::Callbacks
-  
+
   mount_uploader :track_image, TrackImageUploader
 
   has_many :adding_track_to_users
@@ -23,12 +23,24 @@ class Track < ApplicationRecord
     end
   end
 
-  def self.find_track(result)
-    find_by(artist: result[:info][:artist], name: result[:info][:name])
+  def self.find_track(link)
+    track = find_by(link: link.to_s)
+    return track if track.present?
+
+    Track.all.select do |track|
+      JSON.parse(track.provider_links).values.include?(link.to_s)
+    end.first
   end
 
-  def self.already_exist?(result)
-    track = find_track(result)
+  def self.already_exist?(link)
+    track = Track.find_track(link.to_s)
     track.present?
+  end
+
+  def self.new?(link)
+    return true if Track.first.nil?
+
+    track = Track.find_track(link.to_s)
+    track.nil?
   end
 end

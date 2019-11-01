@@ -1,4 +1,4 @@
-<div class="card bg-light">
+<div class="card form-bg">
 <article class="card-body mx-auto" style="max-width: 400px;">
   <h4 class="card-title mt-3 text-center"><%= t('login.h') %></h4>
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
@@ -20,7 +20,7 @@
     <% end %>
 
     <div class="form-group">
-      <%= f.submit t('links.log'), class: "btn btn-lg btn-primary btn-block"%>
+      <%= f.submit t('links.log'), class: "btn bg-button btn-block"%>
     </div>
   <% end %>
 

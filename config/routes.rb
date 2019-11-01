@@ -2,12 +2,19 @@
 
 Rails.application.routes.draw do
   devise_for :users, path_names: { sign_in: :login, sign_out: :logout},
-                    controllers: { omniauth_callbacks: "callbacks" }
+                    controllers: { omniauth_callbacks: "callbacks" },
+                    controllers: { registrations: 'registrations' }
   ActiveAdmin.routes(self)
 
   root 'links#index'
 
-  resources :search, only: %i[index]
+  resources :search, only: %i[index show] do
+    collection do
+      get :tracks
+      get :playlists
+      get :profiles
+    end
+  end
   resources :links, only: %i[index]
   resources :tracks, only: %i[index show update]
   resources :users, only: %i[show edit update] do
@@ -20,11 +27,10 @@ Rails.application.routes.draw do
   resources :adding_track_to_users, only: %i[new create destroy]
   resources :assessments, only: %i[index create destroy]
   resources :comments
-  resources :tags, only: %i[index create destroy]
+  resources :tags
   resources :rooms
   resources :room_messages
   resources :user_subscriptions, only: %i[create destroy]
-  resources :tags
 
   get '/assessment', to: 'assessments#show'
   get '/link', to: 'links#show'

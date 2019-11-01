@@ -1,2 +1,3 @@
-$('#button-create').empty();
-$("<%= escape_javascript(render 'new') %>").appendTo("#button-create");
+$("#modalContent").empty();
+$("<%= escape_javascript(render 'new') %>").appendTo("#modalContent");
+$('#newPlaylistModal').modal({show: true});

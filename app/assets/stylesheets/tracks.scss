@@ -5,8 +5,8 @@
 
 .tracks-playlist{
   margin: 5px;
-  width: 150px;
-  height: 150px;
+  width: 50px;
+  height: 50px;
   border-radius: 100px;
 }
 
@@ -26,7 +26,7 @@
 }
 
 .top-10{
-  padding-bottom: 30px; 
+  padding-bottom: 30px;
 }
 
 .top-10 a {
@@ -44,4 +44,10 @@ h3 {
 .share-buttons {
   margin: 0 auto;
   text-align: center;
+}
+
+.tracks-img {
+  width: 264px;
+  height: 264px;
+  border-radius: 10px;
 }

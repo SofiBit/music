@@ -10,10 +10,11 @@ class Playlist < ApplicationRecord
   has_many :adding_tracks, dependent: :destroy
   has_many :tracks, through: :adding_tracks
   has_many :playlist_subscriptions, dependent: :destroy
-  has_many :subscribers, through: :playlist_subscriptions, source: :user
+  has_many :subscribers, through: :playlist_subscriptions, source: :user, dependent: :destroy
   has_many :comments, as: :object, dependent: :destroy
   has_many :assessment, as: :track_playlist, dependent: :destroy
-  has_and_belongs_to_many :tags
+  has_and_belongs_to_many :tags, after_add:    [ lambda { |a,c| a.__elasticsearch__.index_document } ],
+                                after_remove: [ lambda { |a,c| a.__elasticsearch__.index_document } ]
 
   after_create_commit { create_notice_about_new_playlist(user, self) }
 
@@ -25,7 +26,16 @@ class Playlist < ApplicationRecord
     mappings dynamic: false do
       indexes :title, type: :text, analyzer: :english
       indexes :private, type: :boolean
+      indexes :tags do
+        indexes :name
+      end
     end
+  end
+
+  def as_indexed_json(options={})
+    self.as_json(
+      include: { tags: { only: :name} }
+    )
   end
 
   def self.search_public(query)
@@ -36,7 +46,7 @@ class Playlist < ApplicationRecord
          {
            multi_match: {
              query: query,
-             fields: [:title, :user_id],
+             fields: [:title],
              fuzziness: 'auto',
              lenient: 'true'
            }

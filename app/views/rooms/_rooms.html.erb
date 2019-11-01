@@ -1,9 +1,3 @@
-<div class="mb-3">
-  <%= link_to new_room_path, class: 'btn btn-primary' do %>
-    Create a room
-  <% end %>
-</div>
-
 <% if current_user.rooms.present? %>
   <nav class="nav flex-column">
     <% current_user.rooms.each do |room| %>

@@ -1,0 +1,21 @@
+<div class="modal-header">
+<h4 class="modal-title" id="myModalLabel">Create playlist</h4>
+<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+</button>
+</div>
+  <div class="modal-body" id="modal-body">
+    <%= form_with model: @playlist, local: true do |form| %>
+      <div class="row">
+        <div class="set-playlist-image col-3">
+          <label for="playlist_image" class="preview" alt="Image preview..">
+          <%= form.file_field :image, onchange: "previewFile()" %>
+        </div>
+
+        <div class="col-3">
+          <%= form.text_field :title, placeholder: 'Title' %>
+        </div>
+      </div>
+    <%= form.submit 'Send', class: 'btn btn-primary' %>
+  <% end %>
+</div>

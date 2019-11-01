@@ -6,16 +6,16 @@ function createAssessment(user_id, type, id,  stars) {
   });
 }
 
-function getStars(track_id, user_id) {
+function getStars(object_id, object_type, user_id) {
   $.ajax({
     url: 'http://localhost:3000/assessment.json',
     type: 'get',
-    data: `track_id=${track_id}&user_id=${user_id}`,
+    data: `object_id=${object_id}&object_type=${object_type}&user_id=${user_id}`,
     success: function(response) {
       if(response.status == 'success') {
-        starsBehavior(response.stars, track_id);
+        starsBehavior(response.stars, object_id);
       } else {
-        starsBehavior(stars = 0, track_id);
+        starsBehavior(stars = 0, object_id);
       }
     }
   });

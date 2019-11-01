@@ -1,0 +1,15 @@
+<div class="top-10">
+  <h3><%= t("popular.top_tracks") %></h3>
+  <div class="row">
+    <% top_tracks.each do |track| %>
+      <% if track.present? %>
+        <div class="col-3 track">
+          <%= link_to track_path(track) do %>
+            <img class="tracks-img" src="<%= track.track_image %>">
+            <p><%= track.artist %> - <%= track.name %></p>
+          <% end %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>

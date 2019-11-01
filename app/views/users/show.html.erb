@@ -9,9 +9,9 @@
   <%= @user.date_birthday %>
 </div>
 
-<%= link_to 'edit', edit_user_path(@user) %>
 <%= link_to t('app.playlists'), user_playlists_path(@user) %>
-<%= button_to 'open chat', rooms_path(room: { name: "#{user_name(current_user)} - #{user_name(@user)}" }, user: @user) %>
+
+<%= open_chat(current_user, @user) %>
 
 <% unless current_user == @user %>
   <% if current_user.following.include?(@user) %>
@@ -24,21 +24,3 @@
     </div>
   <% end %>
 <% end %>
-
-<div class="users">
-  <div class="followers">
-    <span>Followers:</span>
-    <% @user.followers.each do |follower| %>
-      <%= follower.first_name %>
-      <img src="<%= follower.avatar %>" class="avatar-users">
-    <% end %>
-  </div>
-
-  <div class="following">
-    <span>Following:</span>
-    <% @user.following.each do |user| %>
-      <%= user.first_name %>
-      <img src="<%= user.avatar %>" class="avatar-users">
-    <% end %>
-  </div>
-</div>

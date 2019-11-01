@@ -1,7 +1,7 @@
 <% case @object.class.to_s %>
 <% when 'Playlist' %>
   $('#comment-form-<%= @object.id %>')[0].reset();
-  $("<%= escape_javascript(render 'create') %>").appendTo("#comments");
+  $("<%= escape_javascript(render 'create') %>").appendTo("#comment-new");
 <% when 'Track' %>
   $('#track-comment-form-<%= @object.id %>')[0].reset();
   $("<%= escape_javascript(render 'create_tracks_comment') %>").appendTo("#track-comments");

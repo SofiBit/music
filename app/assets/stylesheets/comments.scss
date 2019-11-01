@@ -1,7 +1,6 @@
 .all-comments {
   margin: 30px;
 }
-
 textarea {
   min-height: 30px;
   overflow: hidden;
@@ -10,8 +9,38 @@ textarea {
   resize: none;
   width:50%;
 }
-
 .nested-comments {
   width: 50%;
   padding-left: 20px;
+}
+.comments-wr {
+  background-color: #23232d;
+  padding-bottom: 100px;
+  color: white;
+}
+
+#new-comment textarea {
+  background-color: #2E3542;
+  color: white;
+}
+#new-comment {
+  padding-bottom: 30px;
+}
+#comments img {
+  float: left;
+  width: 25px;
+  height: 25px;
+  border-radius: 100px;
+}
+
+.bg-comment {
+  background-color: #2E3542!important;
+}
+
+.each-comment {
+  padding-bottom: 20px;
+}
+
+.comment-avatar-user {
+  float: left;
 }

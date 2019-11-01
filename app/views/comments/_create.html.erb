@@ -1,10 +1,11 @@
-<div class="comment"><%= user_name(@comment.user) %> : <%= @comment.body %></div>
-<%= link_to 'reply', new_comment_path(object_id: @comment.id, object_type: @comment.class), remote: true %> |
-<%= link_to 'delete', comment_path(@comment), method: :delete, remote: true %>
+<div class="comment-avatar-user"><img src="<%= @comment.user.avatar %>"></div>
 
-<div class="nested-comments">
-  <div id="comments-on-comment-<%= @comment.id %>">
+<li class="list-group-item bg-comment">
+  <div class="comment-body-body">
+    <div id="comment-<%= @comment.id %>">
+      <div class="comment-user">
+        <%= user_name(@comment.user) %>
+      </div>
+      <div class="comment-body"><%= @comment.body %></div>
   </div>
-  <div id="new-comment-<%= @comment.id %>"></div>
-</div>
-<hr>
+</li>
