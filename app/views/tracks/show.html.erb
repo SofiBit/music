@@ -22,8 +22,8 @@
 
   <% JSON.parse(@track.provider_links).each do |source, link| %>
     <div class="input-group mb-3">
-      <div class="input-group-prepend">
-        <span class="input-group-text" id="inputGroupFileAddon01"><%= source %>:</span>
+      <div class="input-group-prepend source_image">
+        <%= image_tag asset_path "#{source}.png" %>
       </div>
 
       <input type="text" class="form-control" value="<%= link %>" id="<%= source %>" readonly="">

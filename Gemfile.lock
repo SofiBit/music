@@ -1,5 +1,7 @@
-PATH
-  remote: /home/sofia/Desktop/internship/ror_project/euterpe
+GIT
+  remote: https://github.com/vmakoed/euterpe.git
+  revision: 6e90de2fbb8d0a7f2c3d0ce028c293971ed42d1e
+  branch: add_new_services
   specs:
     euterpe (0.1.0)
       activesupport (~> 5.2, >= 5.2.3)

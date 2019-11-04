@@ -9,7 +9,7 @@ class Playlist < ApplicationRecord
 
   has_many :adding_tracks, dependent: :destroy
   has_many :tracks, through: :adding_tracks
-  has_many :playlist_subscriptions, dependent: :destroy
+  has_many :playlist_subscriptions, dependent: :nullify
   has_many :subscribers, through: :playlist_subscriptions, source: :user, dependent: :destroy
   has_many :comments, as: :object, dependent: :destroy
   has_many :assessment, as: :track_playlist, dependent: :destroy

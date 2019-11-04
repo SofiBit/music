@@ -27,20 +27,37 @@ textarea {
   padding-bottom: 30px;
 }
 #comments img {
-  float: left;
   width: 25px;
   height: 25px;
   border-radius: 100px;
 }
-
 .bg-comment {
-  background-color: #2E3542!important;
+  background-color: #2E3542;
+  border-radius: 10px;
 }
-
 .each-comment {
   padding-bottom: 20px;
 }
-
+.comment {
+  padding-bottom: 20px;
+}
+.comment-message {
+  border-radius: 3px;
+  margin-left: 52px;
+  padding: 10px;
+  position: relative;
+}
 .comment-avatar-user {
+  width: 100px;
   float: left;
+}
+
+.comment-options a {
+  text-decoration: none;
+  color: #ef5466;
+}
+
+.comment-options a:hover {
+  color: #ef5466;
+  border-bottom: 1px solid #ef5466;
 }

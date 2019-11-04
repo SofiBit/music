@@ -7,7 +7,7 @@ function addTrack(user_id, track) {
        if(response.status == 'ok') {
          getPlaylists(user_id, track);
        } else {
-         alert(response.message)
+         showMessage(response.message);
        }
     }
   });
@@ -79,7 +79,7 @@ function addPlaylist(track, playlist) {
     data: `track=${track}&playlist=${playlist}`,
     success: function(response) {
       document.getElementById(playlist).style.color = 'green';
-      alert(response.message);
+      showMessage(response.message);
     }
   });
 }

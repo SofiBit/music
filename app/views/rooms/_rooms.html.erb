@@ -1,7 +1,7 @@
 <% if current_user.rooms.present? %>
   <nav class="nav flex-column">
     <% current_user.rooms.each do |room| %>
-      <%= link_to room.name, room_path(room), class: 'nav-link room-nav-link' %>
+      <%= link_to name_room(room, current_user), room_path(room), class: 'nav-link room-nav-link' %>
     <% end %>
   </nav>
 <% else %>

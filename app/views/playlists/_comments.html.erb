@@ -11,36 +11,32 @@
     <% end %>
   </div>
   <div id="comments">
-    <ul class="list-group">
-      <div id="comment-new"></div>
+      <div id="comment-new" class="comment"></div>
     <% @playlist.comments.order('created_at asc').to_a.each do |comment| %>
-      <div class="comment-avatar-user"><img src="<%= comment.user.avatar %>"></div>
+      <div id="comment-<%= comment.id %>" class="comment">
+        <div class="comment-avatar-user"><img src="<%= comment.user.avatar %>"></div>
 
-      <li class="list-group-item bg-comment">
-      <div class="comment-body-body">
-        <div id="comment-<%= comment.id %>">
-          <div class="comment-user">
-            <%= user_name(comment.user) %>
-          </div>
-          <div class="comment-body"><%= comment.body %></div>
-          <div class="comment-options">
-          <% if current_user == comment.user %>
-            <%= link_to 'delete', comment_path(comment), method: :delete, remote: true %>
-          <% end %>
-          <%= link_to 'reply', new_comment_path(object_id: comment.id, object_type: comment.class), remote: true %> |
-          </div>
-          <div class="nested-comments">
-            <div id="comments-on-comment-<%= comment.id %>">
-              <% comment.comments.each do |comment| %>
-              <div class="comment-<%= comment.id %>"><%= user_name(comment.user) %> : <%= comment.body %></div>
-              <% end %>
+        <div class="comment-message bg-comment">
+            <div class="comment-user">
+              <%= user_name(comment.user) %>
             </div>
-            <div id="new-comment-<%= comment.id %>"></div>
-          </div>
+            <div class="comment-body"><%= comment.body %></div>
+            <div class="comment-options">
+            <% if current_user == comment.user %>
+              <%= link_to 'delete', comment_path(comment), method: :delete, remote: true %>|
+            <% end %>
+            <%= link_to 'reply', new_comment_path(object_id: comment.id, object_type: comment.class), remote: true %>
+            </div>
+            <div class="nested-comments">
+              <div id="comments-on-comment-<%= comment.id %>">
+                <% comment.comments.each do |comment| %>
+                <div class="comment-<%= comment.id %>"><%= user_name(comment.user) %> : <%= comment.body %></div>
+                <% end %>
+              </div>
+              <div id="new-comment-<%= comment.id %>"></div>
+            </div>
+        </div>
       </div>
-      </div>
-    </li>
     <% end %>
-    </ul>
   </div>
 </div>

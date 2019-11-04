@@ -21,6 +21,9 @@
 }
 
 .show-notifications {
+  position: absolute;
+  top: 50px;
+  right: 20px;
   overflow: scroll;
   width: 300px;
   height: 500px;

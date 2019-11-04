@@ -15,6 +15,7 @@ module ViewHelper
     provider_links = JSON.parse(result)
     array = []
     provider_links.each do |provider, song|
+      song.gsub!(/&.+/, '')
       array << "#{provider.capitalize.gsub(/[_]/, ' ')}:%20#{song}"
     end
     array.join("%0A")
