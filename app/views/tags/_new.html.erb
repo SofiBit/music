@@ -1,5 +1,5 @@
 <%= form_tag('/tags', method: :post) do %>
-  <%= text_field_tag :tags, '', class: "form-control", placeholder: 'Enter tags' %>
+  <%= text_field_tag :tags, '', class: "form-control", placeholder: t('playlist.enter_tags') %>
   <%= hidden_field_tag :playlist, @playlist.id %>
-  <%= submit_tag 'submit' %>
+  <%= submit_tag t("input.send") %>
 <% end %>

@@ -1,6 +1,6 @@
 <div class="comment"><%= user_name(@comment.user) %> : <%= @comment.body %></div>
-<%= link_to 'reply', new_comment_path(object_id: @comment.id, object_type: @comment.class), remote: true %> |
-<%= link_to 'delete', comment_path(@comment), method: :delete, remote: true %>
+<%= link_to t('comment.reply'), new_comment_path(object_id: @comment.id, object_type: @comment.class), remote: true %> |
+<%= link_to t('comment.delete'), comment_path(@comment), method: :delete, remote: true %>
 
 <div class="nested-comments">
   <div id="track-comments-on-comment-<%= @comment.id %>">

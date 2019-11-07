@@ -9,7 +9,7 @@ class LinksController < ApplicationController
 
   def show
     link = params[:source_link]
-    if Track.new?(link)
+    if Track.exist_track?(link)
       generate_links_info(link)
       @track = save_track(@result, link) if generate_success?(link)
     else

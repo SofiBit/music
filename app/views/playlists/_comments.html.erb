@@ -1,4 +1,4 @@
-<h3>Comments: </h3>
+<h3><%= t("comment.comments") %></h3>
 
 <div class ="all-comments">
   <div id="new-comment">
@@ -23,9 +23,9 @@
             <div class="comment-body"><%= comment.body %></div>
             <div class="comment-options">
             <% if current_user == comment.user %>
-              <%= link_to 'delete', comment_path(comment), method: :delete, remote: true %>|
+              <%= link_to t("comment.delete"), comment_path(comment), method: :delete, remote: true %>|
             <% end %>
-            <%= link_to 'reply', new_comment_path(object_id: comment.id, object_type: comment.class), remote: true %>
+            <%= link_to t("comment.reply"), new_comment_path(object_id: comment.id, object_type: comment.class), remote: true %>
             </div>
             <div class="nested-comments">
               <div id="comments-on-comment-<%= comment.id %>">

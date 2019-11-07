@@ -1,5 +1,5 @@
 <div class="comments-wr">
-  <h3>Comments:</h3>
+  <h3><%= t('comment.comments') %></h3>
 
   <div class ="all-comments">
     <div id="new-comment">
@@ -18,8 +18,8 @@
         <div id="comment-<%= comment.id %>">
           <div class="comment-body"><%= user_name(comment.user) %> : <%= comment.body %></div>
           <% if current_user == comment.user %>
-            <%= link_to 'reply', new_comment_path(object_id: comment.id, object_type: comment.class), remote: true %> |
-            <%= link_to 'delete', comment_path(comment), method: :delete, remote: true %>
+            <%= link_to t('comment.reply'), new_comment_path(object_id: comment.id, object_type: comment.class), remote: true %> |
+            <%= link_to t('comment.delete'), comment_path(comment), method: :delete, remote: true %>
           <% end %>
         <div class="nested-comments">
           <div id="track-comments-on-comment-<%= comment.id %>">

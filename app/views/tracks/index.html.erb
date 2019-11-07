@@ -1,4 +1,6 @@
-<h3>My tracks</h3>
+<%= render_if_page_nil(@tracks) %>
+
+<h3><%= t('header.my_tracks')%></h3>
 <div class="row">
   <% @tracks.reverse.each do |track| %>
       <div class="col-3 track">
@@ -6,7 +8,7 @@
           <img class="tracks-img" src="<%= track.track_image %>">
           <p><%= track.artist %> - <%= track.name %></p>
         <% end %>
-        <button class="btn btn-secondary btn-sm" onclick="getPlaylists(<%= current_user.id %>, <%= track.id %>)">Select playlist</button><br>
+        <button class="btn btn-secondary btn-sm" onclick="getPlaylists(<%= current_user.id %>, <%= track.id %>)"><%= t("playlist.choose") %></button><br>
       </div>
   <% end %>
 </div>

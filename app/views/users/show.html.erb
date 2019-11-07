@@ -24,3 +24,12 @@
     </div>
   <% end %>
 <% end %>
+
+<div class="album py-5 bg-black">
+  <div class="container">
+
+    <div class="row" id="new-playlist">
+      <%= render playlists(current_user, @user.playlists) %>
+    </div>
+  </div>
+</div>

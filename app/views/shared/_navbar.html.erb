@@ -23,9 +23,12 @@
                   <img src="<%= current_user.avatar %>" class="avatar">
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                  <%= link_to 'Edit profile', edit_user_path(current_user), class: "dropdown-item" %>
+                  <%= link_to t('app.edit_profile'), edit_user_path(current_user), class: "dropdown-item" %>
                   <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="#">Something else here</a>
+                  <div class="dropdown-item">
+                    <%= link_to t("app.ru"), { locale: :ru } %>
+                    <%= link_to t("app.en"), { locale: :en } %>
+                  </div>
                 </div>
               </li>
             <% else %>

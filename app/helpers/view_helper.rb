@@ -53,8 +53,14 @@ module ViewHelper
     return if current_user == user
 
     room = Room.find_room(current_user, user)
-    return button_to 'open chat', room_path(room), method: :get if room.present?
+    return button_to t('app.open_chat'), room_path(room), method: :get if room.present?
 
-    button_to 'open chat', rooms_path(room: { name: "#{user_name(current_user)} - #{user_name(@user)}" }, user: @user)
+    button_to t('app.open_chat'), rooms_path(room: { name: "#{user_name(current_user)} - #{user_name(@user)}" }, user: @user)
+  end
+
+  def render_if_page_nil(page)
+    return unless page.empty?
+
+    render 'links/top_tracks'
   end
 end

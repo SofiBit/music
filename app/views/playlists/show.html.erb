@@ -13,17 +13,19 @@
     </div>
   </div>
   <div class="pl-options">
-    <div id="button-public-private-playlist">
-      <% if @playlist.private? %>
-        <button class="btn btn-danger" onclick="makePublic(<%= @playlist.id %>)">Make public</button>
-      <% else %>
-        <button class="btn btn-danger" onclick="makePrivate(<%= @playlist.id %>)">Make private</button>
-      <% end %>
-    </div>
-    <div id="new-tag-button">
-      <%= button_to 'Create tag', new_tag_path, class: 'btn btn-danger', method: :get, params: { playlist_id: @playlist.id },remote: true %>
-    </div>
-    <button class="btn btn-danger" onclick="getPlaylistLink()" >share</button>
+    <% if owner?(current_user, @playlist) %>
+      <div id="button-public-private-playlist">
+        <% if @playlist.private? %>
+          <button class="btn btn-danger" onclick="makePublic(<%= @playlist.id %>)"><%= t('app.make_public') %></button>
+        <% else %>
+          <button class="btn btn-danger" onclick="makePrivate(<%= @playlist.id %>)"><%= t('app.make_private') %></button>
+        <% end %>
+      </div>
+      <div id="new-tag-button">
+        <%= button_to t('playlist.create_tags'), new_tag_path, class: 'btn btn-danger', method: :get, params: { playlist_id: @playlist.id },remote: true %>
+      </div>
+    <% end %>
+    <button class="btn btn-danger" onclick="getPlaylistLink()"><%= t('playlist.share') %></button>
   </div>
   <div id="new-tags"></div>
 </div>

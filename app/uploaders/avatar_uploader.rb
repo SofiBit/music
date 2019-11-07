@@ -1,4 +1,5 @@
 class AvatarUploader < CarrierWave::Uploader::Base
+  # include Cloudinary::CarrierWave
   storage :file
 
   def store_dir

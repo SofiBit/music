@@ -2,6 +2,7 @@
   <%= form_tag('/link', method: :get, remote: true) do %>
     <div class="input-group mb-3">
       <%= label_tag(:source_link, "") %>
+      <%= hidden_field_tag :locale, params[:locale] %>
       <%= text_field_tag :source_link, "", class: "form-control", placeholder: t('input.enter_link'), required: true, id: 'search-track'  %>
 
       <div class="input-group-append">

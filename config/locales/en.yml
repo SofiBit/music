@@ -7,6 +7,9 @@ en:
     my_notice: My notice
     my_page: My page
     my_playlists: My playlists
+    home: Home
+    my_chats: My chats
+    edit_profile: Edit profile
   input:
     send: Send
     enter_link: Enter link
@@ -47,7 +50,41 @@ en:
     delete: Delete
     create_playlist: Create new playlist
     added_track: "%{count} users added the track"
-    not_authorize: ""
+    edit: "Edit"
+    choose_file: "Choose file"
+    rating_track: "Rating track"
+    ru: "Russian"
+    en: "English"
+    open_chat: "Open chat"
+    not_found: "Not found"
+    add_track: "Add track"
+    delete_track: "Delete track"
+    make_private: "Make private"
+    make_public: "Make public"
+    rating_track: "Rating track"
   popular:
     top_tracks: "Top tracks"
     top_playlists: "Top playlists"
+  comment:
+    reply: "reply"
+    delete: "delete"
+    comments: "Comments"
+  notifications:
+    create_playlist: "created new playlist"
+  playlist:
+    create: "Create playlist"
+    title: "Title"
+    edit: "Edit playlist"
+    create_tags: "Create tags"
+    enter_tags: "Enter tags"
+    share: "Share"
+    playlists: "Playlists"
+    choose: "Select playlists"
+  notifications:
+    new_playlist: "%{user} created new playlist"
+    subscription_on_user: "%{user} subscribe on you"
+    unsubscription_from_user: "%{user} unsubscribe from you"
+    subscription_on_playlist: "%{user} subscribe on your playlist"
+    unsubscription_from_playlist: "%{user} unsubscribe from your playlist"
+    added_track: "%{user} added a new track"
+    added_track_to_playlist: "%{user} added track to playlist"

@@ -2,12 +2,14 @@
 
 class SearchController < ApplicationController
   include Search
-  
+
   def index
     @results = results
-    respond_to do |format|
-      format.html { render 'index' }
-      format.js
+    if @results.empty?
+      flash[:error] = t('app.not_found')
+      redirect_back fallback_location: root_path
+    else
+      render :index
     end
   end
 end
