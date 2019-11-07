@@ -2,18 +2,6 @@ class Playlist < ApplicationRecord
   include Notifications
   include Elasticsearch::Model
   include Elasticsearch::Model::Callbacks
-
-  after_commit on: [:create] do
-    __elasticsearch__.index_document
-  end
-
-  after_commit on: [:update] do
-    __elasticsearch__.index_document
-  end
-
-  after_commit on: [:destroy] do
-    __elasticsearch__.delete_document
-  end
   
   mount_uploader :image, PlaylistImageUploader
 
@@ -25,8 +13,7 @@ class Playlist < ApplicationRecord
   has_many :subscribers, through: :playlist_subscriptions, source: :user, dependent: :destroy
   has_many :comments, as: :object, dependent: :destroy
   has_many :assessment, as: :track_playlist, dependent: :destroy
-  has_and_belongs_to_many :tags, after_add:    [ lambda { |a,c| a.__elasticsearch__.index_document } ],
-                                after_remove: [ lambda { |a,c| a.__elasticsearch__.index_document } ]
+  has_and_belongs_to_many :tags
 
   after_create_commit { create_notice_about_new_playlist(user, self) }
 
