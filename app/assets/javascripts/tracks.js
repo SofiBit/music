@@ -1,6 +1,6 @@
 function stashTrack(adding_track) {
   $.ajax({
-    url: `http://localhost:3000/adding_tracks/${adding_track}.json`,
+    url: `https://music-connects.herokuapp.com/adding_tracks/${adding_track}.json`,
     type: 'patch',
     data: `adding_track[private]=true`,
     success: function(response) {
@@ -13,7 +13,7 @@ function stashTrack(adding_track) {
 
 function revealTrack(adding_track) {
   $.ajax({
-    url: `http://localhost:3000/adding_tracks/${adding_track}.json`,
+    url: `https://music-connects.herokuapp.com/adding_tracks/${adding_track}.json`,
     type: 'patch',
     data: `adding_track[private]=false`,
     success: function(response) {

@@ -1,6 +1,6 @@
 function addTrack(user_id, track) {
   $.ajax({
-    url: 'http://localhost:3000/adding_track_to_users.json',
+    url: 'https://music-connects.herokuapp.com/adding_track_to_users.json',
     type: 'post',
     data: `track=${track}`,
     success: function(response) {
@@ -14,7 +14,7 @@ function addTrack(user_id, track) {
 }
 
 function getPlaylists(user_id, track){
-  fetch(`http://localhost:3000/users/${user_id}/playlists.json`)
+  fetch(`https://music-connects.herokuapp.com/users/${user_id}/playlists.json`)
   .then(response => response.json())
   .then(commits => createList(commits, track));
 }
@@ -56,7 +56,7 @@ function createInput(track) {
 function createPlaylist(track) {
   let title = document.getElementById("playlist-title").value
   $.ajax({
-    url: 'http://localhost:3000/playlists.json',
+    url: 'https://music-connects.herokuapp.com/playlists.json',
     type: 'post',
     data: `playlist[title]=${title}`,
     success: function(response) {
@@ -74,7 +74,7 @@ function createPlaylist(track) {
 
 function addPlaylist(track, playlist) {
   $.ajax({
-    url: 'http://localhost:3000/adding_tracks.json',
+    url: 'https://music-connects.herokuapp.com/adding_tracks.json',
     type: 'post',
     data: `track=${track}&playlist=${playlist}`,
     success: function(response) {

@@ -1,6 +1,6 @@
 function makePrivate(playlist_id) {
   $.ajax({
-    url: `http://localhost:3000/playlists/${playlist_id}.json`,
+    url: `https://music-connects.herokuapp.com/playlists/${playlist_id}.json`,
     type: 'patch',
     data: `playlist[private]=true`,
     success: function(response) {
@@ -27,7 +27,7 @@ function createButton(playlist_id, make) {
 
 function makePublic(playlist_id) {
   $.ajax({
-    url: `http://localhost:3000/playlists/${playlist_id}.json`,
+    url: `https://music-connects.herokuapp.com/playlists/${playlist_id}.json`,
     type: 'patch',
     data: `playlist[private]=false`,
     success: function(response) {

@@ -1,6 +1,6 @@
 function createAssessment(user_id, type, id,  stars) {
   $.ajax({
-    url: 'http://localhost:3000/assessments.json',
+    url: 'https://music-connects.herokuapp.com/assessments.json',
     type: 'post',
     data: `user_id=${user_id}&object_id=${id}&object_type=${type}&stars=${stars}`
   });
@@ -8,7 +8,7 @@ function createAssessment(user_id, type, id,  stars) {
 
 function getStars(object_id, object_type, user_id) {
   $.ajax({
-    url: 'http://localhost:3000/assessment.json',
+    url: 'https://music-connects.herokuapp.com/assessment.json',
     type: 'get',
     data: `object_id=${object_id}&object_type=${object_type}&user_id=${user_id}`,
     success: function(response) {
