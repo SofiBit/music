@@ -13,40 +13,50 @@
     </div>
   </div>
   <div class="pl-options">
-    <div id="button-public-private-playlist">
-      <% if @playlist.private? %>
-        <button class="btn btn-danger" onclick="makePublic(<%= @playlist.id %>)">Make public</button>
+    <% unless owner?(current_user, @playlist) %>
+      <% if current_user.playlists_by_friends.include?(@playlist)%>
+        <div id="button_playlist" class="button-playlist">
+          <%= render 'playlist_subscriptions/create' %>
+        </div>
       <% else %>
-        <button class="btn btn-danger" onclick="makePrivate(<%= @playlist.id %>)">Make private</button>
+        <div id="button_playlist" class="button-playlist">
+          <%= render 'playlist_subscriptions/destroy' %>
+        </div>
       <% end %>
-    </div>
-    <div id="new-tag-button">
-      <%= button_to 'Create tag', new_tag_path, class: 'btn btn-danger', method: :get, params: { playlist_id: @playlist.id },remote: true %>
-    </div>
-    <button class="btn btn-danger" onclick="getPlaylistLink()" >share</button>
+    <% end %>
+
+    <% if owner?(current_user, @playlist) %>
+      <div id="button-public-private-playlist">
+        <% if @playlist.private? %>
+          <button class="button-playlist btn btn-secondary" onclick="makePublic(<%= @playlist.id %>)"><%= t('app.make_public') %></button>
+        <% else %>
+          <button class="button-playlist btn btn-secondary" onclick="makePrivate(<%= @playlist.id %>)"><%= t('app.make_private') %></button>
+        <% end %>
+      </div>
+      <div id="new-tags"></div>
+
+      <div id="new-tag-button">
+        <%= button_to t('playlist.create_tags'), new_tag_path, class: 'button-playlist btn btn-secondary', method: :get, params: { playlist_id: @playlist.id },remote: true %>
+      </div>
+    <% end %>
+    <button class="button-playlist btn btn-secondary" onclick="getPlaylistLink()"><%= t('playlist.share') %></button>
   </div>
-  <div id="new-tags"></div>
 </div>
 
 <div class="playlists-tags">
   <% @playlist.tags.each do |tag| %>
-    <div class="tag" onclick="clickOnTag('<%= tag.name %>')"><%= tag.name %></div>
+    <span class="tag" onclick="clickOnTag('<%= tag.name %>')"><%= tag.name %> </span>
   <% end %>
 </div>
 
-
-<%= render 'tracks' %>
-
-<% unless owner?(current_user, @playlist) %>
-  <% if current_user.playlists_by_friends.include?(@playlist)%>
-    <div id="button_playlist">
-      <%= render 'playlist_subscriptions/create' %>
-    </div>
-  <% else %>
-    <div id="button_playlist">
-      <%= render 'playlist_subscriptions/destroy' %>
-    </div>
-  <% end %>
+<% if @playlist.tracks.empty? %>
+  <div class="playlist-message">
+    <p><%= t('app.no_tracks_in_playlist') %></p>
+  </div>
+<% else %>
+  <div class="tracks-in-playlist">
+    <%= render 'tracks' %>
+  </div>
 <% end %>
 
 <div class="playlist-stars">

@@ -2,9 +2,11 @@ class RoomMessagesController < ApplicationController
   before_action :find_room
 
   def create
+    message = ChangeMessage.run(message: params.dig(:room_message, :message))
     @room_message = RoomMessage.create user: current_user,
                                        room: @room,
-                                       message: params.dig(:room_message, :message)
+                                       message: message
+   ChatroomJob.perform_later(@room, @room_message)
   end
 
   protected

@@ -37,9 +37,7 @@ class Track < ApplicationRecord
     track.present?
   end
 
-  def self.new?(link)
-    return true if Track.first.nil?
-
+  def self.exist_track?(link)
     track = Track.find_track(link.to_s)
     track.nil?
   end

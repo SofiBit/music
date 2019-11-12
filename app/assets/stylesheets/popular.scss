@@ -1,4 +1,20 @@
 .popular {
   padding-top: 50px;
-  font-family: "HelveticaNeue-UltraLight";
+}
+.top-10 a:hover {
+  text-decoration: none;
+  color: white;
+}
+.tracks-img:hover {
+  box-shadow: 0 0 2px;
+}
+.popular h3 {
+  font-family: helvetica;
+}
+.popular p {
+  font-family: helvetica;
+}
+.top-10 h3 {
+  color: white;
+  font-family: helvetica;
 }

@@ -6,11 +6,15 @@
               <li class="nav-item">
               <div id="bell" class="bell">
                 <% if has_new_notice?(current_user) %>
-                  <%= link_to(image_tag("https://img.icons8.com/plasticine/100/000000/appointment-reminders.png", class: 'img-bell', id: "img_bell"), notifications_path, remote: true, id: 'link-notice') %>
+                  <%= link_to notifications_path, remote: true, id: 'link-notice' do %>
+                    <div id="img-bell"><%= render 'shared/bell_with_notice' %></div>
+                  <% end %>
                   <div id="quantity-notice" class="quantity-notice"><%= new_notifications_count(current_user) %></div>
                 <% else %>
                   <i class="far fa-bell"></i>
-                  <%= link_to(image_tag("https://img.icons8.com/carbon-copy/100/000000/appointment-reminders--v1.png", class: 'img-bell', id: "img_bell"), notifications_path, remote: true, id: 'link-notice') %>
+                  <%= link_to notifications_path, remote: true, id: 'link-notice' do %>
+                    <div id="img-bell"><%= render 'shared/bell_without_notice' %></div>
+                  <% end %>
                   <div id="quantity-notice" class="quantity-notice"></div>
                 <% end %>
                </div>
@@ -23,9 +27,12 @@
                   <img src="<%= current_user.avatar %>" class="avatar">
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                  <%= link_to 'Edit profile', edit_user_path(current_user), class: "dropdown-item" %>
+                  <%= link_to t('app.edit_profile'), edit_user_path(current_user), class: "dropdown-item" %>
                   <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="#">Something else here</a>
+                  <div class="dropdown-item">
+                    <%= link_to t("app.ru"), { locale: :ru } %>
+                    <%= link_to t("app.en"), { locale: :en } %>
+                  </div>
                 </div>
               </li>
             <% else %>

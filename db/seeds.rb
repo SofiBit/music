@@ -38,7 +38,6 @@
     end
   end
 
-
 # create Rooms
 # create SubscriptionOnUser
 # create SubscriptionOnPlaylist

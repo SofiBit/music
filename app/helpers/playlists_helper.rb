@@ -17,4 +17,10 @@ module PlaylistsHelper
   def owner?(user, playlist)
     playlist.user == user
   end
+
+  def playlist_message(owner, user)
+    return t('app.you_have_not_playlist') if user == owner
+
+    "#{user_name(owner)}" + t('app.user_have_not_playlist')
+  end
 end

@@ -8,9 +8,14 @@
       <div class="comment-body"><%= @comment.body %></div>
       <div class="comment-options">
       <% if current_user == @comment.user %>
-        <%= link_to 'delete', comment_path(@comment), method: :delete, remote: true %> |
+        <%= link_to t('comment.delete'), comment_path(@comment), method: :delete, remote: true %> |
       <% end %>
-      <%= link_to 'reply', new_comment_path(object_id: @comment.id, object_type: @comment.class), remote: true %>
+      <%= link_to t('comment.reply'), new_comment_path(object_id: @comment.id, object_type: @comment.class), remote: true %>
+      </div>
+      <div class="nested-comments">
+        <div id="comments-on-comment-<%= @comment.id %>">
+        </div>
+        <div id="new-comment-<%= @comment.id %>"></div>
       </div>
   </div>
 </div>

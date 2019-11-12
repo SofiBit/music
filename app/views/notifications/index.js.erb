@@ -1,2 +1,6 @@
+$('#img-bell').empty();
+$('#img-bell').append('<svg width="24" height="30" viewBox="0 0 24 30" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M21.6625 23.1081H2.33748C1.45767 23.1081 1.00665 22.0538 1.61424 21.4175L3.4465 19.4986C3.80177 19.1265 4 18.6319 4 18.1174V9.62162C4 5.20335 7.58172 1.62162 12 1.62162C16.4183 1.62162 20 5.20334 20 9.62162V18.1174C20 18.6319 20.1982 19.1265 20.5535 19.4986L22.3858 21.4175C22.9934 22.0538 22.5423 23.1081 21.6625 23.1081Z" fill="white" stroke="white"/><path d="M9.5 25.6757H14.5C13.3881 27.5989 10.6119 27.5989 9.5 25.6757Z" fill="white" stroke="white" stroke-width="1.5" stroke-linecap="round"/><ellipse cx="12" cy="2.16216" rx="1.5" ry="2.16216" fill="white"/></svg>');
+$('#quantity-notice').html('');
+
 $("#dropdown-notifications").empty();
 $("<%= escape_javascript(render 'index') %>").appendTo("#dropdown-notifications");

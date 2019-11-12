@@ -14,8 +14,8 @@ class ApplicationController < ActionController::Base
    end
   end
 
-  def default_url_options
-    { locale: I18n.locale }
+  def default_url_options(options = {})
+    { locale: I18n.locale }.merge options
   end
 
   def after_sign_in_path_for(resource)

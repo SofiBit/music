@@ -3,12 +3,26 @@
   height: 50px;
   border-radius: 100px;
 }
-
 .users {
   padding-top: 100px;
 }
-
-.ava img{
+.ava img {
   width: 200px;
   height: 200px;
+  float: left;
+  padding-right: 15px;
+}
+.users-playlists {
+  clear: left;
+}
+.info-user p {
+  color: white;
+}
+.open-chat {
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+.edit-profile {
+  padding-top: 30px;
+  padding-bottom: 30px;
 }

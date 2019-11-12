@@ -15,6 +15,7 @@ function createButton(playlist_id, make) {
   let divButton = document.getElementById('button-public-private-playlist');
   divButton.innerHTML = '';
   let buttonPublic = document.createElement('button');
+  buttonPublic.className = "button-playlist btn btn-secondary";
   let text = document.createTextNode(make);
   buttonPublic.appendChild(text);
   if(make == 'Make public'){

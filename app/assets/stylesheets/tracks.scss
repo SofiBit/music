@@ -2,57 +2,68 @@
   width: 180px;
   height: 180px;
 }
-
 .tracks-playlist{
   margin: 5px;
   width: 50px;
   height: 50px;
   border-radius: 100px;
 }
-
 .info-track {
   float: right;
   right: 100px;
 }
-
 .top-10 img {
   width: 264px;
   height: 264px;
   border-radius: 10px;
 }
-
 .top-10 .track{
   padding: 50px;
 }
-
 .top-10{
   padding-bottom: 30px;
 }
-
 .top-10 a {
   text-decoration: none;
   color: white;
   margin: 0 auto;
   text-align: center;
 }
-
 h3 {
   margin: 0 auto;
   text-align: center;
 }
-
 .share-buttons {
   margin: 0 auto;
   text-align: center;
 }
-
 .tracks-img {
   width: 264px;
   height: 264px;
   border-radius: 10px;
 }
-
 .source_image img{
   width: 64px;
   height: 64px;
+}
+.track-options {
+  padding-left: 100px;
+  padding-right: 70px;
+}
+.tracks-in-playlist {
+  padding-top: 100px;
+}
+.tracks-in-playlist a{
+  text-decoration: none;
+  color: white;
+}
+.tracks-in-playlist a:hover{
+  text-decoration: none;
+  color: white;
+}
+.bt-track {
+  margin: 10px;
+}
+.average-assessment {
+  padding-top: 15px;
 }

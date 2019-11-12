@@ -14,24 +14,32 @@
 <% if current_user %>
   <div class="starsAndButton">
     <%= render 'shared/stars', resource: @track %>
-    <button type="button" class="btn btn-primary btn-lg" onclick="addTrack(<%= current_user.id %>, <%= @track.id %>)">Add track</button>
+    <button type="button" class="btn btn-secondary btn-lg" onclick="addTrack(<%= current_user.id %>, <%= @track.id %>)"><%= t('app.add_track') %></button>
     <div><%= t('app.added_track', count: count_adding_track(@track)) %></div>
   </div>
 <% end %>
 
-<% JSON.parse(@track.provider_links).each do |source, link| %>
-  <div class="input-group mb-3">
-    <div class="input-group-prepend">
-      <span class="input-group-text" id="inputGroupFileAddon01"><%= source %>:</span>
-    </div>
+<div class="result-links">
+  <% JSON.parse(@track.provider_links).each do |source, link| %>
+  <div class="row">
+    <div class="col-1 service-<%= source %>"><%= image_tag asset_path "#{source}.png" %></div>
+    <div class="col-11">
+      <div class="input-group mb-3 link-float">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroupFileAddon01"><%= source %>:</span>
+        </div>
 
-    <input type="text" class="form-control" value="<%= link %>" id="<%= source %>" readonly="">
+        <input type="text" class="form-control" value="<%= link %>" id="<%= source %>" readonly="">
 
-      <div class="input-group-append">
-        <button type="button" class="btn btn-outline-secondary" onclick="copy('<%= source %>')"><%= t('input.copy') %></button><br>
+          <div class="input-group-append">
+            <button type="button" class="btn btn-outline-secondary" onclick="copy('<%= source %>')"><%= t('input.copy') %></button><br>
+          </div>
       </div>
+    </div>
   </div>
-<% end %>
+  <% end %>
+</div>
+
 
 
 <div class="share-buttons">

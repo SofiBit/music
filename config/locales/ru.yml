@@ -7,6 +7,9 @@ ru:
     my_notice: Мои уведомления
     my_page: Моя страница
     my_playlists: Мои плейлисты
+    home: Главная
+    my_chats: Мои переписки
+    edit_profile: Редактировать профиль
   input:
     send: Отправить
     enter_link: Ввести ссылку
@@ -21,6 +24,11 @@ ru:
     first_name: Имя
     last_name: Фамилия
     sign_up: Зарегистрироваться
+  profile:
+    nickname: Никнейм
+    address: Адресс
+    date_birthday: День Рождения
+    email: Почта
   links:
     log: Войти
     sign_up: Регистрация
@@ -47,6 +55,19 @@ ru:
     delete: Удалить
     create_playlist: Создать новый плейлист
     added_track: "%{count} пользователей добавили трек"
+    ru: "Русский"
+    en: "Английский"
+    open_chat: "Открыть переписку"
+    not_found: "Не найдено"
+    add_track: "Добавить трек"
+    delete_track: "Удалить трек"
+    make_private: "Сделать приватным"
+    make_public: "Сделать публичным"
+    rating_track: "Рейтинг трека"
+    you_have_not_playlist: "У вас пока нет плейлистов."
+    user_have_not_playlist: "пока не имеет плейлистов."
+    you_have_not_tracks: "Вы пока не добавили ни одного трека. Вы можете выбрать его из топа треков."
+    no_tracks_in_playlist: "В плейлисте пока нет треков."
   activerecord:
     models:
       playlist: "Плейлист"
@@ -56,3 +77,24 @@ ru:
   popular:
     top_tracks: "Топ треков"
     top_playlists: "Топ плейлистов"
+  comment:
+    reply: "ответить"
+    delete: "удалить"
+    comments: "Комментарии"
+  playlist:
+    create: "Создать плейлист"
+    title: "Название"
+    edit: "Редактировать"
+    create_tags: "Создать теги"
+    enter_tags: "Введите теги"
+    share: "Поделиться"
+    playlists: "Плейлисты"
+    choose: "Выбрать плейлисты"
+  notifications:
+    new_playlist: "%{user} создал новый плейлист"
+    subscription_on_user: "%{user} подписался на вас"
+    unsubscription_from_user: "%{user} отписался от вас"
+    subscription_on_playlist: "%{user} подписался на ваш плейлист"
+    unsubscription_from_playlist: "%{user} отписался от вашего плейлиста"
+    added_track: "%{user} добавил новй трек"
+    added_track_to_playlist: "%{user} добавил новй трек в плейлист"

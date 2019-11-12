@@ -1,19 +1,20 @@
 <div class="tracks-list">
   <% tracks(current_user, @playlist).each do |track| %>
-      <div class="track-in-playlist">
+      <div id="track-in-playlist">
         <div class="track-wr">
-          <img class="tracks-playlist" src="<%= track.track_image %>">
-          <%= track.artist %> - <%= track.name %><br>
+          <%= link_to track_path(track) do %>
+            <img class="tracks-playlist" src="<%= track.track_image %>">
+            <%= track.artist %> - <%= track.name %><br>
+          <% end %>
         </div>
         <div class="btn-group track-options">
           <% if current_user == @playlist.user %>
-            <%= button_to 'delete track', adding_track_path(track.adding_tracks.find_by(playlist: @playlist)), method: :delete, class: 'btn btn-sm btn-outline-secondary' %><br>
-            <button class="btn btn-sm btn-outline-secondary" onclick="getPlaylists(<%= current_user.id %>, <%= track.id %>)">add track</button><br>
+            <%= link_to t('app.delete_track'), adding_track_path(track.adding_tracks.find_by(playlist: @playlist)), method: :delete, remote: true, class: 'btn btn-sm btn-secondary bt-track' %><br>
+            <button class="btn btn-sm btn-secondary bt-track" onclick="getPlaylists(<%= current_user.id %>, <%= track.id %>)"><%= t('app.add_track') %></button><br>
           <% else %>
-            <button class="btn btn-sm btn-outline-secondary" type="button" onclick="addTrack(<%= current_user.id %>, <%= track.id %>)">Add track</button>
-            <div><%= t('app.added_track', count: count_adding_track(track)) %></div>
+            <button class="btn btn-sm btn-secondary bt-track" type="button" onclick="addTrack(<%= current_user.id %>, <%= track.id %>)"><%= t('app.add_track') %></button>
           <% end %>
-          <p>Rating track: <%= average_assessment(track.assessments) %></p>
+          <p class="average-assessment"><%= t('app.rating_track')%>: <%= average_assessment(track.assessments) %></p>
         </div>
         <hr>
       </div>

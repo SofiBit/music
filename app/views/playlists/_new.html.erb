@@ -1,11 +1,13 @@
 <div class="modal-header">
-<h4 class="modal-title" id="myModalLabel">Create playlist</h4>
+<h4 class="modal-title" id="myModalLabel"><%= t("playlist.create") %></h4>
 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
     <span aria-hidden="true">&times;</span>
 </button>
 </div>
   <div class="modal-body" id="modal-body">
-    <%= form_with model: @playlist, local: true do |form| %>
+
+    <%= form_with model: @playlist do |form| %>
+      <%= render 'shared/errors', resource: @playlist %>
       <div class="row">
         <div class="set-playlist-image col-3">
           <label for="playlist_image" class="preview" alt="Image preview..">
@@ -13,9 +15,9 @@
         </div>
 
         <div class="col-3">
-          <%= form.text_field :title, placeholder: 'Title' %>
+          <%= form.text_field :title, placeholder: t("playlist.title") %>
         </div>
     </div>
-    <%= form.submit 'Send', class: 'btn btn-primary' %>
+    <%= form.submit t("input.send"), class: 'btn btn-secondary' %>
     <% end %>
   </div>

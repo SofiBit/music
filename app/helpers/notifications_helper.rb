@@ -14,4 +14,8 @@ module NotificationsHelper
 
     render @notifications
   end
+
+  def translate_notification(notification)
+    t(notification.message, user: user_name(notification.sender))
+  end
 end

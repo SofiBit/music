@@ -1,2 +1,10 @@
-<div class="comment"><%= user_name(@comment.user) %> : <%= @comment.body %></div>
-<hr>
+<div class="nested-comment" id="comment-<%= @comment.id %>">
+  <div class="comment-avatar-user"><img src="<%= @comment.user.avatar %>"></div>
+  <div><%= user_name(@comment.user) %></div>
+  <div class="comment-body"><%= @comment.body %></div>
+  <% if can_delete_comment?(current_user, @comment) %>
+    <div class="comment-options">
+      <%= link_to t("comment.delete"), comment_path(@comment), method: :delete, remote: true %>
+    </div>
+  <% end %>
+</div>

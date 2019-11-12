@@ -15,7 +15,9 @@ textarea {
 }
 .comments-wr {
   background-color: #23232d;
+  margin-top: 100px;
   padding-bottom: 100px;
+  padding-top: 50px;
   color: white;
 }
 
@@ -48,16 +50,29 @@ textarea {
   position: relative;
 }
 .comment-avatar-user {
-  width: 100px;
+  clear: left;
+  width: 35px;
   float: left;
 }
-
+.nested-comment {
+  padding-bottom: 15px;
+}
 .comment-options a {
   text-decoration: none;
   color: #ef5466;
 }
-
 .comment-options a:hover {
   color: #ef5466;
   border-bottom: 1px solid #ef5466;
+}
+.btn-comment-input {
+  margin-left: 92%;
+  margin-top: 10px;
+}
+.comment-options {
+  padding-bottom: 15px;
+}
+.comment-body {
+  width: 70%;
+  word-wrap: break-word;
 }

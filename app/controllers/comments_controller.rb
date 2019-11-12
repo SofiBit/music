@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  include Comments
+  include CommentsHelper
 
   before_action :find_comment, only: %i[edit update destroy]
 
@@ -38,7 +38,7 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    @comment.destroy
+    @comment.destroy if @comment
     respond_to { |format| format.js }
   end
 
@@ -57,6 +57,9 @@ class CommentsController < ApplicationController
 
   def find_comment
     @comment = Comment.find(params[:id])
+    @comment_id = @comment.id
+  rescue
+    @comment_id = params[:id]
   end
 
   def comment_params
