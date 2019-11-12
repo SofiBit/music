@@ -1,16 +1,16 @@
 <% case @object.class.to_s %>
 <% when 'Playlist' %>
   $('#comment-form-<%= @object.id %>')[0].reset();
-  $("<%= escape_javascript(render 'create') %>").appendTo("#comment-new");
+  $("<%= escape_javascript(render 'create') %>").prependTo("#comment-new");
 <% when 'Track' %>
   $('#track-comment-form-<%= @object.id %>')[0].reset();
-  $("<%= escape_javascript(render 'create_tracks_comment') %>").appendTo("#track-comments");
+  $("<%= escape_javascript(render 'create_tracks_comment') %>").prependTo("#track-comment-new");
 <% when 'Comment' %>
   <% if @object.object.is_a?(Playlist) %>
     $('#comment-form-<%= @object.id %>')[0].reset();
     $("<%= escape_javascript(render 'create_nested_comment_playlist') %>").appendTo("#comments-on-comment-<%= @object.id %>");
   <% elsif @object.object.is_a?(Track) %>
-    $('#track-comment-form-<%= @object.id %>')[0].reset();
+    $('#comment-form-<%= @object.id %>')[0].reset();
     $("<%= escape_javascript(render 'create_nested_comment_playlist') %>").appendTo("#track-comments-on-comment-<%= @object.id %>");
   <% end %>
 <% end %>

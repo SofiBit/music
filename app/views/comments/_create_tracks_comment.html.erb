@@ -1,10 +1,21 @@
-<div class="comment"><%= user_name(@comment.user) %> : <%= @comment.body %></div>
-<%= link_to t('comment.reply'), new_comment_path(object_id: @comment.id, object_type: @comment.class), remote: true %> |
-<%= link_to t('comment.delete'), comment_path(@comment), method: :delete, remote: true %>
+<div id="comment-<%= @comment.id %>" class="comment">
+  <div class="comment-avatar-user"><img src="<%= @comment.user.avatar %>"></div>
 
-<div class="nested-comments">
-  <div id="track-comments-on-comment-<%= @comment.id %>">
+  <div class="comment-message bg-comment">
+      <div class="comment-user">
+        <%= user_name(@comment.user) %>
+      </div>
+      <div class="comment-body"><%= @comment.body %></div>
+      <div class="comment-options">
+      <% if current_user == @comment.user %>
+        <%= link_to t('comment.delete'), comment_path(@comment), method: :delete, remote: true %> |
+      <% end %>
+      <%= link_to t('comment.reply'), new_comment_path(object_id: @comment.id, object_type: @comment.class), remote: true %>
+      </div>
+      <div class="nested-comments">
+        <div id="track-comments-on-comment-<%= @comment.id %>">
+        </div>
+        <div id="track-new-comment-<%= @comment.id %>"></div>
+      </div>
   </div>
-  <div id="track-new-comment-<%= @comment.id %>"></div>
 </div>
-<hr>

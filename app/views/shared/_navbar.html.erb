@@ -6,11 +6,15 @@
               <li class="nav-item">
               <div id="bell" class="bell">
                 <% if has_new_notice?(current_user) %>
-                  <%= link_to(image_tag("https://img.icons8.com/plasticine/100/000000/appointment-reminders.png", class: 'img-bell', id: "img_bell"), notifications_path, remote: true, id: 'link-notice') %>
+                  <%= link_to notifications_path, remote: true, id: 'link-notice' do %>
+                    <div id="img-bell"><%= render 'shared/bell_with_notice' %></div>
+                  <% end %>
                   <div id="quantity-notice" class="quantity-notice"><%= new_notifications_count(current_user) %></div>
                 <% else %>
                   <i class="far fa-bell"></i>
-                  <%= link_to(image_tag("https://img.icons8.com/carbon-copy/100/000000/appointment-reminders--v1.png", class: 'img-bell', id: "img_bell"), notifications_path, remote: true, id: 'link-notice') %>
+                  <%= link_to notifications_path, remote: true, id: 'link-notice' do %>
+                    <div id="img-bell"><%= render 'shared/bell_without_notice' %></div>
+                  <% end %>
                   <div id="quantity-notice" class="quantity-notice"></div>
                 <% end %>
                </div>

@@ -1,14 +1,17 @@
 <% if current_user.playlists == @playlists %>
   <div id="button-create" class="create-new-playlist">
-    <%= button_to t('app.create_playlist'), new_playlist_path, method: :get, remote: true, class: "btn btn-primary" %>
+    <%= button_to t('app.create_playlist'), new_playlist_path, method: :get, remote: true, class: "btn btn-secondary" %>
   </div>
 <% end %>
 
-<%= render_if_page_nil(@playlists) %>
+<% if @playlists.empty? %>
+  <div class="playlist-message">
+    <p><%= playlist_message(@user, current_user) %></p>
+  </div>
+<% end %>
 
-<div class="album py-5 bg-black">
+<div class="album py-5 users-playlists">
   <div class="container">
-
     <div class="row" id="new-playlist">
       <%= render playlists(current_user, @playlists) %>
     </div>

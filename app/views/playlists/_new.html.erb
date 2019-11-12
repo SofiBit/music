@@ -5,7 +5,9 @@
 </button>
 </div>
   <div class="modal-body" id="modal-body">
-    <%= form_with model: @playlist, local: true do |form| %>
+
+    <%= form_with model: @playlist do |form| %>
+      <%= render 'shared/errors', resource: @playlist %>
       <div class="row">
         <div class="set-playlist-image col-3">
           <label for="playlist_image" class="preview" alt="Image preview..">
@@ -16,6 +18,6 @@
           <%= form.text_field :title, placeholder: t("playlist.title") %>
         </div>
     </div>
-    <%= form.submit t("input.send"), class: 'btn btn-primary' %>
+    <%= form.submit t("input.send"), class: 'btn btn-secondary' %>
     <% end %>
   </div>

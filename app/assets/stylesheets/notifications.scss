@@ -10,14 +10,17 @@
   height: 40px;
   cursor: pointer;
   outline: none;
+  top: 8px;
 }
 
 .quantity-notice {
   position: absolute;
-  top: 5px;
-  right: 10px;
+  top: 1px;
+  right: 7px;
   font-weight: bold;
-  color: red;
+  color:
+  white;
+  font-size: 0.9em;
 }
 
 .show-notifications {

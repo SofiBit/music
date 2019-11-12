@@ -46,10 +46,24 @@ h3 {
   width: 64px;
   height: 64px;
 }
-.track-options button {
-
-}
 .track-options {
   padding-left: 100px;
   padding-right: 70px;
+}
+.tracks-in-playlist {
+  padding-top: 100px;
+}
+.tracks-in-playlist a{
+  text-decoration: none;
+  color: white;
+}
+.tracks-in-playlist a:hover{
+  text-decoration: none;
+  color: white;
+}
+.bt-track {
+  margin: 10px;
+}
+.average-assessment {
+  padding-top: 15px;
 }

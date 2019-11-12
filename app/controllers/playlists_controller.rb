@@ -7,8 +7,8 @@ class PlaylistsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    user = User.find(params[:user_id])
-    @playlists = user.playlists.all
+    @user = User.find(params[:user_id])
+    @playlists = @user.playlists.all
   end
 
   def show; end

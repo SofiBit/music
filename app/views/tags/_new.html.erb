@@ -1,5 +1,11 @@
-<%= form_tag('/tags', method: :post) do %>
-  <%= text_field_tag :tags, '', class: "form-control", placeholder: t('playlist.enter_tags') %>
-  <%= hidden_field_tag :playlist, @playlist.id %>
-  <%= submit_tag t("input.send") %>
-<% end %>
+<div class="input-tag">
+  <%= form_tag('/tags', method: :post, class: "button-playlist") do %>
+    <div class="input-group mb-3">
+      <%= text_field_tag :tags, '', class: "form-control", placeholder: t('playlist.enter_tags'), required: true %>
+      <%= hidden_field_tag :playlist, @playlist.id %>
+      <div class="input-group-append">
+        <%= submit_tag t("input.send"), class: "btn btn-outline-secondary" %>
+      </div>
+    </div>
+  <% end %>
+</div>

@@ -12,5 +12,10 @@
       <% end %>
       <%= link_to t('comment.reply'), new_comment_path(object_id: @comment.id, object_type: @comment.class), remote: true %>
       </div>
+      <div class="nested-comments">
+        <div id="comments-on-comment-<%= @comment.id %>">
+        </div>
+        <div id="new-comment-<%= @comment.id %>"></div>
+      </div>
   </div>
 </div>

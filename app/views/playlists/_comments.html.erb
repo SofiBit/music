@@ -7,12 +7,12 @@
       <%= form.hidden_field :user_id, value: current_user.id %>
       <%= form.hidden_field :object_id, value: @playlist.id %>
       <%= form.hidden_field :object_type, value: @playlist.class %>
-      <%= submit_tag(t('input.send'), class: "btn btn-outline-secondary") %>
+      <%= submit_tag(t('input.send'), class: "btn btn-light btn-comment-input") %>
     <% end %>
   </div>
   <div id="comments">
-      <div id="comment-new" class="comment"></div>
-    <% @playlist.comments.order('created_at asc').to_a.each do |comment| %>
+      <div id="comment-new"></div>
+    <% @playlist.comments.order('created_at desc').to_a.each do |comment| %>
       <div id="comment-<%= comment.id %>" class="comment">
         <div class="comment-avatar-user"><img src="<%= comment.user.avatar %>"></div>
 
@@ -22,15 +22,24 @@
             </div>
             <div class="comment-body"><%= comment.body %></div>
             <div class="comment-options">
-            <% if current_user == comment.user %>
-              <%= link_to t("comment.delete"), comment_path(comment), method: :delete, remote: true %>|
+            <% if can_delete_comment?(current_user, comment) %>
+              <%= link_to t("comment.delete"), comment_path(comment), method: :delete, remote: true %> |
             <% end %>
             <%= link_to t("comment.reply"), new_comment_path(object_id: comment.id, object_type: comment.class), remote: true %>
             </div>
             <div class="nested-comments">
               <div id="comments-on-comment-<%= comment.id %>">
                 <% comment.comments.each do |comment| %>
-                <div class="comment-<%= comment.id %>"><%= user_name(comment.user) %> : <%= comment.body %></div>
+                <div class="nested-comment" id="comment-<%= comment.id %>">
+                  <div class="comment-avatar-user"><img src="<%= comment.user.avatar %>"></div>
+                  <div><%= user_name(comment.user) %></div>
+                  <div class="comment-body"><%= comment.body %></div>
+                  <% if can_delete_comment?(current_user, comment) %>
+                    <div class="comment-options">
+                      <%= link_to t("comment.delete"), comment_path(comment), method: :delete, remote: true %>
+                    </div>
+                  <% end %>
+                </div>
                 <% end %>
               </div>
               <div id="new-comment-<%= comment.id %>"></div>

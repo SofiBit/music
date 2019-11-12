@@ -30,7 +30,27 @@
 .home-page {
   color: white;
 }
-
 .track a:hover {
   text-decoration: none;
+}
+.info-in-track {
+  display: inline-block;
+  margin-left: 20px;
+}
+.count-user-added-track {
+  color: white;
+}
+.result-links {
+  margin-top: 50px;
+}
+
+.service-spotify img{
+  width: 50px;
+  padding-bottom: 10px;
+}
+.service-apple_music img{
+  width: 50px;
+}
+.service-deezer img{
+  width: 70px;
 }

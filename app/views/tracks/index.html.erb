@@ -1,6 +1,11 @@
-<%= render_if_page_nil(@tracks) %>
+<% if @tracks.present? %>
+  <h3><%= t('header.my_tracks')%></h3>
+<% else %>
+  <div class="playlist-message">
+    <p><%= t('app.you_have_not_tracks') %></p>
+  </div>
+<% end %>
 
-<h3><%= t('header.my_tracks')%></h3>
 <div class="row">
   <% @tracks.reverse.each do |track| %>
       <div class="col-3 track">
@@ -12,3 +17,5 @@
       </div>
   <% end %>
 </div>
+
+<%= render_if_page_nil(@tracks) %>

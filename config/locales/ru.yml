@@ -24,6 +24,11 @@ ru:
     first_name: Имя
     last_name: Фамилия
     sign_up: Зарегистрироваться
+  profile:
+    nickname: Никнейм
+    address: Адресс
+    date_birthday: День Рождения
+    email: Почта
   links:
     log: Войти
     sign_up: Регистрация
@@ -59,6 +64,10 @@ ru:
     make_private: "Сделать приватным"
     make_public: "Сделать публичным"
     rating_track: "Рейтинг трека"
+    you_have_not_playlist: "У вас пока нет плейлистов."
+    user_have_not_playlist: "пока не имеет плейлистов."
+    you_have_not_tracks: "Вы пока не добавили ни одного трека. Вы можете выбрать его из топа треков."
+    no_tracks_in_playlist: "В плейлисте пока нет треков."
   activerecord:
     models:
       playlist: "Плейлист"

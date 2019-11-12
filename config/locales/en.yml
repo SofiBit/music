@@ -24,6 +24,11 @@ en:
     first_name: First name
     last_name: Last name
     sign_up: Sign up
+  profile:
+    nickname: Nickname
+    address: Address
+    date_birthday: Date birthday
+    email: Email
   links:
     log: Log in
     sign_up: Sign up
@@ -62,6 +67,10 @@ en:
     make_private: "Make private"
     make_public: "Make public"
     rating_track: "Rating track"
+    you_have_not_playlist: "You have no playlists yet."
+    user_have_not_playlist: "has no playlists yet."
+    you_have_not_tracks: "You have not added any tracks yet. You can choose a track from top tracks."
+    no_tracks_in_playlist: "No tracks in playlist yet"
   popular:
     top_tracks: "Top tracks"
     top_playlists: "Top playlists"

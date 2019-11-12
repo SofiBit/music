@@ -1,19 +1,25 @@
 <div class="ava">
   <img src="<%= @user.avatar %>">
 </div>
+
 <div class="info-user">
-  <%= @user.first_name %>
-  <%= @user.last_name %>
-  <%= @user.email %>
-  <%= @user.nickname %>
-  <%= @user.date_birthday %>
+  <p><%= t('sign_up.first_name') %>: <%= @user.first_name %></p>
+  <p><%= t('sign_up.last_name') %>: <%= @user.last_name %></p>
+  <p><%= t('profile.email') %>: <%= @user.email %></p>
+  <p><%= t('profile.nickname') %>: <%= @user.nickname %></p>
+  <p><%= t('profile.date_birthday') %>: <%= @user.date_birthday %></p>
 </div>
 
-<%= link_to t('app.playlists'), user_playlists_path(@user) %>
+<% if @user == current_user %>
+  <div class="edit-profile">
+    <%= link_to t('app.edit_profile'), edit_user_path(@user), class: "btn btn-secondary" %>
+  </div>
+<% else %>
 
-<%= open_chat(current_user, @user) %>
+  <div class="open-chat">
+    <%= open_chat(current_user, @user) %>
+  </div>
 
-<% unless current_user == @user %>
   <% if current_user.following.include?(@user) %>
     <div id="subscribe_on_user">
       <%= render 'user_subscriptions/create' %>
@@ -25,11 +31,18 @@
   <% end %>
 <% end %>
 
-<div class="album py-5 bg-black">
-  <div class="container">
-
-    <div class="row" id="new-playlist">
-      <%= render playlists(current_user, @user.playlists) %>
+<% if @user.playlists.empty? %>
+  <div class="playlist-message">
+    <p><%= playlist_message(@user, current_user) %></p>
+  </div>
+<% else %>
+  <div class="album py-5 users-playlists">
+    <div class="container">
+      <div class="row" id="new-playlist">
+        <%= render playlists(current_user, @user.playlists) %>
+      </div>
     </div>
   </div>
-</div>
+<% end %>
+
+<%= render 'playlists/modal' %>

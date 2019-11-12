@@ -1,38 +1,51 @@
-<div class="comments-wr">
-  <h3><%= t('comment.comments') %></h3>
+<h3><%= t("comment.comments") %></h3>
 
-  <div class ="all-comments">
-    <div id="new-comment">
-      <%= form_with model: @track.comments.new, id: "track-comment-form-#{@track.id}" do |form| %>
-        <%= form.text_area :body, id: 'txtarea', spellchek: false, class: 'form-control' %>
-        <%= form.hidden_field :user_id, value: current_user.id %>
-        <%= form.hidden_field :object_id, value: @track.id %>
-        <%= form.hidden_field :object_type, value: @track.class %>
-        <%= submit_tag(t('input.send'), class: "btn btn-outline-secondary") %>
-      <% end %>
-    </div>
-    <div id="track-comments">
-      <% @track.comments.order('created_at asc').to_a.each do |comment| %>
+<div class ="all-comments">
+  <div id="new-comment">
+    <%= form_with model: @track.comments.new, id: "track-comment-form-#{@track.id}" do |form| %>
+      <%= form.text_area :body, id: 'txtarea', spellchek: false, class: 'form-control' %>
+      <%= form.hidden_field :user_id, value: current_user.id %>
+      <%= form.hidden_field :object_id, value: @track.id %>
+      <%= form.hidden_field :object_type, value: @track.class %>
+      <%= submit_tag(t('input.send'), class: "btn btn-light btn-comment-input") %>
+    <% end %>
+  </div>
+  <div id="comments">
+      <div id="track-comment-new"></div>
+    <% @track.comments.order('created_at desc').to_a.each do |comment| %>
+      <div id="comment-<%= comment.id %>" class="comment">
         <div class="comment-avatar-user"><img src="<%= comment.user.avatar %>"></div>
 
-        <div id="comment-<%= comment.id %>">
-          <div class="comment-body"><%= user_name(comment.user) %> : <%= comment.body %></div>
-          <% if current_user == comment.user %>
-            <%= link_to t('comment.reply'), new_comment_path(object_id: comment.id, object_type: comment.class), remote: true %> |
-            <%= link_to t('comment.delete'), comment_path(comment), method: :delete, remote: true %>
-          <% end %>
-        <div class="nested-comments">
-          <div id="track-comments-on-comment-<%= comment.id %>">
-            <% comment.comments.each do |comment| %>
-              <div class="comment-<%= comment.id %>"><%= user_name(comment.user) %> : <%= comment.body %></div>
-              <hr>
+        <div class="comment-message bg-comment">
+            <div class="comment-user">
+              <%= user_name(comment.user) %>
+            </div>
+            <div class="comment-body"><%= comment.body %></div>
+            <div class="comment-options">
+            <% if can_delete_comment?(current_user, comment) %>
+              <%= link_to t("comment.delete"), comment_path(comment), method: :delete, remote: true %> |
             <% end %>
-          </div>
-          <div id="track-new-comment-<%= comment.id %>"></div>
+            <%= link_to t("comment.reply"), new_comment_path(object_id: comment.id, object_type: comment.class), remote: true %>
+            </div>
+            <div class="nested-comments">
+              <div id="track-comments-on-comment-<%= comment.id %>">
+                <% comment.comments.each do |comment| %>
+                <div class="nested-comment" id="comment-<%= comment.id %>">
+                  <div class="comment-avatar-user"><img src="<%= comment.user.avatar %>"></div>
+                  <div><%= user_name(comment.user) %></div>
+                  <div class="comment-body"><%= comment.body %></div>
+                  <% if can_delete_comment?(current_user, comment) %>
+                    <div class="comment-options">
+                      <%= link_to t("comment.delete"), comment_path(comment), method: :delete, remote: true %>
+                    </div>
+                  <% end %>
+                </div>
+                <% end %>
+              </div>
+              <div id="track-new-comment-<%= comment.id %>"></div>
+            </div>
         </div>
-        <hr>
       </div>
-      <% end %>
-    </div>
+    <% end %>
   </div>
 </div>

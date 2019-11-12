@@ -33,6 +33,7 @@ body {
   text-align: center;
   font-size: 20px;
   font-weight: bold;
+  font-family: helvetica;
 }
 .avatar {
   width: 25px;
@@ -56,4 +57,11 @@ body {
 }
 .devise-links a:hover {
   border-bottom: 1px solid #ef5466;
+}
+h3 {
+  color: white;
+  font-family: helvetica;
+}
+.input-tag {
+  width: 50%;
 }

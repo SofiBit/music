@@ -20,7 +20,7 @@ class AddingTracksController < ApplicationController
 
   def destroy
     @adding_track.destroy
-    redirect_to user_playlist_path(current_user, @adding_track.playlist)
+    respond_to { |format| format.js }
   end
 
   def update
