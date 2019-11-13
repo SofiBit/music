@@ -1,11 +1,13 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  devise_for :users, skip: [:session, :password, :registration], controllers: { omniauth_callbacks: "callbacks" }
+
   scope "(:locale)", locale: /#{I18n.available_locales.join("|")}/ do
     devise_for :users, path_names: { sign_in: :login, sign_out: :logout},
-                      controllers: { omniauth_callbacks: "callbacks" },
                       controllers: { registrations: 'registrations' },
                       skip: :omniauth_callbacks
+
     ActiveAdmin.routes(self)
 
     root 'links#index'

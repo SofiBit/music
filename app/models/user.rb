@@ -28,7 +28,7 @@ class User < ApplicationRecord
   has_many :room_messages
   has_and_belongs_to_many :rooms
 
-  validates :first_name, :last_name, presence: true
+  # validates :first_name, :last_name, presence: true
 
   devise  :database_authenticatable,
           :registerable,
@@ -39,7 +39,8 @@ class User < ApplicationRecord
           :omniauthable, :omniauth_providers => [:facebook]
 
   def self.from_omniauth(auth)
-    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+    binding.pry
+    where(provider: auth.provider, uid: auth.uid).first_or_create! do |user|
       user.provider = auth.provider
       user.uid = auth.uid
       user.email = auth.info.email
