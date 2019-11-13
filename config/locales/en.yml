@@ -71,6 +71,7 @@ en:
     user_have_not_playlist: "has no playlists yet."
     you_have_not_tracks: "You have not added any tracks yet. You can choose a track from top tracks."
     no_tracks_in_playlist: "No tracks in playlist yet"
+    edit_profile: "Edit profile"
   popular:
     top_tracks: "Top tracks"
     top_playlists: "Top playlists"

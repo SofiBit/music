@@ -2,7 +2,7 @@ class Playlist < ApplicationRecord
   include Notifications
   include Elasticsearch::Model
   include Elasticsearch::Model::Callbacks
-  
+
   mount_uploader :image, PlaylistImageUploader
 
   belongs_to :user

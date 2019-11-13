@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.configure do
-  config.action_mailer.default_url_options = { :host => 'https://fast-reaches-12261.herokuapp.com'}
+  config.action_mailer.default_url_options = { :host => 'https://music-connects.herokuapp.com'}
   ActionMailer::Base.delivery_method = :smtp
   ActionMailer::Base.smtp_settings = {
     address: 'smtp.sendgrid.net',

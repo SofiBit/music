@@ -3,7 +3,8 @@
   <% object.each do |user|%>
     <div class="col-3">
       <%= link_to controller: "users", action: "show", id: user.id do %>
-        <img class="result-user" src="<%= user.avatar.url %>">
+        <img class="result-user" src="<%= get_image_user(user.id) %>">
+        <%= user.first_name %> <%= user.last_name %>
       <% end %>
     </div>
   <% end %>

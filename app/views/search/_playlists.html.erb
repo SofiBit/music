@@ -3,7 +3,8 @@
   <% object.each do |playlist|%>
     <div class="col-3">
       <%= link_to controller: "playlists", action: "show", user_id: playlist.user_id, id: playlist.id  do %>
-        <img class="tracks-img" src="<%= playlist.image.url %>">
+        <img class="tracks-img" src="<%= get_image_playlist(playlist.id) %>">
+        <%= playlist.title %>
       <% end %>
     </div>
   <% end %>

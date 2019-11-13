@@ -3,6 +3,7 @@
 	<h4 class="card-title mt-3 text-center"><%= t('header.edit_profile') %></h4>
 
   <%= form_with model: @user, local: true do |form| %>
+		<%= render 'shared/errors', resource: @user %>
     <div class="form-group input-group">
        <%= form.text_field :first_name, autofocus: true, class: "form-control" %>
     </div>
