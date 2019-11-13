@@ -5,11 +5,11 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.3'
 
-# gem 'cloudinary', '~> 1.12.0'
 gem 'faker', '~> 2.6.0'
 gem 'elasticsearch-model', '~> 7.0.0'
 gem 'elasticsearch-rails', '~> 7.0.0'
 gem 'carrierwave', '~> 1.3.1'
+gem 'cloudinary'
 gem 'euterpe', git: "https://github.com/vmakoed/euterpe.git", branch: "add_new_services"
 gem 'redis', '~> 4.1.2'
 gem 'activeadmin', '~> 2.2.0'

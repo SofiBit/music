@@ -2,7 +2,7 @@
 
 module ProvidersLinksFetch
   def run(link)
-    Euterpe::Aggregator.run(source_link: link)
+    response = Euterpe::Aggregator.run(source_link: link)
   rescue
     raise 'Not found'
   end

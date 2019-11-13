@@ -1,13 +1,17 @@
 development:
-  cloud_name: "sample"
-  api_key: "874837483274837"
-  api_secret: "a676b67565c6767a6767d6767f676fe1"
+  cloud_name: "music-connects"
+  api_key: "669625935539453"
+  api_secret: "PSNnuz6dUmyESOoAj6cbNTBsWGE"
   secure: true
   cdn_subdomain: true
+  enhance_image_tag: true
+  static_file_support: false
 
 production:
-  cloud_name: "sample"
-  api_key: "874837483274837"
-  api_secret: "a676b67565c6767a6767d6767f676fe1"
+  cloud_name: "music-connects"
+  api_key: "669625935539453"
+  api_secret: "PSNnuz6dUmyESOoAj6cbNTBsWGE"
   secure: true
   cdn_subdomain: true
+  enhance_image_tag: true
+  static_file_support: true

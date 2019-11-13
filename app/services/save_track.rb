@@ -9,15 +9,8 @@ module SaveTrack
                           name: result[:info][:name],
                           album: result[:info][:album],
                           release_date: result[:info][:release_date],
-                          provider_links: result[:links].to_json
+                          provider_links: result[:links].to_json,
+                          track_image: result[:info][:image]['url']
                         )
-    add_img(track)
-  end
-
-  def add_img(track)
-    path = Rails.root + "app/images/image.png"
-    File.open(path) { |f| track.track_image = f }
-    track.save!
-    track
   end
 end

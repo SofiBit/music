@@ -3,7 +3,7 @@
   <% object.each do |track| %>
     <div class="col-3">
       <%= link_to controller: "tracks", action: "show", id: track.id do %>
-        <img class="tracks-img" src="<%= track.track_image.url %>">
+        <img class="tracks-img" src="<%= track.track_image %>">
       <% end %>
     </div>
   <% end %>

@@ -2,7 +2,7 @@ class Track < ApplicationRecord
   include Elasticsearch::Model
   include Elasticsearch::Model::Callbacks
 
-  mount_uploader :track_image, TrackImageUploader
+  # mount_uploader :track_image, TrackImageUploader
 
   has_many :adding_track_to_users
   has_many :users, through: :adding_track_to_users
