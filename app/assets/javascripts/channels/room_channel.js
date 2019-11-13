@@ -13,6 +13,8 @@ $(document).on('turbolinks:load', function() {
       },
       {
         received: function(data) {
+          let input = document.getElementById('input-message');
+          input.value = "";
           let content = messageTemplate.children().clone(true, true);
           content.find('[data-role="name"]').text(data.user_name);
           content.find('[data-role="avatar"]').attr("src", `${data.avatar.url}`);
