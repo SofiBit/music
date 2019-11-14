@@ -5,6 +5,7 @@ class SearchController < ApplicationController
 
   def index
     @results = results
+    binding.pry
     if @results.empty?
       flash[:error] = t('app.not_found')
       redirect_back fallback_location: root_path

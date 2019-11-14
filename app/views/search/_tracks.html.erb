@@ -4,6 +4,7 @@
     <div class="col-3">
       <%= link_to controller: "tracks", action: "show", id: track.id do %>
         <img class="tracks-img" src="<%= track.track_image %>">
+        <%= track.artist%>-<%= track.name %>
       <% end %>
     </div>
   <% end %>
