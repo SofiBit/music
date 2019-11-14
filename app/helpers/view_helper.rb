@@ -72,4 +72,9 @@ module ViewHelper
     playlist = Playlist.find(playlist_id)
     playlist.image
   end
+
+  def get_image_user(user_id)
+    user = User.find(user_id)
+    user.image
+  end
 end
