@@ -28,7 +28,7 @@ class User < ApplicationRecord
   has_many :room_messages
   has_and_belongs_to_many :rooms
 
-  # validates :first_name, :last_name, presence: true
+  validates :first_name, :last_name, presence: true
 
   devise  :database_authenticatable,
           :registerable,
@@ -36,6 +36,7 @@ class User < ApplicationRecord
           :rememberable,
           :validatable,
           :trackable,
+          :confirmable,
           :omniauthable, :omniauth_providers => [:facebook]
 
   def self.from_omniauth(auth)
