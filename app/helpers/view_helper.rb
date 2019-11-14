@@ -75,6 +75,6 @@ module ViewHelper
 
   def get_image_user(user_id)
     user = User.find(user_id)
-    user.image
+    user.avatar
   end
 end
