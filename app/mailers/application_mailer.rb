@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
 class ApplicationMailer < ActionMailer::Base
-  default from: 'sofiabitno@gmail.com'
+  default from: 'music-connects@music.com'
   layout 'mailer'
 end
