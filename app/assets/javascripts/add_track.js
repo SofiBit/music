@@ -39,6 +39,7 @@ function createInput(track) {
   modalFooter.innerHTML = "";
 
   let newPlaylist = document.createElement('input');
+  newPlaylist.setAttribute("required aria-required", "true")
   newPlaylist.setAttribute("type", "text");
   newPlaylist.className = "form-control"
   newPlaylist.id = 'playlist-title'
