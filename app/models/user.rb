@@ -37,7 +37,7 @@ class User < ApplicationRecord
           :rememberable,
           :validatable,
           :trackable,
-          # :confirmable,
+          :confirmable,
           :omniauthable, :omniauth_providers => [:facebook]
 
   def self.from_omniauth(auth)
