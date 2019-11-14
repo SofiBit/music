@@ -68,6 +68,8 @@ ru:
     user_have_not_playlist: "пока не имеет плейлистов."
     you_have_not_tracks: "Вы пока не добавили ни одного трека. Вы можете выбрать его из топа треков."
     no_tracks_in_playlist: "В плейлисте пока нет треков."
+    edit_profile: "Редактировать профиль"
+    add_track: "Добавить трек"
   activerecord:
     models:
       playlist: "Плейлист"
